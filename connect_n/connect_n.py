@@ -9,7 +9,9 @@ https://github.com/Kartikei-12/Connect-N
 __author__ = 'Kartikei Mittal'
 __email__ = 'kartikeimittal@gmail.com'
 
-class Connect_N_game:
+import os
+
+class ConnectNGame:
     '''
     Main module class used Connect-N game.
     https://github.com/Kartikei-12/Connect-N
@@ -19,18 +21,33 @@ class Connect_N_game:
 
     def __init__(self, num_rows = 6, num_columns = 7, n = 4):
         '''
-        '''        
+        Instantiate function for class ConnectNGame
+        '''
+        
+        if not isinstance(num_rows, int):
+            raise ValueError(
+                "Error: num_rows except <class 'int'> not {}"\
+                    .format(type(num_rows)))
+        if not isinstance(num_columns, int):
+            raise ValueError(
+                "Error: num_columns except <class 'int'> not {}"\
+                    .format(type(num_columns)))
+        if not isinstance(n, int):
+            raise ValueError(
+                "Error: n except <class 'int'> not {}"\
+                .format(type(n)))
+        
         try:
-            with open('version.txt', 'r') as f: self.__version__ += f.read()
-        except FileNotFoundError:
-            pass
+            # Integrating file number.
+            file_path = os.path.dirname(os.path.realpath(__file__)) + '/version.txt'
+            with open(file_path, 'r') as f:
+                self.__version__ += f.read()
+                f.close()
+        except FileNotFoundError: pass
 
         self.NUM_ROWS = num_rows
         self.NUM_COLUMNS = num_columns
         self.N = n
-
-    def test(self):
-        print(self.__version__)
 
     def __repr__(self):
         '''
