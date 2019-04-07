@@ -10,6 +10,10 @@ __author__ = 'Kartikei Mittal'
 __email__ = 'kartikeimittal@gmail.com'
 
 import os
+import numpy
+
+FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + '/version.txt'
+
 
 class ConnectNGame:
     '''
@@ -37,12 +41,8 @@ class ConnectNGame:
                 "Error: n except <class 'int'> not {}"\
                 .format(type(n)))
         
-        try:
-            # Integrating file number.
-            file_path = os.path.dirname(os.path.realpath(__file__)) + '/version.txt'
-            with open(file_path, 'r') as f:
-                self.__version__ += f.read()
-                f.close()
+        try: # Integrating file number.
+            self.__version__ += open(FILE_PATH, 'r').read()
         except FileNotFoundError: pass
 
         self.NUM_ROWS = num_rows
