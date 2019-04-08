@@ -21,6 +21,7 @@ Connect-N/
     connect_n/
         `__init__.py`
         connect_n.py
+        utility.py
     .gitignore
     LICENSE
     README.md
