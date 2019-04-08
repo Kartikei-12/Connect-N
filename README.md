@@ -1,5 +1,5 @@
 # Connect - N
-
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 <hr>
 
 ## Introduction
@@ -17,21 +17,27 @@ This repositry contains a simple game made in **python** similar to **Connect 4*
 
 ## Directory Structure
 
+```
+
 Connect-N/
+    .gitignore
     connect_n/
         `__init__.py`
         connect_n.py
         utility.py
-    .gitignore
     LICENSE
     README.md
     main.py
     tests.py
     default_variables.py
     requirements.txt
-    
+
+```
 
 ## Contributer(s)
 
 [@Kartikei Mittal](https://github.com/Kartikei-12)
 
+## LICENSE
+
+[GPL-3.0](https://github.com/Kartikei-12/Connect-N/blob/master/LICENSE)

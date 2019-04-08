@@ -1,6 +1,5 @@
 '''
 @author: Kartikei Mittal
-@email: kartikeimittal@gmail.com
 Unit tests file for current project.
 https://github.com/Kartikei-12/Connect-N
 '''

@@ -1,6 +1,5 @@
 '''
 @author: Kartikei Mittal
-@email: kartikeimittal@gmail.com
 __init__.py file connect_n module
 Tasks:
     Increment Version Number

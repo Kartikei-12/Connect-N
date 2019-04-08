@@ -1,6 +1,5 @@
 '''
 @author: Kartikei Mittal
-@email: kartikeimittal@gmail.com
 Default and environment variables for this project.
 https://github.com/Kartikei-12/Connect-N
 '''
