@@ -12,7 +12,8 @@ __author__ = 'Kartikei Mittal'
 import os
 import numpy as np
 
-
+# User module(s)
+from default_variables import *
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + '/version.txt'
 
@@ -44,7 +45,9 @@ class ConnectNGame:
                 .format(type(n)))
         
         try: # Integrating file number.
-            self.__version__ += open(FILE_PATH, 'r').read()
+            with open(FILE_PATH, 'r') as f:
+                self.__version__ += f.read()
+                f.close()
         except FileNotFoundError: pass
 
         self.num_rows = num_rows

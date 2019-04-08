@@ -2,20 +2,37 @@
 
 <hr>
 
-## **Introduction**
+## Introduction
 
 A simple modified version of Connect Four Game implemented with AI in Python using PyGame.
 
-## **Project Description**
+## Project Description
 
 This repositry contains a simple game made in **python** similar to **Connect 4**, bit modified to work with any Connect length for any board size.
 
-## **System Requirements**
+## System Requirements
 
 * [Python 3](https://www.python.org/)
 * Python module [PyGame](https://pypi.org/project/pygame/) installable via pip.
 
-## **Contributer(s)**
+## Directory Structure
+
+```
+Connect-N/
+    .gitignore
+    LICENSE
+    README.md
+    main.py
+    tests.py
+    default_variables.py
+    requirements.txt
+    connect_n/
+        __init__.py
+        connect_n.py
+        
+```
+
+## Contributer(s)
 
 [@Kartikei Mittal](https://github.com/Kartikei-12)
 

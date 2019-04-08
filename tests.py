@@ -8,6 +8,7 @@ https://github.com/Kartikei-12/Connect-N
 import unittest
 
 # User module(s)
+from default_variables import *
 from connect_n.connect_n import ConnectNGame
 
 class ConnectNTests(unittest.TestCase):
@@ -15,8 +16,12 @@ class ConnectNTests(unittest.TestCase):
     
     def test_init(self):
         # Testing instantiateing module
+        print('Testing Instantiating of ConnectNGame module.')
         game = ConnectNGame()
-        self.assertEqual(game.num_col, )
+        self.assertEqual(game.num_col, COLUMNS)
+        self.assertEqual(game.num_rows, ROWS)
+        self.assertEqual(game.n, N)
+
 
 if __name__ == "__main__":
     unittest.main()    
