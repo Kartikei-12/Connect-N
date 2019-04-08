@@ -27,6 +27,7 @@ Connect-N/
         `__init__.py`
         connect_n.py
         utility.py
+        player.py
     LICENSE
     README.md
     main.py
@@ -39,7 +40,3 @@ Connect-N/
 ## Contributer(s)
 
 [@Kartikei Mittal](https://github.com/Kartikei-12)
-
-## LICENSE
-
-[GPL-3.0](https://github.com/Kartikei-12/Connect-N/blob/master/LICENSE)
