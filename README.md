@@ -10,6 +10,8 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 
 This repositry contains a simple game made in **python** similar to **Connect 4**, bit modified to work with any Connect length for any board size.
 
+Currently supports only two player on a two dimintional board.
+
 ## System Requirements
 
 * [Python 3](https://www.python.org/)

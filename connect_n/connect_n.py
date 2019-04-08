@@ -13,6 +13,7 @@ import os
 import numpy as np
 
 # User module(s)
+from .player import Player
 from .utility import getVersion
 from default_variables import *
 
@@ -23,7 +24,6 @@ class ConnectNGame:
     Main module class used Connect-N game.
     https://github.com/Kartikei-12/Connect-N
     '''
-    is_over = False    
     __version__ = '0.1d.'
 
     def __init__(self, num_rows = ROWS, num_col = COLUMNS, n = N):
@@ -32,17 +32,26 @@ class ConnectNGame:
         '''
         for var in [num_rows, num_col, n]:
             if not isinstance(var, int):
-                raise ValueError(
+                raise TypeError(
                     "Expected <class 'int'> not {0}"\
                         .format(type(var))
                 )
-
+        self.players = []
+        self.is_over = False
         self.__version__ += getVersion(FILE_PATH)
 
+        self.n = n
         self.num_rows = num_rows
         self.num_col = num_col
-        self.n = n
         self.board = np.zeros((self.num_rows, self.num_col))
+
+    def add_player(self, p):
+        if not isinstance(p, Player):
+            raise TypeError("Expected <class 'Player'> not {0}".format(type(p)))
+        for pi in self.players:
+            if p.id == pi.id:
+                raise ValueError('{} already in game.'.format(p))
+        self.players.append(p)
 
     def print_board(self):
         # Helper function which prints the board
@@ -60,3 +69,4 @@ class ConnectNGame:
                 self.num_col,
                 self.n
             )
+

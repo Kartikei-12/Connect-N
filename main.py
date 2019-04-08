@@ -8,6 +8,8 @@ https://github.com/Kartikei-12/Connect-N
 __author__ = 'Kartikei Mittal'
 __email__ = 'kartikeimittal@gmail.com'
 
+# User module(s)
+from connect_n.player import Player
 from connect_n.connect_n import ConnectNGame
 
 print('Hello World!!\n-------------------------------------------------------------------')
@@ -18,7 +20,7 @@ if __name__ == "__main__":
     print(game)
     print(game.__version__)
     game.print_board()
-    print(game.is_over)
+    
 
 print('---------------------------------------------------------------------\nBye World!!')
 
