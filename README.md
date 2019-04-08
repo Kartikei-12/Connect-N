@@ -17,20 +17,18 @@ This repositry contains a simple game made in **python** similar to **Connect 4*
 
 ## Directory Structure
 
-```
-Connect-N/
-    .gitignore
-    LICENSE
-    README.md
-    main.py
-    tests.py
-    default_variables.py
-    requirements.txt
-    connect_n/
-        __init__.py
-        connect_n.py
-        
-```
+/Connect-N-master
+<br>├── connect_n/
+<br>│   ├── `__init__.py`
+<br>│   ├── connect_n.py
+<br>│   └── version.txt
+<br>├── default_variables.py
+<br>├── LICENSE
+<br>├── main.py
+<br>├── README.md
+<br>├── requirements.txt
+<br>└── tests.py
+
 
 ## Contributer(s)
 
