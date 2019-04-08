@@ -7,10 +7,12 @@ https://github.com/Kartikei-12/Connect-N
 '''
 
 __author__ = 'Kartikei Mittal'
-__email__ = 'kartikeimittal@gmail.com'
 
+# Python module(s)
 import os
-import numpy
+import numpy as np
+
+
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + '/version.txt'
 
@@ -23,7 +25,7 @@ class ConnectNGame:
     
     __version__ = '0.1d.'
 
-    def __init__(self, num_rows = 6, num_columns = 7, n = 4):
+    def __init__(self, num_rows = ROWS, num_col = COLUMNS, n = N):
         '''
         Instantiate function for class ConnectNGame
         '''
@@ -32,10 +34,10 @@ class ConnectNGame:
             raise ValueError(
                 "Error: num_rows except <class 'int'> not {}"\
                     .format(type(num_rows)))
-        if not isinstance(num_columns, int):
+        if not isinstance(num_col, int):
             raise ValueError(
-                "Error: num_columns except <class 'int'> not {}"\
-                    .format(type(num_columns)))
+                "Error: num_col except <class 'int'> not {}"\
+                    .format(type(num_col)))
         if not isinstance(n, int):
             raise ValueError(
                 "Error: n except <class 'int'> not {}"\
@@ -45,9 +47,14 @@ class ConnectNGame:
             self.__version__ += open(FILE_PATH, 'r').read()
         except FileNotFoundError: pass
 
-        self.NUM_ROWS = num_rows
-        self.NUM_COLUMNS = num_columns
-        self.N = n
+        self.num_rows = num_rows
+        self.num_col = num_col
+        self.n = n
+        self.board = np.zeros((self.num_rows, self.num_col))
+
+    def print_board(self):
+        # Helper function which prints the board
+        print(np.flip(self.board, 0))
 
     def __repr__(self):
         '''
@@ -57,7 +64,7 @@ class ConnectNGame:
         return "<class '{0}', {1} {2} {3} >"\
             .format(
                 self.__class__.__name__,
-                self.NUM_ROWS,
-                self.NUM_COLUMNS,
-                self.N
+                self.num_rows,
+                self.num_col,
+                self.n
             )

@@ -12,10 +12,12 @@ from connect_n.connect_n import ConnectNGame
 
 print('Hello World!!')
 
-game = ConnectNGame()
-
-print(game)
-print(game.__version__)
+if __name__ == "__main__":
+    # Main program block of the project.
+    game = ConnectNGame()
+    print(game)
+    print(game.__version__)
+    game.print_board()
 
 print('Bye World!!')
 
