@@ -10,7 +10,7 @@ __email__ = 'kartikeimittal@gmail.com'
 
 from connect_n.connect_n import ConnectNGame
 
-print('Hello World!!')
+print('Hello World!!\n-------------------------------------------------------------------')
 
 if __name__ == "__main__":
     # Main program block of the project.
@@ -18,6 +18,7 @@ if __name__ == "__main__":
     print(game)
     print(game.__version__)
     game.print_board()
+    print(game.is_over)
 
-print('Bye World!!')
+print('---------------------------------------------------------------------\nBye World!!')
 

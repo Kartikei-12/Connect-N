@@ -13,42 +13,31 @@ import os
 import numpy as np
 
 # User module(s)
+from .utility import getVersion
 from default_variables import *
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + '/version.txt'
-
 
 class ConnectNGame:
     '''
     Main module class used Connect-N game.
     https://github.com/Kartikei-12/Connect-N
     '''
-    
+    is_over = False    
     __version__ = '0.1d.'
 
     def __init__(self, num_rows = ROWS, num_col = COLUMNS, n = N):
         '''
         Instantiate function for class ConnectNGame
         '''
-        
-        if not isinstance(num_rows, int):
-            raise ValueError(
-                "Error: num_rows except <class 'int'> not {}"\
-                    .format(type(num_rows)))
-        if not isinstance(num_col, int):
-            raise ValueError(
-                "Error: num_col except <class 'int'> not {}"\
-                    .format(type(num_col)))
-        if not isinstance(n, int):
-            raise ValueError(
-                "Error: n except <class 'int'> not {}"\
-                .format(type(n)))
-        
-        try: # Integrating file number.
-            with open(FILE_PATH, 'r') as f:
-                self.__version__ += f.read()
-                f.close()
-        except FileNotFoundError: pass
+        for var in [num_rows, num_col, n]:
+            if not isinstance(var, int):
+                raise ValueError(
+                    "Expected <class 'int'> not {0}"\
+                        .format(type(var))
+                )
+
+        self.__version__ += getVersion(FILE_PATH)
 
         self.num_rows = num_rows
         self.num_col = num_col
