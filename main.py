@@ -16,7 +16,11 @@ print('Hello World!!\n----------------------------------------------------------
 
 if __name__ == "__main__":
     # Main program block of the project.
-    game = ConnectNGame(6, 11, 5)
+    game = ConnectNGame(
+        num_rows=3,
+        num_col=3,
+        n=3
+        )
     print(game)
     print(game.__version__)
     game.print_board()

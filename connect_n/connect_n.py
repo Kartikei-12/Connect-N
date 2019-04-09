@@ -79,24 +79,36 @@ class ConnectNGame:
         return True
 
     def is_winning_move(self, row, col):
-        p = str(self.board[row][col])
-        desired_pat = "".join(p for i in range(self.n))
+        desired_pat = "".join(str(int(self.board[row][col])) for i in range(self.n))
 
         # Horizontal Check
-        meaningful_length = ''
-        for i in range(max(0, col-self.n+1), min(col+self.n, self.num_col)):
-            meaningful_length += str(int(self.board[row][i]))
-        if desired_pat in meaningful_length:
-            return True
-        # Vertical Check
-        meaningful_length = ''
-        for i in range(max(0, row-self.n+1), min(row+self.n, self.num_rows)):
-            meaningful_length += str(int(self.board[i][col]))
-        if desired_pat in meaningful_length:
+        if desired_pat in "".join(
+            str(int(self.board[row][i])) for i in \
+                range(
+                    max(0, col-self.n+1),
+                    min(col+self.n, self.num_col)
+                )
+            ):
             return True
         
-
+        # Vertical Check
+        if desired_pat in "".join(
+            str(int(self.board[i][col])) for i in \
+                range(
+                    max(0, row-self.n+1),
+                    min(row+self.n, self.num_rows)
+                )
+            ):
+            return True
+        # Positive digonal Check
+        if desired_pat in "".join(str(int(self.board[row+i][col+i])) for i in 
+                range(-1*(self.n-1), self.n) if 
+                (row+i)>=0 and (col+i)>=0 and
+                (row+i)<self.num_rows and (col+i)<self.num_col):
+            return True
+        
     def play_game(self):# *************************************************************
+        num_turn = 0
         turn = len(self.players) - 1
         while not self.is_over:
             turn = (turn+1) % len(self.players)
@@ -108,13 +120,15 @@ class ConnectNGame:
                 continue
             if self.is_valid_move(col):
                 row = self.make_move(col, self.players[turn].id)
-                if self.is_winning_move(row, col):
+                if num_turn/len(self.players) >= (self.n-1) \
+                    and self.is_winning_move(row, col):
                     self.winner = self.players[turn]
                     self.is_over = True
+                num_turn += 1
             else:
                 print('Invalid move column filled, aborting turn!')
             self.print_board()
-        print(self.winner)
+        print('Winner: Player', self.winner.name)
 
     def __repr__(self):
         '''
