@@ -50,35 +50,41 @@ class ConnectNGame:
         self.num_col = num_col
         self.board = np.zeros((self.num_rows, self.num_col))
 
-
     def add_player(self, p):
+        # Method to add players to the game.
         if not isinstance(p, Player):
             raise TypeError("Expected <class 'Player'> not {0}".format(type(p)))
-        for pi in self.players:
-            if p.id == pi.id:
-                raise ValueError('{} already in game.'.format(p))
+        
+        if p.id in [pi.id for pi in self.players]:
+            raise ValueError('{} already in game.'.format(p))
         self.players.append(p)
-
-    def print_players(self):
-        for p in self.players:
-            print(p)
 
     def print_board(self):# *************************************************************
         # Helper function which prints the board
         print(np.flip(self.board, 0))
 
     def make_move(self, col, id):
+        # Method to make move, returns row in which move was made
         for i in range(self.num_rows):
             if self.board[i][col] == 0:
                 self.board[i][col] = id
                 return i
 
     def is_valid_move(self, col):
+        # Check validity of move
         if col >= self.num_col or self.board[self.num_rows-1][col] != 0:
             return False
         return True
 
     def is_winning_move(self, row, col):
+        '''
+        Method to check for winning move,
+        Remember: Board is displayed in flipped position so,
+                  What appears to positive digonal is actually negative digonal,
+                  and vice versa.
+        '''
+        if self.board[row][col] == 0.0:
+            raise ValueError('Testing Empty slot in board.')
         desired_pat = "".join(str(int(self.board[row][col])) for i in range(self.n))
 
         # Horizontal Check
@@ -108,6 +114,9 @@ class ConnectNGame:
             return True
         
     def play_game(self):# *************************************************************
+        '''
+        Method to play the game
+        '''
         num_turn = 0
         turn = len(self.players) - 1
         while not self.is_over:
@@ -142,4 +151,3 @@ class ConnectNGame:
                 self.num_col,
                 self.n
             )
-
