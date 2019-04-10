@@ -112,6 +112,12 @@ class ConnectNGame:
                 (row+i)>=0 and (col+i)>=0 and
                 (row+i)<self.num_rows and (col+i)<self.num_col):
             return True
+        # Negative digonal Check
+        if desired_pat in "".join(str(int(self.board[row-i][col+i])) for i in 
+                range(-1*(self.n-1), self.n) if 
+                (row-i)>=0 and (col+i)>=0 and
+                (row-i)<self.num_rows and (col+i)<self.num_col):
+            return True
         
     def play_game(self):# *************************************************************
         '''

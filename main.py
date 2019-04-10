@@ -26,7 +26,6 @@ if __name__ == "__main__":
     game.print_board()
     game.add_player(Player('A'))
     game.add_player(Player('B'))
-    # game.print_players()
     game.play_game()
 
 print('---------------------------------------------------------------------\nBye World!!')
