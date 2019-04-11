@@ -4,7 +4,6 @@ Unit tests file for current project.
 https://github.com/Kartikei-12/Connect-N
 '''
 # Python module(s)
-import sys
 import unittest
 
 # User module(s)
@@ -27,7 +26,7 @@ class ConnectNTests(unittest.TestCase):
         self.assertEqual(self.game.num_col, 3)
         self.assertEqual(self.game.num_rows, 3)
         self.assertEqual(self.game.n, 3)
-        
+
     def test_version(self):
         # Testing version system
         with open('connect_n/version.txt', 'r') as f:
@@ -73,5 +72,5 @@ class ConnectNTests(unittest.TestCase):
             self.game.add_player(p)
 
 if __name__ == "__main__":
-    print('Testing:\n-----------------------------------------')
-    unittest.main(verbosity=2)
+    unittest.main(verbosity=3)
+    
