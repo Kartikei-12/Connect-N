@@ -10,6 +10,9 @@ __author__ = 'Kartikei Mittal'
 
 # Python module(s)
 import os
+import sys
+import math
+import pygame
 import numpy as np
 
 # User module(s)
@@ -17,7 +20,18 @@ from .player import Player
 from .utility import getVersion
 from default_variables import *
 
+
 FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + '/version.txt'
+
+pygame.init()
+width = COLUMNS * SQUARESIZE
+height = (ROWS+1) * SQUARESIZE
+size = (width, height)
+screen = pygame.display.set_mode(size)
+pygame.display.update()
+myfont = pygame.font.SysFont("monospace", 75)
+
+C = [BLACK, COLOR['RED'], COLOR['YELLOW'], COLOR['GREEN']]
 
 class ConnectNGame:
     '''
@@ -145,7 +159,71 @@ class ConnectNGame:
             self.print_board()
         print('Winner: Player', self.winner.name)
 
-    def __repr__(self):
+    def draw_board(self):
+        for c in range(self.num_col):
+            for r in range(self.num_rows):
+                pygame.draw.rect(
+                    screen, BLUE,
+                    (
+                        c*SQUARESIZE, r*SQUARESIZE+SQUARESIZE,
+                        SQUARESIZE, SQUARESIZE
+                    )
+                )
+        for c in range(self.num_col):
+            for r in range(self.num_rows):                
+                pygame.draw.circle(
+                    screen,
+                    C[int(self.board[r][c])],
+                    (
+                        int(c*SQUARESIZE+SQUARESIZE/2),
+                        height-int(r*SQUARESIZE+SQUARESIZE/2)
+                    ), RADIUS
+                )
+        pygame.display.update()
+
+    def play_game_graphic(self):
+        
+        turn = 0
+        self.draw_board()
+        while not self.is_over:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+                
+                if event.type == pygame.MOUSEMOTION:
+                    pygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))
+                    posx = event.pos[0]
+                    pygame.draw.circle(
+                        screen,
+                        C[turn+1],
+                        (
+                            posx,
+                            int(SQUARESIZE/2)
+                        ), RADIUS
+                    )
+                pygame.display.update()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    pygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))
+                    col = int(math.floor(event.pos[0]/SQUARESIZE))
+
+                    if self.is_valid_move(col):
+                        row = self.make_move(col, self.players[turn].id)
+                        if self.is_winning_move(row, col):
+                            self.winner = self.players[turn]
+                            label = myfont.render(
+                                "Player {}!!".format(self.winner.name),
+                                1, C[turn+1]
+                            )
+                            screen.blit(label, (40,10))
+                            self.is_over = True
+                    turn = (turn+1) % len(self.players)
+                    self.draw_board()
+
+                    if self.is_over:
+                        pygame.time.wait(3000)
+
+    def __str__(self):
         '''
         Representation format:
             <class 'CLASS NAME', NUMBER_OF_ROWS NUMBER_OF_COLUMNS CONNECT_LENGTH>

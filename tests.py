@@ -4,6 +4,7 @@ Unit tests file for current project.
 https://github.com/Kartikei-12/Connect-N
 '''
 # Python module(s)
+import sys
 import unittest
 
 # User module(s)
@@ -62,7 +63,6 @@ class ConnectNTests(unittest.TestCase):
                       [2.0, 1.0, 0.0],
                       [1.0, 0.0, 0.0]]
         self.assertTrue(self.game.is_winning_move(1, 1))
-        # del game
 
     def test_add_player(self):
         # Testing add player method
@@ -72,5 +72,11 @@ class ConnectNTests(unittest.TestCase):
             self.game.add_player(p)
 
 if __name__ == "__main__":
-    unittest.main(verbosity=3)
-    
+    unittest.main(
+        testRunner=unittest.TextTestRunner(
+            stream=sys.stdout,
+            verbosity=3
+        )
+    )
+
+
