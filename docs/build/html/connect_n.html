@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>connect_n package &#8212; Connect-N 0.1d documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="connect-n-package">
+<h1>connect_n package<a class="headerlink" href="#connect-n-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-connect_n.connect_n">
+<span id="connect-n-connect-n-module"></span><h2>connect_n.connect_n module<a class="headerlink" href="#module-connect_n.connect_n" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Kartikei Mittal
+&#64;email: <a class="reference external" href="mailto:kartikeimittal&#37;&#52;&#48;gmail&#46;com">kartikeimittal<span>&#64;</span>gmail<span>&#46;</span>com</a>
+connect_n.py file
+Contains main module of this repositry.
+<a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
+<dl class="class">
+<dt id="connect_n.connect_n.ConnectNGame">
+<em class="property">class </em><code class="descclassname">connect_n.connect_n.</code><code class="descname">ConnectNGame</code><span class="sig-paren">(</span><em>num_rows=6</em>, <em>num_col=7</em>, <em>n=4</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Main module class used Connect-N game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_rows</strong> (<em>int</em>) – Number of rows</p></li>
+<li><p><strong>num_col</strong> (<em>int</em>) – Number of columns</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – “Expected &lt;class ‘int’&gt; not {0}”.format(type(var))</p></li>
+<li><p><strong>ValueError</strong> – All argument needs to be positive.</p></li>
+<li><p><strong>ValueError</strong> – No winning combination possible in fiven confirigation.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.add_player">
+<code class="descname">add_player</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.add_player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to add players to the game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p</strong> (<a class="reference internal" href="#connect_n.player.Player" title="connect_n.player.Player"><em>Player</em></a>) – player object</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – “Expected &lt;class ‘Player’&gt; not {0}”.format(type(p))</p></li>
+<li><p><strong>ValueError</strong> – ‘{} already in game.’.format(p)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.draw_board">
+<code class="descname">draw_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.draw_board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws game board got pygame</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.is_valid_move">
+<code class="descname">is_valid_move</code><span class="sig-paren">(</span><em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.is_valid_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check validity of move</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – Checks if move can be made in this column</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool True if valid move False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.is_winning_move">
+<code class="descname">is_winning_move</code><span class="sig-paren">(</span><em>row</em>, <em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.is_winning_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check for winning move,</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Board is displayed in flipped position so,
+What appears to positive digonal is actually negative digonal,
+and vice versa.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>int</em>) – Row in which last move was made.</p></li>
+<li><p><strong>col</strong> (<em>int</em>) – Column in which last move was made.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.make_move">
+<code class="descname">make_move</code><span class="sig-paren">(</span><em>col</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.make_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to make move, returns row in which move was made</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>col</strong> (<em>int</em>) – Column to insert coin in</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – Id of player making the move</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>int Row in which move was made</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.play_game">
+<code class="descname">play_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.play_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to play the game in command line.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.play_game_graphic">
+<code class="descname">play_game_graphic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.play_game_graphic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to play the game in GUI using pygame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.print_board">
+<code class="descname">print_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.print_board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper function which prints the board</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-connect_n.player">
+<span id="connect-n-player-module"></span><h2>connect_n.player module<a class="headerlink" href="#module-connect_n.player" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Kartikei Mittal
+player.py file
+Contains player module.
+<a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
+<dl class="class">
+<dt id="connect_n.player.Player">
+<em class="property">class </em><code class="descclassname">connect_n.player.</code><code class="descname">Player</code><span class="sig-paren">(</span><em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.player.Player" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Player class
+:param name: Name of the player
+:type name: str</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-connect_n.utility">
+<span id="connect-n-utility-module"></span><h2>connect_n.utility module<a class="headerlink" href="#module-connect_n.utility" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Kartikei Mittal
+Utility mathods</p>
+<dl class="function">
+<dt id="connect_n.utility.getVersion">
+<code class="descclassname">connect_n.utility.</code><code class="descname">getVersion</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.utility.getVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method
+:param file: File path(usually to the file version.txt)
+:type file: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Version after reading from given file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-connect_n">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-connect_n" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Kartikei Mittal
+__init__.py file connect_n module</p>
+<p>Tasks:
+Increment Version Number
+<a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
+<dl class="data">
+<dt id="connect_n.FILE_PATH">
+<code class="descclassname">connect_n.</code><code class="descname">FILE_PATH</code><em class="property"> = 'D:\\Coading\\MyProjects\\Connect-N\\connect_n/version.txt'</em><a class="headerlink" href="#connect_n.FILE_PATH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Version Maintainance.
+Every time anything from connect_m module is imported it’s version number
+in file version.txt is incremented by one.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Connect-N</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Kartikei Mittal.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/connect_n.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

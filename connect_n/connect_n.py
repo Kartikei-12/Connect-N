@@ -1,10 +1,10 @@
-'''
+"""
 @author: Kartikei Mittal
 @email: kartikeimittal@gmail.com
 connect_n.py file
 Contains main module of this repositry.
 https://github.com/Kartikei-12/Connect-N
-'''
+"""
 
 __author__ = 'Kartikei Mittal'
 
@@ -34,21 +34,22 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.update()
 
 class ConnectNGame:
-    '''
+    """
     Main module class used Connect-N game.
-    https://github.com/Kartikei-12/Connect-N
+    
     Args:
         num_rows (int): Number of rows
         num_col (int): Number of columns
+    
     Raises:
         TypeError: "Expected <class 'int'> not {0}".format(type(var))
         ValueError: All argument needs to be positive.
         ValueError: No winning combination possible in fiven confirigation.
-    '''
+    """
     __version__ = '0.1d.'
     
     def __init__(self, num_rows = ROWS, num_col = COLUMNS, n = N):
-        # Instantiate function for class ConnectNGame        
+        """Instantiate function for class ConnectNGame"""
         for var in [num_rows, num_col, n]:
             if not isinstance(var, int):
                 raise TypeError(
@@ -73,58 +74,66 @@ class ConnectNGame:
         self.board = np.zeros((self.num_rows, self.num_col))
 
     def add_player(self, p):
-        '''Method to add players to the game.
+        """Method to add players to the game.
+    
         Args:
             p (Player): player object
+    
         Raises:
             TypeError: "Expected <class 'Player'> not {0}".format(type(p))
             ValueError: '{} already in game.'.format(p)
-        '''
+        """
         if not isinstance(p, Player):
             raise TypeError("Expected <class 'Player'> not {0}".format(type(p)))
         if p.id in [pi.id for pi in self.players]:
             raise ValueError('{} already in game.'.format(p))
         self.players.append(p)
 
-    def print_board(self):# *************************************************************
-        # Helper function which prints the board
+    def print_board(self):
+        """Helper function which prints the board"""
         print(np.flip(self.board, 0))
 
     def make_move(self, col, id):
-        '''Method to make move, returns row in which move was made
+        """Method to make move, returns row in which move was made
+    
         Args:
             col (int): Column to insert coin in
             id (int): Id of player making the move
+    
         Returns:
             int Row in which move was made
-        '''
+        """
         for row in range(self.num_rows):
             if self.board[row][col] == 0.0:
                 self.board[row][col] = id
                 return row
 
     def is_valid_move(self, col):
-        '''Check validity of move
+        """Check validity of move
+    
         Args:
             col (int): Checks if move can be made in this column
+    
         Returns:
             bool True if valid move False otherwise
-        '''
+        """
         if col >= self.num_col or self.board[self.num_rows-1][col] != 0:
             return False
         return True
 
     def is_winning_move(self, row, col):
-        '''
+        """
         Method to check for winning move,
+    
         Note:
             Board is displayed in flipped position so,
             What appears to positive digonal is actually negative digonal,
             and vice versa.
+    
         Args:
             row (int): Row in which last move was made.
             col (int): Column in which last move was made.
-        '''
+        """
         if self.board[row][col] == 0.0:
             raise ValueError('Testing Empty slot in board.')
         desired_pat = "".join(str(int(self.board[row][col])) for i in range(self.n))
@@ -162,7 +171,7 @@ class ConnectNGame:
             return True
         
     def play_game(self):
-        # Method to play the game in command line.
+        """Method to play the game in command line."""
         pygame.quit()
         num_turn = 0
         turn = len(self.players) - 1
@@ -187,7 +196,7 @@ class ConnectNGame:
         print('Winner: Player', self.winner.name)
 
     def draw_board(self):
-        # Draws game board got pygame
+        """Draws game board got pygame"""
         for c in range(self.num_col):
             for r in range(self.num_rows):
                 pygame.draw.rect(
@@ -210,7 +219,7 @@ class ConnectNGame:
         pygame.display.update()
 
     def play_game_graphic(self):        
-        # Method to play the game in GUI using pygame.
+        """Method to play the game in GUI using pygame."""
         turn = 0
         self.draw_board()
         while not self.is_over:
@@ -250,10 +259,10 @@ class ConnectNGame:
         pygame.time.wait(3000)
 
     def __str__(self):
-        '''
+        """
         Representation format:
             <class 'CLASS NAME', NUMBER_OF_ROWS NUMBER_OF_COLUMNS CONNECT_LENGTH>
-        '''
+        """
         return "<class '{0}', {1} {2} {3} >"\
             .format(
                 self.__class__.__name__,
