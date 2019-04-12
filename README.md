@@ -24,7 +24,7 @@ Currently supports only two player on a two dimintional board.
 Connect-N/
     .gitignore
     connect_n/
-        `__init__.py`
+        __init__.py
         connect_n.py
         utility.py
         player.py
