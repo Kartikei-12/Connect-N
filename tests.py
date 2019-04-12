@@ -1,7 +1,6 @@
 '''
 @author: Kartikei Mittal
 Unit tests file for current project.
-https://github.com/Kartikei-12/Connect-N
 '''
 # Python module(s)
 import sys
@@ -69,6 +68,7 @@ class ConnectNTests(unittest.TestCase):
             self.game.add_player(p)
 
 if __name__ == "__main__":
+    # Test Runner
     unittest.main(
         testRunner=unittest.TextTestRunner(
             stream=sys.stdout,

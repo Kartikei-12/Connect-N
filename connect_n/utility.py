@@ -1,12 +1,15 @@
 '''
 @author: Kartikei Mittal
-connect_n.py file
-Contains main module of this repositry.
-https://github.com/Kartikei-12/Connect-N
+Utility mathods
 '''
 
 def getVersion(file):
-    # Returns version after reading from given file.
+    '''Method
+    Args:
+        file (str): File path(usually to the file version.txt)
+    Returns:
+        Version after reading from given file.
+    '''
     try: # Integrating file number.
         with open(file, 'r') as f:
             temp = f.read()

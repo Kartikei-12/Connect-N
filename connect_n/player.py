@@ -9,12 +9,16 @@ https://github.com/Kartikei-12/Connect-N
 from itertools import count
 
 class Player:
-    # Player class
+    '''Player class
+    Args:
+        name (str): Name of the player
+    '''
     _ids = count(1)
 
-    def __init__(self, name):
+    def __init__(self, name = ''):
+        # Instantiate method
         self.name = name
         self.id = next(self._ids)
 
-    def __repr__(self):
+    def __str__(self):
         return "<class 'Player'> {} {} ".format(self.id, self.name)
