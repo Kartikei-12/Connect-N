@@ -24,7 +24,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 Connect-N/
     .gitignore
     connect_n/
-        `__init__.py`
+        __init__.py
         connect_n.py
         utility.py
         player.py
