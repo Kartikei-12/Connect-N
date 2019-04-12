@@ -16,22 +16,20 @@ import pygame
 import numpy as np
 
 # User module(s)
+from default_variables import *
 from .player import Player
 from .utility import getVersion
-from default_variables import *
-
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + '/version.txt'
 
+width = 0
+height = 0
 pygame.init()
+MY_FONT = pygame.font.SysFont("monospace", 75)
 width = COLUMNS * SQUARESIZE
 height = (ROWS+1) * SQUARESIZE
-size = (width, height)
-screen = pygame.display.set_mode(size)
+screen = pygame.display.set_mode((width, height))
 pygame.display.update()
-myfont = pygame.font.SysFont("monospace", 75)
-
-C = [BLACK, COLOR['RED'], COLOR['YELLOW'], COLOR['GREEN']]
 
 class ConnectNGame:
     '''
@@ -39,7 +37,7 @@ class ConnectNGame:
     https://github.com/Kartikei-12/Connect-N
     '''
     __version__ = '0.1d.'
-
+    
     def __init__(self, num_rows = ROWS, num_col = COLUMNS, n = N):
         '''
         Instantiate function for class ConnectNGame
@@ -68,7 +66,6 @@ class ConnectNGame:
         # Method to add players to the game.
         if not isinstance(p, Player):
             raise TypeError("Expected <class 'Player'> not {0}".format(type(p)))
-        
         if p.id in [pi.id for pi in self.players]:
             raise ValueError('{} already in game.'.format(p))
         self.players.append(p)
@@ -79,10 +76,10 @@ class ConnectNGame:
 
     def make_move(self, col, id):
         # Method to make move, returns row in which move was made
-        for i in range(self.num_rows):
-            if self.board[i][col] == 0:
-                self.board[i][col] = id
-                return i
+        for row in range(self.num_rows):
+            if self.board[row][col] == 0.0:
+                self.board[row][col] = id
+                return row
 
     def is_valid_move(self, col):
         # Check validity of move
@@ -137,6 +134,7 @@ class ConnectNGame:
         '''
         Method to play the game
         '''
+        pygame.quit()
         num_turn = 0
         turn = len(self.players) - 1
         while not self.is_over:
@@ -170,10 +168,10 @@ class ConnectNGame:
                     )
                 )
         for c in range(self.num_col):
-            for r in range(self.num_rows):                
+            for r in range(self.num_rows):
                 pygame.draw.circle(
                     screen,
-                    C[int(self.board[r][c])],
+                    C_LIST[int(self.board[r][c])],
                     (
                         int(c*SQUARESIZE+SQUARESIZE/2),
                         height-int(r*SQUARESIZE+SQUARESIZE/2)
@@ -181,8 +179,7 @@ class ConnectNGame:
                 )
         pygame.display.update()
 
-    def play_game_graphic(self):
-        
+    def play_game_graphic(self):        
         turn = 0
         self.draw_board()
         while not self.is_over:
@@ -195,7 +192,7 @@ class ConnectNGame:
                     posx = event.pos[0]
                     pygame.draw.circle(
                         screen,
-                        C[turn+1],
+                        C_LIST[turn+1],
                         (
                             posx,
                             int(SQUARESIZE/2)
@@ -211,17 +208,15 @@ class ConnectNGame:
                         row = self.make_move(col, self.players[turn].id)
                         if self.is_winning_move(row, col):
                             self.winner = self.players[turn]
-                            label = myfont.render(
+                            label = MY_FONT.render(
                                 "Player {}!!".format(self.winner.name),
-                                1, C[turn+1]
+                                1, C_LIST[turn+1]
                             )
                             screen.blit(label, (40,10))
                             self.is_over = True
                     turn = (turn+1) % len(self.players)
-                    self.draw_board()
-
-                    if self.is_over:
-                        pygame.time.wait(3000)
+                    self.draw_board()            
+        pygame.time.wait(3000)
 
     def __str__(self):
         '''

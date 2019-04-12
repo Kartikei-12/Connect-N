@@ -22,6 +22,7 @@ if __name__ == "__main__":
     game.add_player(Player('A'))
     game.add_player(Player('B'))
     game.play_game_graphic()
+    # game.play_game()
 
 print('---------------------------------------------------------------------\nBye World!!')
 

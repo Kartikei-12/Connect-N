@@ -9,6 +9,7 @@ import unittest
 
 # User module(s)
 from default_variables import *
+from connect_n.utility import getVersion
 from connect_n.player import Player
 from connect_n.connect_n import ConnectNGame
 
@@ -30,11 +31,7 @@ class ConnectNTests(unittest.TestCase):
 
     def test_version(self):
         # Testing version system
-        with open('connect_n/version.txt', 'r') as f:
-            temp = f.read()
-            f.close()
-        self.assertEqual(temp, self.game.__version__[5:])
-        del temp
+        self.assertEqual(getVersion('connect_n/version.txt'), self.game.__version__[5:])
 
     def test_horizontal_winning_move(self):
         # Testing Winning move(Horizontal Check)
@@ -78,5 +75,3 @@ if __name__ == "__main__":
             verbosity=3
         )
     )
-
-
