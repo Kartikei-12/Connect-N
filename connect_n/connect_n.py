@@ -11,27 +11,15 @@ __author__ = 'Kartikei Mittal'
 # Python module(s)
 import os
 import sys
-import math
-import pygame
 import numpy as np
 
 # User module(s)
 from default_variables import *
 from .player import Player
 from .utility import getVersion
+from .pygame_utility import PygameUtility
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + '/version.txt'
-
-# Pygame setup
-# Currently oly works for default board size and upto 3 players.
-width = 0
-height = 0
-pygame.init()
-MY_FONT = pygame.font.SysFont("monospace", 75)
-width = COLUMNS * SQUARESIZE
-height = (ROWS+1) * SQUARESIZE
-screen = pygame.display.set_mode((width, height))
-pygame.display.update()
 
 class ConnectNGame:
     """
@@ -57,7 +45,7 @@ class ConnectNGame:
                         .format(type(var))
                 )
 
-        if num_rows < 1 or num_col < 1 or m < 1:
+        if num_rows < 1 or num_col < 1 or n < 1:
             raise ValueError('All argument needs to be positive.')
 
         if num_rows < n and num_col < n:
@@ -72,6 +60,8 @@ class ConnectNGame:
         self.num_rows = num_rows
         self.num_col = num_col
         self.board = np.zeros((self.num_rows, self.num_col))
+
+        self.GamUtil = PygameUtility(num_rows, num_col)
 
     def add_player(self, p):
         """Method to add players to the game.
@@ -196,67 +186,38 @@ class ConnectNGame:
         print('Winner: Player', self.winner.name)
 
     def draw_board(self):
-        """Draws game board got pygame"""
-        for c in range(self.num_col):
-            for r in range(self.num_rows):
-                pygame.draw.rect(
-                    screen, BLUE,
-                    (
-                        c*SQUARESIZE, r*SQUARESIZE+SQUARESIZE,
-                        SQUARESIZE, SQUARESIZE
-                    )
-                )
-        for c in range(self.num_col):
-            for r in range(self.num_rows):
-                pygame.draw.circle(
-                    screen,
-                    C_LIST[int(self.board[r][c])],
-                    (
-                        int(c*SQUARESIZE+SQUARESIZE/2),
-                        height-int(r*SQUARESIZE+SQUARESIZE/2)
-                    ), RADIUS
-                )
-        pygame.display.update()
+        """Draws game board on pygame"""
+        self.GamUtil.draw_blue_rec_board()
+        self.GamUtil.draw_moves(self.board)
+        self.GamUtil.update()
 
     def play_game_graphic(self):        
         """Method to play the game in GUI using pygame."""
         turn = 0
         self.draw_board()
         while not self.is_over:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
+            for event in self.GamUtil.get_event():
+                if self.GamUtil.is_quit_event(event):
                     sys.exit()
                 
-                if event.type == pygame.MOUSEMOTION:
-                    pygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))
-                    posx = event.pos[0]
-                    pygame.draw.circle(
-                        screen,
-                        C_LIST[turn+1],
-                        (
-                            posx,
-                            int(SQUARESIZE/2)
-                        ), RADIUS
-                    )
-                pygame.display.update()
+                if self.GamUtil.is_mouse_motion(event):
+                    self.GamUtil.draw_black_rec()
+                    self.GamUtil.draw_player_coin(turn+1, event)
+                self.GamUtil.update()
 
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    pygame.draw.rect(screen, BLACK, (0,0, width, SQUARESIZE))
-                    col = int(math.floor(event.pos[0]/SQUARESIZE))
-
+                if self.GamUtil.is_mouse_down(event):
+                    self.GamUtil.draw_black_rec()
+                    col = self.GamUtil.get_col(event)
+                    
                     if self.is_valid_move(col):
                         row = self.make_move(col, self.players[turn].id)
                         if self.is_winning_move(row, col):
                             self.winner = self.players[turn]
-                            label = MY_FONT.render(
-                                "Player {}!!".format(self.winner.name),
-                                1, C_LIST[turn+1]
-                            )
-                            screen.blit(label, (40,10))
+                            self.GamUtil.blit("Player {}!!".format(self.winner.name), turn+1)
                             self.is_over = True
                     turn = (turn+1) % len(self.players)
                     self.draw_board()            
-        pygame.time.wait(3000)
+        self.GamUtil.wait()
 
     def __str__(self):
         """
