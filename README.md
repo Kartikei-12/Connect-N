@@ -23,6 +23,11 @@ Currently supports only two player on a two dimintional board.
 
 Connect-N/
     .gitignore
+    docs/
+        doctrees/: doctrees for documentation
+        html/: HTML source files dor documentation
+        .nojekyll
+        /index.html
     connect_n/
         __init__.py
         connect_n.py
@@ -36,6 +41,10 @@ Connect-N/
     requirements.txt
 
 ```
+
+## Documentation
+
+[docs](https://kartikei-12.github.io/Connect-N/html/index.html)
 
 ## Contributer(s)
 
