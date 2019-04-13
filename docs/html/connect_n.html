@@ -37,11 +37,11 @@
 </div>
 <div class="section" id="module-connect_n.connect_n">
 <span id="connect-n-connect-n-module"></span><h2>connect_n.connect_n module<a class="headerlink" href="#module-connect_n.connect_n" title="Permalink to this headline">¶</a></h2>
-<p>&#64;author: Kartikei Mittal
-&#64;email: <a class="reference external" href="mailto:kartikeimittal&#37;&#52;&#48;gmail&#46;com">kartikeimittal<span>&#64;</span>gmail<span>&#46;</span>com</a>
-connect_n.py file
-Contains main module of this repositry.
-<a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
+<p>&#64;author: Kartikei Mittal</p>
+<p>&#64;email: <a class="reference external" href="mailto:kartikeimittal&#37;&#52;&#48;gmail&#46;com">kartikeimittal<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
+<p>connect_n.py file</p>
+<p>Contains main module of this repositry.</p>
+<p><a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
 <dl class="class">
 <dt id="connect_n.connect_n.ConnectNGame">
 <em class="property">class </em><code class="descclassname">connect_n.connect_n.</code><code class="descname">ConnectNGame</code><span class="sig-paren">(</span><em>num_rows=6</em>, <em>num_col=7</em>, <em>n=4</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame" title="Permalink to this definition">¶</a></dt>
@@ -82,7 +82,7 @@ Contains main module of this repositry.
 <dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.draw_board">
 <code class="descname">draw_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.draw_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draws game board got pygame</p>
+<dd><p>Draws game board on pygame</p>
 </dd></dl>
 
 <dl class="method">
@@ -170,6 +170,123 @@ Contains player module.
 <p>Player class
 :param name: Name of the player
 :type name: str</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-connect_n.pygame_utility">
+<span id="connect-n-pygame-utility-module"></span><h2>connect_n.pygame_utility module<a class="headerlink" href="#module-connect_n.pygame_utility" title="Permalink to this headline">¶</a></h2>
+<p>Utility class for pygame.</p>
+<dl class="class">
+<dt id="connect_n.pygame_utility.PygameUtility">
+<em class="property">class </em><code class="descclassname">connect_n.pygame_utility.</code><code class="descname">PygameUtility</code><span class="sig-paren">(</span><em>r=6</em>, <em>c=7</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Utility class for pygame module</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>int</em>) – Rows of game</p></li>
+<li><p><strong>c</strong> (<em>int</em>) – Columns of game</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.blit">
+<code class="descname">blit</code><span class="sig-paren">(</span><em>msg</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.blit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finising game.
+:param msg: Message to display
+:type msg: str
+:param id: Winnig player id
+:type id: int</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.draw_black_rec">
+<code class="descname">draw_black_rec</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_black_rec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw empty rectangles.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.draw_blue_rec_board">
+<code class="descname">draw_blue_rec_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_blue_rec_board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw empty board.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.draw_moves">
+<code class="descname">draw_moves</code><span class="sig-paren">(</span><em>board</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_moves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw moves made by players
+:param board: Playing board
+:type board: numpy.ndarray</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.draw_player_coin">
+<code class="descname">draw_player_coin</code><span class="sig-paren">(</span><em>id</em>, <em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_player_coin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw player coin
+:param id: Player ID
+:type id: int
+:param event: Event of motion of coin.
+:type event: pygame.event</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.get_col">
+<code class="descname">get_col</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.get_col" title="Permalink to this definition">¶</a></dt>
+<dd><p>Column in which coin was droped.
+:param event: Event of dropiung of coin.
+:type event: pygame.event</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Column in ehich coin is droped</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.get_event">
+<code class="descname">get_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.get_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of events.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.is_mouse_down">
+<code class="descname">is_mouse_down</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.is_mouse_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks MOUSE CLICK event
+:param event: Event.
+:type event: pygame.event</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.is_mouse_motion">
+<code class="descname">is_mouse_motion</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.is_mouse_motion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks MOUSE MOTION event
+:param event: Event.
+:type event: pygame.event</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.is_quit_event">
+<code class="descname">is_quit_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.is_quit_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks QUIT event
+:param event: Event.
+:type event: pygame.event</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update Screen</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.wait">
+<code class="descname">wait</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait mthod for pygame.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
