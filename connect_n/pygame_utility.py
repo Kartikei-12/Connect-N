@@ -131,3 +131,6 @@ class PygameUtility:
             event (pygame.event): Event.
         """
         return event.type == pygame.MOUSEBUTTONDOWN
+
+    def quit(self):
+        pygame.quit()

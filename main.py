@@ -15,17 +15,17 @@ __email__ = 'kartikeimittal@gmail.com'
 from connect_n.player import Player
 from connect_n.connect_n import ConnectNGame
 
-print('Hello World!!\n-------------------------------------------------------------------')
 
 if __name__ == "__main__":
     # Main program block of the project.
-    game = ConnectNGame(3, 3, 3)
+    print('Hello World!!\n-------------------------------------------------------------------')
+    game = ConnectNGame()
     print(game)
     print(game.__version__)
     game.add_player(Player('A'))
     game.add_player(Player('B'))
-    game.play_game_graphic()
-    # game.play_game()
-
-print('---------------------------------------------------------------------\nBye World!!')
+    # game.play_game_graphic()
+    game.play_game()
+    # print(game.get_sequence())
+    print('---------------------------------------------------------------------\nBye World!!')
 

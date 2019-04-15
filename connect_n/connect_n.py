@@ -56,17 +56,45 @@ class ConnectNGame:
             raise ValueError('No winning combination possible in fiven confirigation.')
 
         self.winner = None
+        self.sequence = list()
         self.players = list()
         self.is_over = False
-        self.__version__ += getVersion(FILE_PATH)
 
+        self.__version__ += getVersion(FILE_PATH)
         self.n = n
         self.num_rows = num_rows
         self.num_col = num_col
+        
         self.board = np.zeros((self.num_rows, self.num_col))
+        # self.GamUtil = PygameUtility(num_rows, num_col)
+        self.GamUtil = None
 
-        self.GamUtil = PygameUtility(num_rows, num_col)
+    def get_sequence(self):
+        return self.sequence
 
+    def simulate(self, sequence):
+        turn = 0
+        for i in range(len(sequence)):
+            col = sequence[i]
+            if self.is_valid_move(col):
+                row = self.make_move(col, turn+1)
+            else:
+                sequence[i] = -1
+                continue
+            if self.is_winning_move(row, col):
+                self.winner = self.players[turn]
+                self.is_over = True
+                break
+            turn = (turn+1) % len(self.players)
+        sequence[i+1:] = [-1]*(len(sequence)-i)
+        return sequence
+
+    def reset(self):
+        self.winner = None
+        self.sequence = list()
+        self.is_over = False
+        self.board = np.zeros((self.num_rows, self.num_col))
+        
     def add_player(self, p):
         """Method to add players to the game.
     
@@ -103,7 +131,9 @@ class ConnectNGame:
                 return row
 
     def is_valid_move(self, col):
-        """Check validity of move
+        """Check validity of move, also appends move to 'sequence' list.
+        Note:
+            -1 is appended to sequence if in valid move
     
         Args:
             col (int): Checks if move can be made in this column
@@ -112,7 +142,9 @@ class ConnectNGame:
             bool True if valid move False otherwise
         """
         if col >= self.num_col or self.board[self.num_rows-1][col] != 0:
+            self.sequence.append(-1)
             return False
+        self.sequence.append(col)
         return True
 
     def is_winning_move(self, row, col):
@@ -166,8 +198,7 @@ class ConnectNGame:
         
     def play_game(self):
         """Method to play the game in command line."""
-        pygame.quit()
-        num_turn = 0
+        self.GamUtil.quit()
         turn = len(self.players) - 1
         while not self.is_over:
             turn = (turn+1) % len(self.players)
@@ -179,11 +210,9 @@ class ConnectNGame:
                 continue
             if self.is_valid_move(col):
                 row = self.make_move(col, self.players[turn].id)
-                if num_turn/len(self.players) >= (self.n-1) \
-                    and self.is_winning_move(row, col):
+                if self.is_winning_move(row, col):
                     self.winner = self.players[turn]
                     self.is_over = True
-                num_turn += 1
             else:
                 print('Invalid move column filled, aborting turn!')
             self.print_board()
