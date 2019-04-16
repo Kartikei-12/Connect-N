@@ -70,8 +70,5 @@ class ConnectNTests(unittest.TestCase):
 if __name__ == "__main__":
     """Test Runner"""
     unittest.main(
-        testRunner=unittest.TextTestRunner(
-            stream=sys.stdout,
-            verbosity=3
-        )
+        verbosity=3
     )
