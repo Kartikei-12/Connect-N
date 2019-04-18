@@ -5,17 +5,14 @@ import math
 import pygame
 from default_variables import *
 
-BLUE = (0,0,255)
-BLACK = (0,0,0)
-COLOR = {
-    "RED": (255,0,0),
-    "YELLOW": (255,255,0),
-    "GREEN": (0,255,0)
-}
+BLUE = (0, 0, 255)
+BLACK = (0, 0, 0)
+COLOR = {"RED": (255, 0, 0), "YELLOW": (255, 255, 0), "GREEN": (0, 255, 0)}
 
-C_LIST = [BLACK, COLOR['RED'], COLOR['YELLOW'], COLOR['GREEN']]
+C_LIST = [BLACK, COLOR["RED"], COLOR["YELLOW"], COLOR["GREEN"]]
 SQUARESIZE = 100
-RADIUS = int(SQUARESIZE/2 - 5)
+RADIUS = int(SQUARESIZE / 2 - 5)
+
 
 class PygameUtility:
     """Utility class for pygame module
@@ -24,13 +21,14 @@ class PygameUtility:
         r (int): Rows of game
         c (int): Columns of game
     """
+
     def __init__(self, r=ROWS, c=COLUMNS):
         """Instantiate Method"""
         pygame.init()
         self.num_col = c
         self.num_rows = r
         self.width = c * SQUARESIZE
-        self.height = (r+1) * SQUARESIZE
+        self.height = (r + 1) * SQUARESIZE
         self.screen = pygame.display.set_mode((self.width, self.height))
         pygame.display.update()
 
@@ -40,12 +38,7 @@ class PygameUtility:
 
     def draw_blue_rec_board(self):
         """Draw empty board."""
-        self.screen.fill(
-            BLUE, (
-                0, SQUARESIZE,
-                self.width, self.height
-            )
-        )
+        self.screen.fill(BLUE, (0, SQUARESIZE, self.width, self.height))
 
     def draw_moves(self, board):
         """Draw moves made by players
@@ -58,14 +51,15 @@ class PygameUtility:
                     self.screen,
                     C_LIST[int(board[r][c])],
                     (
-                        int(c*SQUARESIZE+SQUARESIZE/2),
-                        self.height-int(r*SQUARESIZE+SQUARESIZE/2)
-                    ), RADIUS
+                        int(c * SQUARESIZE + SQUARESIZE / 2),
+                        self.height - int(r * SQUARESIZE + SQUARESIZE / 2),
+                    ),
+                    RADIUS,
                 )
 
     def draw_black_rec(self):
         """Draw empty rectangles."""
-        pygame.draw.rect(self.screen, BLACK, (0,0, self.width, SQUARESIZE))
+        pygame.draw.rect(self.screen, BLACK, (0, 0, self.width, SQUARESIZE))
 
     def draw_player_coin(self, id, event):
         """Draw player coin
@@ -74,12 +68,7 @@ class PygameUtility:
             event (pygame.event): Event of motion of coin.
         """
         pygame.draw.circle(
-            self.screen,
-            C_LIST[id],
-            (
-                event.pos[0],
-                int(SQUARESIZE/2)
-            ), RADIUS
+            self.screen, C_LIST[id], (event.pos[0], int(SQUARESIZE / 2)), RADIUS
         )
 
     def get_col(self, event):
@@ -88,7 +77,7 @@ class PygameUtility:
             event (pygame.event): Event of dropiung of coin.
         Returns:
             int : Column in ehich coin is droped"""
-        return int(math.floor(event.pos[0]/SQUARESIZE))
+        return int(math.floor(event.pos[0] / SQUARESIZE))
 
     def blit(self, msg, id):
         """Finising game.
@@ -96,13 +85,10 @@ class PygameUtility:
             msg (str): Message to display
             id (int): Winnig player id
         """
-        size = int((self.num_rows*SQUARESIZE*1.5)/len(msg))
-        label = pygame.font.SysFont("monospace", size).render(
-            msg,
-            1, C_LIST[id]
-        )
-        self.screen.blit(label, (40,10))
-    
+        size = int((self.num_rows * SQUARESIZE * 1.5) / len(msg))
+        label = pygame.font.SysFont("monospace", size).render(msg, 1, C_LIST[id])
+        self.screen.blit(label, (40, 10))
+
     def wait(self):
         """Wait mthod for pygame."""
         pygame.time.wait(3000)

@@ -1,4 +1,4 @@
-'''
+"""
 @author: Kartikei Mittal
 
 @email: kartikeimittal@gmail.com
@@ -6,10 +6,10 @@
 main.py file for demostrating use of connect_n module.
 
 https://github.com/Kartikei-12/Connect-N
-'''
+"""
 
-__author__ = 'Kartikei Mittal'
-__email__ = 'kartikeimittal@gmail.com'
+__author__ = "Kartikei Mittal"
+__email__ = "kartikeimittal@gmail.com"
 
 # User module(s)
 from connect_n.player import Player
@@ -18,14 +18,13 @@ from connect_n.connect_n import ConnectNGame
 
 if __name__ == "__main__":
     # Main program block of the project.
-    print('Hello World!!\n-------------------------------------------------------------------')
+    print("Hello World!!\n---------------------------------------------------------")
     game = ConnectNGame()
     print(game)
     print(game.__version__)
-    game.add_player(Player('A'))
-    game.add_player(Player('B'))
+    game.add_player(Player("A"))
+    game.add_player(Player("B"))
     # game.play_game_graphic()
     game.play_game()
     # print(game.get_sequence())
-    print('---------------------------------------------------------------------\nBye World!!')
-
+    print("-----------------------------------------------------------\nBye World!!")
