@@ -68,6 +68,8 @@ if __name__ == "__main__":
     """Test Runner"""
     # testRunner=HtmlTestRunner.HTMLTestRunner(output='unittest_result')
     testRunner = HtmlTestRunner.HTMLTestRunner(
+        descriptions = False,
+        open_in_browser = False,
         combine_reports = True,
         report_name = "test_result",
         add_timestamp = False
@@ -85,7 +87,12 @@ if __name__ == "__main__":
     new_readme = "\n".join(new_readme)
     
     with open('reports/test_result.html', 'r') as html:
-        new_readme += '\n\n\n\n' + html.read()
+        html_read = html.read()
+
+    html_result1 = html_read.splitlines()[0:-22]
+    html_result2 = html_read.splitlines()[-2:]
+        
+    new_readme += '\n\n\n\n' + "\n".join(html_result1) + "\n".join(html_result2)
     
     with open('README.md', 'w') as new_readme_file:
         new_readme_file.write(new_readme)
