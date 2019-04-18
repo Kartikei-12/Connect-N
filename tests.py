@@ -2,8 +2,9 @@
 
 Unit tests file for current project."""
 # Python module(s)
-import sys
+
 import unittest
+import HtmlTestRunner
 
 # User module(s)
 from default_variables import *
@@ -11,19 +12,22 @@ from connect_n.utility import getVersion
 from connect_n.player import Player
 from connect_n.connect_n import ConnectNGame
 
-
 class ConnectNTests(unittest.TestCase):
     # Tests for project Connect-N.
     def setUp(self):
         # Tests Set Up
-        self.game = ConnectNGame(3, 3, 3)
+        self.game = ConnectNGame(
+            n=3,
+            num_col=3,
+            num_rows=3
+        )
 
     def tearDown(self):
         # Tests tear down
         del self.game
 
     def test_init(self):
-        """Testing instantiateing module"""
+        """Testing instantiate module"""
         self.assertEqual(self.game.num_col, 3)
         self.assertEqual(self.game.num_rows, 3)
         self.assertEqual(self.game.n, 3)
@@ -62,4 +66,29 @@ class ConnectNTests(unittest.TestCase):
 
 if __name__ == "__main__":
     """Test Runner"""
-    unittest.main(verbosity=3)
+    # testRunner=HtmlTestRunner.HTMLTestRunner(output='unittest_result')
+    testRunner = HtmlTestRunner.HTMLTestRunner(
+        combine_reports = True,
+        report_name = "test_result",
+        add_timestamp = False
+    )
+    unittest.main(
+        testRunner = testRunner,
+        exit=False
+    )
+
+    old_readme_txt = ""
+    with open('README.md', 'r') as old_readme_file:
+        old_readme_txt = old_readme_file.read().splitlines()
+    loc = old_readme_txt.index("[@Kartikei Mittal](https://github.com/Kartikei-12)")
+    new_readme = old_readme_txt[0:loc+1]
+    new_readme = "\n".join(new_readme)
+    
+    with open('reports/test_result.html', 'r') as html:
+        new_readme += '\n\n\n\n' + html.read()
+    
+    with open('README.md', 'w') as new_readme_file:
+        new_readme_file.write(new_readme)
+
+    print('Done')
+    

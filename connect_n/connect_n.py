@@ -35,22 +35,33 @@ class ConnectNGame:
         num_col (int): Number of columns
     
     Raises:
-        TypeError: "Expected <class 'int'> not {0}".format(type(var))
-        ValueError: All argument needs to be positive.
-        ValueError: No winning combination possible in fiven confirigation.
+        TypeError: Expected 'int' for num_rows, num_col, n 
+        TypeError: Expected 'bool' for ai, graphic
+        ValueError: Argument [num_rows, num_col, n] needs to be positive.
+        ValueError: No winning combination possible in given [num_rows, num_col, n].
     """
 
     __version__ = "0.1d."
 
-    def __init__(self, graphic=False, num_rows=ROWS, num_col=COLUMNS, n=N):
+    def __init__(
+        self,
+        ai = False,
+        graphic=False,
+        num_rows=ROWS,
+        num_col=COLUMNS,
+        n=N
+    ):
         """Instantiate function for class ConnectNGame"""
+        # Checking 'bool' argument
+        for var in [ai, graphic]:
+            if not isinstance(var, bool):
+                raise TypeError("Expected 'bool' not {0}.".format(type(var)))
+        # Checking 'int' argument
         for var in [num_rows, num_col, n]:
             if not isinstance(var, int):
-                raise TypeError("Expected <class 'int'> not {0}".format(type(var)))
-
-        if num_rows < 1 or num_col < 1 or n < 1:
-            raise ValueError("All argument needs to be positive.")
-
+                raise TypeError("Expected 'int' not {0}".format(type(var)))
+            elif var < 1:
+                raise ValueError("All argument needs to be positive.")
         if num_rows < n and num_col < n:
             raise ValueError("No winning combination possible in fiven confirigation.")
 
@@ -70,6 +81,10 @@ class ConnectNGame:
             self.GamUtil = PygameUtility(num_rows, num_col)
 
     def get_sequence(self):
+        """Sequence of Moves.
+        Returns:
+            list : Provides sequence of moves by players in game till now.
+        """
         return self.sequence
 
     def simulate(self, sequence):
@@ -121,7 +136,7 @@ class ConnectNGame:
             id (int): Id of player making the move
     
         Returns:
-            int Row in which move was made
+            int : Row in which move was made
         """
         for row in range(self.num_rows):
             if self.board[row][col] == 0.0:
