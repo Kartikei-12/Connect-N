@@ -74,6 +74,10 @@ Connect-N/
 
 [docs](https://kartikei-12.github.io/Connect-N/html/index.html)
 
+## Bugs / TODO
+
+Docker build failing, pygame not working inside Docker container.
+
 ## Contributer(s)
 
 [@Kartikei Mittal](https://github.com/Kartikei-12)
