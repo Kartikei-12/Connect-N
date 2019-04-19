@@ -1,5 +1,8 @@
 # Connect - N
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+[!License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[!Build:](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)
+
 <hr>
 
 ## Introduction
@@ -74,6 +77,10 @@ Connect-N/
 
 [docs](https://kartikei-12.github.io/Connect-N/html/index.html)
 
+## Bugs / TODO
+
+Docker build failing, pygame not working inside Docker container.
+
 ## Contributer(s)
 
 [@Kartikei Mittal](https://github.com/Kartikei-12)
@@ -93,8 +100,8 @@ Connect-N/
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-19 11:12:59</p>
-                <p class='attribute'><strong>Duration: </strong>0 ms</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-19 23:12:05</p>
+                <p class='attribute'><strong>Duration: </strong>4 ms</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 10, Pass: 10</p>
             </div>
         </div>
@@ -191,32 +198,11 @@ Connect-N/
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 10, Pass: 10 -- Duration: 0 ms
+                                Total: 10, Pass: 10 -- Duration: 4 ms
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('td').on('click', '.btn', function(e){
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                var $this = $(this);
-                var $nextRow = $this.closest('tr').next('tr');
-                $nextRow.slideToggle("fast");
-                $this.text(function(i, text){
-                    if (text === 'View') {
-                        return 'Hide';
-                    } else {
-                        return 'View';
-                    };
-                });
-            });
-        });
-    </script>
-</body>
-</html
+    </div></body></html>

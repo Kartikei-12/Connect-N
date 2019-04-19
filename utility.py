@@ -11,7 +11,7 @@ def update_readme():
         old_readme_txt = old_readme_file.read()
 
     with open("reports/test_result.html", "r") as html_file:
-        html = html_file.read().splitlines[0:-21]
+        html = html_file.read().splitlines()[0:-21]
     html = "\n".join(html)
 
     with open("README.md", "w") as new_readme_file:
