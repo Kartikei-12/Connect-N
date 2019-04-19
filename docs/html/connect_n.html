@@ -44,21 +44,25 @@
 <p><a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
 <dl class="class">
 <dt id="connect_n.connect_n.ConnectNGame">
-<em class="property">class </em><code class="descclassname">connect_n.connect_n.</code><code class="descname">ConnectNGame</code><span class="sig-paren">(</span><em>num_rows=6</em>, <em>num_col=7</em>, <em>n=4</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">connect_n.connect_n.</code><code class="descname">ConnectNGame</code><span class="sig-paren">(</span><em>ai=False</em>, <em>graphic=False</em>, <em>n=4</em>, <em>num_rows=6</em>, <em>num_col=7</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Main module class used Connect-N game.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
+<li><p><strong>ai</strong> (<em>bool</em>) – Wheather to play against AI</p></li>
+<li><p><strong>graphic</strong> (<em>bool</em>) – Wheather to play in GUI</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of coins required in a line to win.</p></li>
 <li><p><strong>num_rows</strong> (<em>int</em>) – Number of rows</p></li>
 <li><p><strong>num_col</strong> (<em>int</em>) – Number of columns</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>TypeError</strong> – “Expected &lt;class ‘int’&gt; not {0}”.format(type(var))</p></li>
-<li><p><strong>ValueError</strong> – All argument needs to be positive.</p></li>
-<li><p><strong>ValueError</strong> – No winning combination possible in fiven confirigation.</p></li>
+<li><p><strong>TypeError</strong> – Expected ‘int’ for num_rows, num_col, n</p></li>
+<li><p><strong>TypeError</strong> – Expected ‘bool’ for ai, graphic</p></li>
+<li><p><strong>ValueError</strong> – Argument [num_rows, num_col, n] needs to be positive.</p></li>
+<li><p><strong>ValueError</strong> – No winning combination possible in given [num_rows, num_col, n].</p></li>
 </ul>
 </dd>
 </dl>
@@ -86,9 +90,24 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.get_sequence">
+<code class="descname">get_sequence</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.get_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sequence of Moves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Provides sequence of moves by players in the current game till now.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.is_valid_move">
 <code class="descname">is_valid_move</code><span class="sig-paren">(</span><em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.is_valid_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check validity of move</p>
+<dd><p>Check validity of move, also appends move to ‘sequence’ list.
+.. note:: -1 is appended to sequence if in valid move</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – Checks if move can be made in this column</p>
@@ -131,7 +150,10 @@ and vice versa.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>int Row in which move was made</p>
+<dd class="field-even"><p>Row in which move was made</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -151,7 +173,37 @@ and vice versa.</p>
 <dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.print_board">
 <code class="descname">print_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.print_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function which prints the board</p>
+<dd><p>Prints the board on console.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets th game for a new run.
+.. note:: Does NOT removes players.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.simulate">
+<code class="descname">simulate</code><span class="sig-paren">(</span><em>sequence</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method simulate a game from list of integers passed,
+each element representing column choosen by corresponding player to make move,
+Useful for trainning of AI.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>As soon as an invalid move is encountered game is aborted,</p></li>
+<li><p>Index of cloumns belong to [0, self.num_col), for example if self.num_col is 6 column will to 0 to self.col-1, limits included.</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Refer self.sequence.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -192,11 +244,15 @@ Contains player module.
 <dl class="method">
 <dt id="connect_n.pygame_utility.PygameUtility.blit">
 <code class="descname">blit</code><span class="sig-paren">(</span><em>msg</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.blit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finising game.
-:param msg: Message to display
-:type msg: str
-:param id: Winnig player id
-:type id: int</p>
+<dd><p>Finising game.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> (<em>str</em>) – Message to display</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – Winnig player id</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
@@ -214,33 +270,41 @@ Contains player module.
 <dl class="method">
 <dt id="connect_n.pygame_utility.PygameUtility.draw_moves">
 <code class="descname">draw_moves</code><span class="sig-paren">(</span><em>board</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_moves" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw moves made by players
-:param board: Playing board
-:type board: numpy.ndarray</p>
+<dd><p>Draw moves made by players</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>board</strong> (<em>numpy.ndarray</em>) – Playing board</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="connect_n.pygame_utility.PygameUtility.draw_player_coin">
 <code class="descname">draw_player_coin</code><span class="sig-paren">(</span><em>id</em>, <em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_player_coin" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw player coin
-:param id: Player ID
-:type id: int
-:param event: Event of motion of coin.
-:type event: pygame.event</p>
+<dd><p>Draw player coin</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – Player ID</p></li>
+<li><p><strong>event</strong> (<em>pygame.event</em>) – Event of motion of coin.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="connect_n.pygame_utility.PygameUtility.get_col">
 <code class="descname">get_col</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.get_col" title="Permalink to this definition">¶</a></dt>
-<dd><p>Column in which coin was droped.
-:param event: Event of dropiung of coin.
-:type event: pygame.event</p>
+<dd><p>Column in which coin was droped.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Column in ehich coin is droped</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>pygame.event</em>) – Event of dropiung of coin.</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>int</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Column in ehich coin is droped</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -254,25 +318,40 @@ Contains player module.
 <dl class="method">
 <dt id="connect_n.pygame_utility.PygameUtility.is_mouse_down">
 <code class="descname">is_mouse_down</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.is_mouse_down" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks MOUSE CLICK event
-:param event: Event.
-:type event: pygame.event</p>
+<dd><p>Checks MOUSE CLICK event</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>pygame.event</em>) – Event.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="connect_n.pygame_utility.PygameUtility.is_mouse_motion">
 <code class="descname">is_mouse_motion</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.is_mouse_motion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks MOUSE MOTION event
-:param event: Event.
-:type event: pygame.event</p>
+<dd><p>Checks MOUSE MOTION event</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>pygame.event</em>) – Event.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="connect_n.pygame_utility.PygameUtility.is_quit_event">
 <code class="descname">is_quit_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.is_quit_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks QUIT event
-:param event: Event.
-:type event: pygame.event</p>
+<dd><p>Checks QUIT event</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>pygame.event</em>) – Event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.quit">
+<code class="descname">quit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.quit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quit Mathod.</p>
 </dd></dl>
 
 <dl class="method">
@@ -292,17 +371,18 @@ Contains player module.
 </div>
 <div class="section" id="module-connect_n.utility">
 <span id="connect-n-utility-module"></span><h2>connect_n.utility module<a class="headerlink" href="#module-connect_n.utility" title="Permalink to this headline">¶</a></h2>
-<p>&#64;author: Kartikei Mittal
-Utility mathods</p>
+<p>&#64;author: Kartikei Mittal</p>
+<p>Utility mathods for project.</p>
 <dl class="function">
 <dt id="connect_n.utility.getVersion">
 <code class="descclassname">connect_n.utility.</code><code class="descname">getVersion</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.utility.getVersion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method
-:param file: File path(usually to the file version.txt)
-:type file: str</p>
+<dd><p>Method</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Version after reading from given file.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file</strong> (<em>str</em>) – File path(usually to the file version.txt)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Version after reading from given file</p>
 </dd>
 </dl>
 </dd></dl>

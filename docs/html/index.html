@@ -30,127 +30,96 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="module-connect_n.connect_n">
-<span id="welcome-to-connect-n-s-documentation"></span><h1>Welcome to Connect-N’s documentation!<a class="headerlink" href="#module-connect_n.connect_n" title="Permalink to this headline">¶</a></h1>
-<p>&#64;author: Kartikei Mittal</p>
-<p>&#64;email: <a class="reference external" href="mailto:kartikeimittal&#37;&#52;&#48;gmail&#46;com">kartikeimittal<span>&#64;</span>gmail<span>&#46;</span>com</a></p>
-<p>connect_n.py file</p>
-<p>Contains main module of this repositry.</p>
-<p><a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
-<dl class="class">
-<dt id="connect_n.connect_n.ConnectNGame">
-<em class="property">class </em><code class="descclassname">connect_n.connect_n.</code><code class="descname">ConnectNGame</code><span class="sig-paren">(</span><em>num_rows=6</em>, <em>num_col=7</em>, <em>n=4</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame" title="Permalink to this definition">¶</a></dt>
-<dd><p>Main module class used Connect-N game.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>num_rows</strong> (<em>int</em>) – Number of rows</p></li>
-<li><p><strong>num_col</strong> (<em>int</em>) – Number of columns</p></li>
-</ul>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>TypeError</strong> – “Expected &lt;class ‘int’&gt; not {0}”.format(type(var))</p></li>
-<li><p><strong>ValueError</strong> – All argument needs to be positive.</p></li>
-<li><p><strong>ValueError</strong> – No winning combination possible in fiven confirigation.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.add_player">
-<code class="descname">add_player</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.add_player" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to add players to the game.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>p</strong> (<a class="reference internal" href="connect_n.html#connect_n.player.Player" title="connect_n.player.Player"><em>Player</em></a>) – player object</p>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>TypeError</strong> – “Expected &lt;class ‘Player’&gt; not {0}”.format(type(p))</p></li>
-<li><p><strong>ValueError</strong> – ‘{} already in game.’.format(p)</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.draw_board">
-<code class="descname">draw_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.draw_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draws game board on pygame</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.is_valid_move">
-<code class="descname">is_valid_move</code><span class="sig-paren">(</span><em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.is_valid_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check validity of move</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – Checks if move can be made in this column</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>bool True if valid move False otherwise</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.is_winning_move">
-<code class="descname">is_winning_move</code><span class="sig-paren">(</span><em>row</em>, <em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.is_winning_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to check for winning move,</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Board is displayed in flipped position so,
-What appears to positive digonal is actually negative digonal,
-and vice versa.</p>
+  <div class="section" id="welcome-to-connect-n-s-documentation">
+<h1>Welcome to Connect-N’s documentation!<a class="headerlink" href="#welcome-to-connect-n-s-documentation" title="Permalink to this headline">¶</a></h1>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>row</strong> (<em>int</em>) – Row in which last move was made.</p></li>
-<li><p><strong>col</strong> (<em>int</em>) – Column in which last move was made.</p></li>
+<div class="section" id="connect-n">
+<h1>Connect - N<a class="headerlink" href="#connect-n" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://www.gnu.org/licenses/gpl-3.0"><img alt="License: GPL v3" src="https://img.shields.io/badge/License-GPLv3-blue.svg" /></a>
+<hr><div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>A simple modified version of Connect Four Game implemented with AI in Python using PyGame.</p>
+</div>
+<div class="section" id="project-description">
+<h2>Project Description<a class="headerlink" href="#project-description" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>This repositry contains a simple game made in <strong>python</strong> similar to <strong>Connect 4</strong>, bit modified to work with any Connect length for any board size.</p></li>
+<li><p>Currently supports for variable number of players on a two dimentional board.</p></li>
+<li><p>Tests for python 3.7.</p></li>
+<li><p>Tested on Windows.</p></li>
 </ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.make_move">
-<code class="descname">make_move</code><span class="sig-paren">(</span><em>col</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.make_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to make move, returns row in which move was made</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>col</strong> (<em>int</em>) – Column to insert coin in</p></li>
-<li><p><strong>id</strong> (<em>int</em>) – Id of player making the move</p></li>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/Kartikei-12/Connect-N
+cd Connect-N-master
+python -m venv venv
+./venv/Scripts/activate
+pip install -r requirements.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="linux-based-os">
+<h3>Linux based OS<a class="headerlink" href="#linux-based-os" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/Kartikei-12/Connect-N
+cd Connect-N-master
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>For simple example run main.py as <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">main.py</span></code> on windows and <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">main.py</span></code> on Linux/Ubuntu, after activating Virtual environment.</p>
+</div>
+<div class="section" id="system-requirements">
+<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.python.org/">Python 3</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/">Pip</a> usually pre-installed with python.</p></li>
+<li><p>Python module <a class="reference external" href="https://pypi.org/project/pygame/">PyGame</a> installable via pip.</p></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>int Row in which move was made</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.play_game">
-<code class="descname">play_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.play_game" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to play the game in command line.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.play_game_graphic">
-<code class="descname">play_game_graphic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.play_game_graphic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to play the game in GUI using pygame.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.print_board">
-<code class="descname">print_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.print_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper function which prints the board</p>
-</dd></dl>
-
-</dd></dl>
-
+</div>
+<div class="section" id="directory-structure">
+<h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Connect-N/
+    .gitignore
+    docs/
+        doctrees/: doctrees for documentation
+        html/: HTML source files dor documentation
+        .nojekyll
+        /index.html
+    connect_n/
+        __init__.py
+        connect_n.py
+        utility.py
+        player.py
+    reports/
+        test_result.html
+    LICENSE
+    main.py
+    tests.py
+    utility.py
+    default_variables.py
+    README.md
+    README_proxy.md
+    requirements.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://kartikei-12.github.io/Connect-N/html/index.html">docs</a></p>
+</div>
+<div class="section" id="contributer-s">
+<h2>Contributer(s)<a class="headerlink" href="#contributer-s" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/Kartikei-12">&#64;Kartikei Mittal</a></p>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
