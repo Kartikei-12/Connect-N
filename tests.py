@@ -100,5 +100,5 @@ if __name__ == "__main__":
         add_timestamp=False,
     )
     unittest.main(testRunner=testRunner, exit=False)
-    update_readme()
+    # update_readme()
     print("Done")
