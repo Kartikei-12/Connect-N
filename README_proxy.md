@@ -1,7 +1,8 @@
 # Connect - N
 
-[!License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[!Build:](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+
+![!Build:](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)
 
 <hr>
 

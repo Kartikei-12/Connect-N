@@ -1,7 +1,8 @@
 # Connect - N
 
-[!License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[!Build:](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+
+![!Build:](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)
 
 <hr>
 
@@ -100,8 +101,8 @@ Docker build failing, pygame not working inside Docker container.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-19 23:12:05</p>
-                <p class='attribute'><strong>Duration: </strong>4 ms</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-19 23:19:46</p>
+                <p class='attribute'><strong>Duration: </strong>5 ms</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 10, Pass: 10</p>
             </div>
         </div>
@@ -198,7 +199,7 @@ Docker build failing, pygame not working inside Docker container.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 10, Pass: 10 -- Duration: 4 ms
+                                Total: 10, Pass: 10 -- Duration: 5 ms
                             </td>
                         </tr>
                     </tbody>
