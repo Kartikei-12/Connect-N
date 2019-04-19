@@ -1,15 +1,19 @@
 """
 Utility class for pygame.
 """
+
+# Python module(s)
 import math
 import pygame
 from default_variables import *
 
+# Colours
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
 COLOR = {"RED": (255, 0, 0), "YELLOW": (255, 255, 0), "GREEN": (0, 255, 0)}
-
 C_LIST = [BLACK, COLOR["RED"], COLOR["YELLOW"], COLOR["GREEN"]]
+
+# Some constants
 SQUARESIZE = 100
 RADIUS = int(SQUARESIZE / 2 - 5)
 
@@ -42,6 +46,7 @@ class PygameUtility:
 
     def draw_moves(self, board):
         """Draw moves made by players
+        
         Args:
             board (numpy.ndarray): Playing board
         """
@@ -63,6 +68,7 @@ class PygameUtility:
 
     def draw_player_coin(self, id, event):
         """Draw player coin
+        
         Args:
             id (int): Player ID
             event (pygame.event): Event of motion of coin.
@@ -73,18 +79,20 @@ class PygameUtility:
 
     def get_col(self, event):
         """Column in which coin was droped.
+        
         Args:
             event (pygame.event): Event of dropiung of coin.
+        
         Returns:
             int : Column in ehich coin is droped"""
         return int(math.floor(event.pos[0] / SQUARESIZE))
 
     def blit(self, msg, id):
         """Finising game.
+        
         Args:
             msg (str): Message to display
-            id (int): Winnig player id
-        """
+            id (int): Winnig player id"""
         size = int((self.num_rows * SQUARESIZE * 1.5) / len(msg))
         label = pygame.font.SysFont("monospace", size).render(msg, 1, C_LIST[id])
         self.screen.blit(label, (40, 10))
@@ -99,24 +107,25 @@ class PygameUtility:
 
     def is_quit_event(self, event):
         """Checks QUIT event
+        
         Args:
-            event (pygame.event): Event.
-        """
+            event (pygame.event): Event."""
         return event.type == pygame.QUIT
 
     def is_mouse_motion(self, event):
         """Checks MOUSE MOTION event
+        
         Args:
-            event (pygame.event): Event.
-        """
+            event (pygame.event): Event."""
         return event.type == pygame.MOUSEMOTION
 
     def is_mouse_down(self, event):
         """Checks MOUSE CLICK event
+        
         Args:
-            event (pygame.event): Event.
-        """
+            event (pygame.event): Event."""
         return event.type == pygame.MOUSEBUTTONDOWN
 
     def quit(self):
+        """Quit Mathod."""
         pygame.quit()

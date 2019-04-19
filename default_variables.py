@@ -1,5 +1,6 @@
 """
 @author: Kartikei Mittal
+
 Default and environment variables for this project.
 """
 

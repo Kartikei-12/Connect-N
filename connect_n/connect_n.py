@@ -31,6 +31,9 @@ class ConnectNGame:
     Main module class used Connect-N game.
     
     Args:
+        ai (bool): Wheather to play against AI
+        graphic (bool): Wheather to play in GUI
+        n (int): Number of coins required in a line to win.
         num_rows (int): Number of rows
         num_col (int): Number of columns
     
@@ -43,15 +46,9 @@ class ConnectNGame:
 
     __version__ = "0.1d."
 
-    def __init__(
-        self,
-        ai = False,
-        graphic=False,
-        num_rows=ROWS,
-        num_col=COLUMNS,
-        n=N
-    ):
+    def __init__(self, ai=False, graphic=False, n=N, num_rows=ROWS, num_col=COLUMNS):
         """Instantiate function for class ConnectNGame"""
+
         # Checking 'bool' argument
         for var in [ai, graphic]:
             if not isinstance(var, bool):
@@ -82,15 +79,25 @@ class ConnectNGame:
 
     def get_sequence(self):
         """Sequence of Moves.
+
         Returns:
-            list : Provides sequence of moves by players in game till now.
-        """
+            list : Provides sequence of moves by players in the current game till now."""
         return self.sequence
 
     def simulate(self, sequence):
+        """This method simulate a game from list of integers passed,
+        each element representing column choosen by corresponding player to make move,
+        Useful for trainning of AI.
+
+        Note:
+            * As soon as an invalid move is encountered game is aborted,
+            
+            * Index of cloumns belong to [0, self.num_col), for example if self.num_col is 6 column will to 0 to self.col-1, limits included. 
+        
+        Returns:
+            list : Refer self.sequence."""
         turn = 0
-        for i in range(len(sequence)):
-            col = sequence[i]
+        for col in sequence:
             if self.is_valid_move(col):
                 row = self.make_move(col, turn + 1)
             else:
@@ -103,6 +110,9 @@ class ConnectNGame:
         return self.sequence
 
     def reset(self):
+        """Resets th game for a new run.
+        Note:
+            Does NOT removes players."""
         self.winner = None
         self.sequence = list()
         self.is_over = False
@@ -125,7 +135,7 @@ class ConnectNGame:
         self.players.append(p)
 
     def print_board(self):
-        """Helper function which prints the board"""
+        """Prints the board on console."""
         print(np.flip(self.board, 0))
 
     def make_move(self, col, id):

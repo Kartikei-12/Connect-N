@@ -23,4 +23,5 @@ class Player:
         self.id = next(self._ids)
 
     def __str__(self):
+        # String representation of class object.
         return "<class 'Player'> {} {} ".format(self.id, self.name)

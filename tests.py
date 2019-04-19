@@ -1,29 +1,28 @@
 """@author: Kartikei Mittal
 
 Unit tests file for current project."""
-# Python module(s)
 
+# Python module(s)
 import unittest
 import HtmlTestRunner
 
 # User module(s)
+from utility import update_readme
 from default_variables import *
 from connect_n.utility import getVersion
 from connect_n.player import Player
 from connect_n.connect_n import ConnectNGame
 
+
 class ConnectNTests(unittest.TestCase):
     # Tests for project Connect-N.
     def setUp(self):
         # Tests Set Up
-        self.game = ConnectNGame(
-            n=3,
-            num_col=3,
-            num_rows=3
-        )
+        self.game = ConnectNGame(n=3, num_col=3, num_rows=3)
 
     def tearDown(self):
         # Tests tear down
+        self.game.reset()
         del self.game
 
     def test_init(self):
@@ -63,39 +62,43 @@ class ConnectNTests(unittest.TestCase):
             self.game.add_player(p)
             self.game.add_player(p)
 
+    def test_simulate(self):
+        """Testing simulate method"""
+        self.game.add_player(Player("A"))
+        self.game.add_player(Player("B"))
+        seq = self.game.simulate([0, 1, 0, 1, 0, 1])
+        self.assertTrue(self.game.winner)
+        self.assertEqual(self.game.winner, self.game.players[0])
+
+    def test_make_move(self):
+        """Testing make move method"""
+        p = Player("A")
+        self.game.add_player(p)
+        self.assertEqual(self.game.make_move(0, p.id), 0)
+        p = Player("B")
+        self.game.add_player(p)
+        self.assertEqual(self.game.make_move(0, p.id), 1)
+
+    def test_is_valid_move(self):
+        """Testing is_valid_move"""
+        p = Player("A")
+        self.game.add_player(p)
+        self.assertTrue(self.game.is_valid_move(0))
+        self.game.board = [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0]]
+        self.assertFalse(self.game.is_valid_move(0))
+
 
 if __name__ == "__main__":
     """Test Runner"""
     # testRunner=HtmlTestRunner.HTMLTestRunner(output='unittest_result')
     testRunner = HtmlTestRunner.HTMLTestRunner(
-        descriptions = False,
-        open_in_browser = False,
-        combine_reports = True,
-        report_name = "test_result",
-        add_timestamp = False
+        verbosity=3,
+        descriptions=False,
+        open_in_browser=False,
+        combine_reports=True,
+        report_name="test_result",
+        add_timestamp=False,
     )
-    unittest.main(
-        testRunner = testRunner,
-        exit=False
-    )
-
-    old_readme_txt = ""
-    with open('README.md', 'r') as old_readme_file:
-        old_readme_txt = old_readme_file.read().splitlines()
-    loc = old_readme_txt.index("[@Kartikei Mittal](https://github.com/Kartikei-12)")
-    new_readme = old_readme_txt[0:loc+1]
-    new_readme = "\n".join(new_readme)
-    
-    with open('reports/test_result.html', 'r') as html:
-        html_read = html.read()
-
-    html_result1 = html_read.splitlines()[0:-22]
-    html_result2 = html_read.splitlines()[-2:]
-        
-    new_readme += '\n\n\n\n' + "\n".join(html_result1) + "\n".join(html_result2)
-    
-    with open('README.md', 'w') as new_readme_file:
-        new_readme_file.write(new_readme)
-
-    print('Done')
-    
+    unittest.main(testRunner=testRunner, exit=False)
+    update_readme()
+    print("Done")

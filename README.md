@@ -8,13 +8,37 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 
 ## Project Description
 
-This repositry contains a simple game made in **python** similar to **Connect 4**, bit modified to work with any Connect length for any board size.
+* This repositry contains a simple game made in **python** similar to **Connect 4**, bit modified to work with any Connect length for any board size.
+* Currently supports for variable number of players on a two dimentional board.
+* Tests for python 3.7.
+* Tested on Windows.
 
-Currently supports only two player on a two dimintional board.
+## Installation
+
+### Windows
+
+    git clone https://github.com/Kartikei-12/Connect-N
+    cd Connect-N-master
+    python -m venv venv
+    ./venv/Scripts/activate
+    pip install -r requirements.txt
+
+### Linux based OS
+
+    git clone https://github.com/Kartikei-12/Connect-N
+    cd Connect-N-master
+    python3 -m venv venv
+    source venv/bin/activate
+    pip3 install -r requirements.txt
+
+## Usage
+
+For simple example run main.py as `python main.py` on windows and `python3 main.py` on Linux/Ubuntu, after activating Virtual environment. 
 
 ## System Requirements
 
 * [Python 3](https://www.python.org/)
+* [Pip](https://pypi.org/) usually pre-installed with python.
 * Python module [PyGame](https://pypi.org/project/pygame/) installable via pip.
 
 ## Directory Structure
@@ -33,11 +57,15 @@ Connect-N/
         connect_n.py
         utility.py
         player.py
+    reports/
+        test_result.html
     LICENSE
-    README.md
     main.py
     tests.py
+    utility.py
     default_variables.py
+    README.md
+    README_proxy.md
     requirements.txt
 
 ```
@@ -65,9 +93,9 @@ Connect-N/
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-18 21:50:13</p>
-                <p class='attribute'><strong>Duration: </strong>6 ms</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 7, Pass: 7</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-19 11:12:59</p>
+                <p class='attribute'><strong>Duration: </strong>0 ms</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 10, Pass: 10</p>
             </div>
         </div>
         <div class="row">
@@ -106,6 +134,22 @@ Connect-N/
                             </td>
                         </tr>
                         <tr class='success'>
+                            <td class="col-xs-10">test_is_valid_move</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_make_move</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
                             <td class="col-xs-10">test_negative_digonal_winning_move</td>
                             <td class="col-xs-1">
                                 <span class="label label-success" style="display:block;width:40px;">Pass</span>
@@ -115,6 +159,14 @@ Connect-N/
                         </tr>
                         <tr class='success'>
                             <td class="col-xs-10">test_positive_digonal_winning_move</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_simulate</td>
                             <td class="col-xs-1">
                                 <span class="label label-success" style="display:block;width:40px;">Pass</span>
                             </td>
@@ -139,11 +191,32 @@ Connect-N/
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 7, Pass: 7 -- Duration: 6 ms
+                                Total: 10, Pass: 10 -- Duration: 0 ms
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </div></body>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').on('click', '.btn', function(e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var $this = $(this);
+                var $nextRow = $this.closest('tr').next('tr');
+                $nextRow.slideToggle("fast");
+                $this.text(function(i, text){
+                    if (text === 'View') {
+                        return 'Hide';
+                    } else {
+                        return 'View';
+                    };
+                });
+            });
+        });
+    </script>
+</body>
 </html
