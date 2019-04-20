@@ -21,6 +21,9 @@ RADIUS = int(SQUARESIZE / 2 - 5)
 class PygameUtility:
     """Utility class for pygame module
 
+    Note:
+        Docker does nor support pygame will automatically switch to command line.
+
     Args:
         r (int): Rows of game
         c (int): Columns of game
@@ -33,34 +36,16 @@ class PygameUtility:
         self.num_rows = r
         self.width = c * SQUARESIZE
         self.height = (r + 1) * SQUARESIZE
-        self.screen = pygame.display.set_mode((self.width, self.height))
+        try:
+            self.screen = pygame.display.set_mode((self.width, self.height))
+        except pygame.error as e:  # Expected inside docker.
+            print(e, "\nSwitching to command line.")
+            raise EnvironmentError("Vedio device not found.")
         pygame.display.update()
 
     def update(self):
         """Update Screen"""
         pygame.display.update()
-
-    def draw_blue_rec_board(self):
-        """Draw empty board."""
-        self.screen.fill(BLUE, (0, SQUARESIZE, self.width, self.height))
-
-    def draw_moves(self, board):
-        """Draw moves made by players
-        
-        Args:
-            board (numpy.ndarray): Playing board
-        """
-        for c in range(self.num_col):
-            for r in range(self.num_rows):
-                pygame.draw.circle(
-                    self.screen,
-                    C_LIST[int(board[r][c])],
-                    (
-                        int(c * SQUARESIZE + SQUARESIZE / 2),
-                        self.height - int(r * SQUARESIZE + SQUARESIZE / 2),
-                    ),
-                    RADIUS,
-                )
 
     def draw_black_rec(self):
         """Draw empty rectangles."""
@@ -125,6 +110,25 @@ class PygameUtility:
         Args:
             event (pygame.event): Event."""
         return event.type == pygame.MOUSEBUTTONDOWN
+
+    def draw_board(self, board):
+        """Draw basic board for the game.
+        
+        Args:
+            board (numpy.ndarray): 2-D numpy array representing the board"""
+        self.screen.fill(BLUE, (0, SQUARESIZE, self.width, self.height))
+        for c in range(self.num_col):
+            for r in range(self.num_rows):
+                pygame.draw.circle(
+                    self.screen,
+                    C_LIST[int(board[r][c])],
+                    (
+                        int(c * SQUARESIZE + SQUARESIZE / 2),
+                        self.height - int(r * SQUARESIZE + SQUARESIZE / 2),
+                    ),
+                    RADIUS,
+                )
+        pygame.display.update()
 
     def quit(self):
         """Quit Mathod."""

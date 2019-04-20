@@ -15,6 +15,7 @@ __author__ = "Kartikei Mittal"
 # Python module(s)
 import os
 import sys
+import random
 import numpy as np
 
 # User module(s)
@@ -74,8 +75,13 @@ class ConnectNGame:
 
         self.board = np.zeros((self.num_rows, self.num_col))
         self.GamUtil = None
-        if graphic:
-            self.GamUtil = PygameUtility(num_rows, num_col)
+        try:
+            if graphic:
+                self.GamUtil = PygameUtility(num_rows, num_col)
+        except EnvironmentError as e:
+            print(e)
+            self.GamUtil = None
+            graphic = False
 
     def get_sequence(self):
         """Sequence of Moves.
@@ -223,9 +229,8 @@ class ConnectNGame:
 
     def play_game(self):
         """Method to play the game in command line."""
-        turn = len(self.players) - 1
+        turn = random.randint(0, len(self.players) - 1)
         while not self.is_over:
-            turn = (turn + 1) % len(self.players)
             try:
                 msg = "Player {0} make your move: ".format(self.players[turn].name)
                 col = int(input(msg)) - 1
@@ -239,19 +244,17 @@ class ConnectNGame:
                     self.is_over = True
             else:
                 print("Invalid move column filled, aborting turn!")
+            turn = (turn + 1) % len(self.players)
             self.print_board()
         print("Winner: Player", self.winner.name)
 
-    def draw_board(self):
-        """Draws game board on pygame"""
-        self.GamUtil.draw_blue_rec_board()
-        self.GamUtil.draw_moves(self.board)
-        self.GamUtil.update()
-
     def play_game_graphic(self):
         """Method to play the game in GUI using pygame."""
-        turn = 0
-        self.draw_board()
+        if not self.GamUtil:  # Switching to command line
+            self.play_game()
+            return
+        turn = random.randint(0, len(self.players) - 1)
+        self.GamUtil.draw_board(self.board)
         while not self.is_over:
             for event in self.GamUtil.get_event():
                 if self.GamUtil.is_quit_event(event):
@@ -275,7 +278,7 @@ class ConnectNGame:
                             )
                             self.is_over = True
                     turn = (turn + 1) % len(self.players)
-                    self.draw_board()
+                    self.GamUtil.draw_board(self.board)
         self.GamUtil.wait()
 
     def __str__(self):

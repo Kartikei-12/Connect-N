@@ -90,7 +90,6 @@ class ConnectNTests(unittest.TestCase):
 
 if __name__ == "__main__":
     """Test Runner"""
-    # testRunner=HtmlTestRunner.HTMLTestRunner(output='unittest_result')
     testRunner = HtmlTestRunner.HTMLTestRunner(
         verbosity=3,
         descriptions=False,

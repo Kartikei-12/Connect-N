@@ -1,7 +1,6 @@
 # Connect - N
 
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
-
 ![!Build:](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)
 
 <hr>
@@ -78,9 +77,9 @@ Connect-N/
 
 [docs](https://kartikei-12.github.io/Connect-N/html/index.html)
 
-## Bugs / TODO
+## Limitation
 
-Docker build failing, pygame not working inside Docker container.
+GUI __NOT__ working inside docker, because no support for pygame inside Docker.
 
 ## Contributer(s)
 
@@ -101,8 +100,8 @@ Docker build failing, pygame not working inside Docker container.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-19 23:19:46</p>
-                <p class='attribute'><strong>Duration: </strong>5 ms</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-20 10:02:21</p>
+                <p class='attribute'><strong>Duration: </strong>2 ms</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 10, Pass: 10</p>
             </div>
         </div>
@@ -199,7 +198,7 @@ Docker build failing, pygame not working inside Docker container.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 10, Pass: 10 -- Duration: 5 ms
+                                Total: 10, Pass: 10 -- Duration: 2 ms
                             </td>
                         </tr>
                     </tbody>

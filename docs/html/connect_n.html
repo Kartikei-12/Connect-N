@@ -84,12 +84,6 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.draw_board">
-<code class="descname">draw_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.draw_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draws game board on pygame</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.get_sequence">
 <code class="descname">get_sequence</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.get_sequence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sequence of Moves.</p>
@@ -233,6 +227,10 @@ Contains player module.
 <em class="property">class </em><code class="descclassname">connect_n.pygame_utility.</code><code class="descname">PygameUtility</code><span class="sig-paren">(</span><em>r=6</em>, <em>c=7</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Utility class for pygame module</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Docker does nor support pygame will automatically switch to command line.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -262,18 +260,12 @@ Contains player module.
 </dd></dl>
 
 <dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.draw_blue_rec_board">
-<code class="descname">draw_blue_rec_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_blue_rec_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw empty board.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.draw_moves">
-<code class="descname">draw_moves</code><span class="sig-paren">(</span><em>board</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_moves" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw moves made by players</p>
+<dt id="connect_n.pygame_utility.PygameUtility.draw_board">
+<code class="descname">draw_board</code><span class="sig-paren">(</span><em>board</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw basic board for the game.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>board</strong> (<em>numpy.ndarray</em>) – Playing board</p>
+<dd class="field-odd"><p><strong>board</strong> (<em>numpy.ndarray</em>) – 2-D numpy array representing the board</p>
 </dd>
 </dl>
 </dd></dl>

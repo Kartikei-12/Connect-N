@@ -1,7 +1,6 @@
 # Connect - N
 
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
-
 ![!Build:](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)
 
 <hr>
@@ -78,9 +77,9 @@ Connect-N/
 
 [docs](https://kartikei-12.github.io/Connect-N/html/index.html)
 
-## Bugs / TODO
+## Limitation
 
-Docker build failing, pygame not working inside Docker container.
+GUI __NOT__ working inside docker, because no support for pygame inside Docker.
 
 ## Contributer(s)
 
