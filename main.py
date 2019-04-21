@@ -24,7 +24,6 @@ if __name__ == "__main__":
     print(game.__version__)
     game.add_player(Player("A"))
     game.add_player(Player("B"))
-    game.play_game_graphic()
-    # game.play_game()
+    game.play()
     # print(game.get_sequence())
     print("-----------------------------------------------------------\nBye World!!")

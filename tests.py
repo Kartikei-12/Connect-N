@@ -3,6 +3,7 @@
 Unit tests file for current project."""
 
 # Python module(s)
+import sys
 import unittest
 import HtmlTestRunner
 
@@ -90,6 +91,18 @@ class ConnectNTests(unittest.TestCase):
 
 if __name__ == "__main__":
     """Test Runner"""
+    argv_tpl = ("--update-readme",)
+    del_lst = []
+    coustom_argv = [sys.argv[0]]
+    for i, argv in enumerate(sys.argv):
+        if argv in argv_tpl:
+            del_lst.append(i)
+            coustom_argv.append(argv)
+
+    del_lst.reverse()
+    for i in del_lst:
+        del sys.argv[i]
+
     testRunner = HtmlTestRunner.HTMLTestRunner(
         verbosity=3,
         descriptions=False,
@@ -99,5 +112,8 @@ if __name__ == "__main__":
         add_timestamp=False,
     )
     unittest.main(testRunner=testRunner, exit=False)
-    # update_readme()
+
+    if len(coustom_argv) > 1 and coustom_argv[1] == "--update-readme":
+        update_readme()
+
     print("Done")

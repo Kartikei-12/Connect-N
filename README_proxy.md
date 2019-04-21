@@ -13,6 +13,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 
 * This repositry contains a simple game made in **python** similar to **Connect 4**, bit modified to work with any Connect length for any board size.
 * Currently supports for variable number of players on a two dimentional board.
+* Only three players supported in GUI mode, for more players just add new colours `COLOR` and `C_LIST` variable in connect_n/pygame_utility.py
 * Tests for python 3.7.
 * Tested on Windows.
 
@@ -79,7 +80,7 @@ Connect-N/
 
 ## Limitation
 
-GUI __NOT__ working inside docker, because no support for pygame inside Docker.
+GUI **NOT** working inside docker, because no support for pygame inside Docker.
 
 ## Contributer(s)
 

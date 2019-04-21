@@ -76,11 +76,17 @@
 </dd>
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>TypeError</strong> – “Expected &lt;class ‘Player’&gt; not {0}”.format(type(p))</p></li>
+<li><p><strong>TypeError</strong> – “Expected ‘Player’ not {0}”.format(type(p))</p></li>
 <li><p><strong>ValueError</strong> – ‘{} already in game.’.format(p)</p></li>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.cmd_line">
+<code class="descname">cmd_line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.cmd_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to play the game in command line.</p>
 </dd></dl>
 
 <dl class="method">
@@ -95,6 +101,12 @@
 <dd class="field-even"><p>list</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.graphic">
+<code class="descname">graphic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.graphic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to play the game in GUI using pygame.</p>
 </dd></dl>
 
 <dl class="method">
@@ -153,16 +165,9 @@ and vice versa.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.play_game">
-<code class="descname">play_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.play_game" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to play the game in command line.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.play_game_graphic">
-<code class="descname">play_game_graphic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.play_game_graphic" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to play the game in GUI using pygame.</p>
-</dd></dl>
+<dt id="connect_n.connect_n.ConnectNGame.play">
+<code class="descname">play</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.play" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.print_board">
@@ -176,6 +181,11 @@ and vice versa.</p>
 <dd><p>Resets th game for a new run.
 .. note:: Does NOT removes players.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.score">
+<code class="descname">score</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.score" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.simulate">
@@ -199,6 +209,11 @@ Useful for trainning of AI.</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.string_score">
+<code class="descname">string_score</code><span class="sig-paren">(</span><em>string</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.string_score" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -254,20 +269,20 @@ Contains player module.
 </dd></dl>
 
 <dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.draw_black_rec">
-<code class="descname">draw_black_rec</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_black_rec" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw empty rectangles.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.draw_board">
-<code class="descname">draw_board</code><span class="sig-paren">(</span><em>board</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_board" title="Permalink to this definition">¶</a></dt>
+<dt id="connect_n.pygame_utility.PygameUtility.draw">
+<code class="descname">draw</code><span class="sig-paren">(</span><em>board</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw basic board for the game.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>board</strong> (<em>numpy.ndarray</em>) – 2-D numpy array representing the board</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.pygame_utility.PygameUtility.draw_black_rec">
+<code class="descname">draw_black_rec</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_black_rec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw empty rectangles.</p>
 </dd></dl>
 
 <dl class="method">
@@ -338,12 +353,6 @@ Contains player module.
 <dd class="field-odd"><p><strong>event</strong> (<em>pygame.event</em>) – Event.</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.quit">
-<code class="descname">quit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.quit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Quit Mathod.</p>
 </dd></dl>
 
 <dl class="method">

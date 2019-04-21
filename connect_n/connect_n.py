@@ -66,7 +66,6 @@ class ConnectNGame:
         self.winner = None
         self.sequence = list()
         self.players = list()
-        self.is_over = False
 
         self.__version__ += getVersion(FILE_PATH)
         self.n = n
@@ -97,7 +96,6 @@ class ConnectNGame:
 
         Note:
             * As soon as an invalid move is encountered game is aborted,
-            
             * Index of cloumns belong to [0, self.num_col), for example if self.num_col is 6 column will to 0 to self.col-1, limits included. 
         
         Returns:
@@ -110,7 +108,6 @@ class ConnectNGame:
                 break
             if self.is_winning_move(row, col):
                 self.winner = self.players[turn]
-                self.is_over = True
                 break
             turn = (turn + 1) % len(self.players)
         return self.sequence
@@ -121,7 +118,6 @@ class ConnectNGame:
             Does NOT removes players."""
         self.winner = None
         self.sequence = list()
-        self.is_over = False
         self.board = np.zeros((self.num_rows, self.num_col))
 
     def add_player(self, p):
@@ -131,11 +127,11 @@ class ConnectNGame:
             p (Player): player object
     
         Raises:
-            TypeError: "Expected <class 'Player'> not {0}".format(type(p))
+            TypeError: "Expected 'Player' not {0}".format(type(p))
             ValueError: '{} already in game.'.format(p)
         """
         if not isinstance(p, Player):
-            raise TypeError("Expected <class 'Player'> not {0}".format(type(p)))
+            raise TypeError("Expected 'Player' not {0}".format(type(p)))
         if p.id in [pi.id for pi in self.players]:
             raise ValueError("{} already in game.".format(p))
         self.players.append(p)
@@ -154,6 +150,7 @@ class ConnectNGame:
         Returns:
             int : Row in which move was made
         """
+        self.sequence.append(col)
         for row in range(self.num_rows):
             if self.board[row][col] == 0.0:
                 self.board[row][col] = id
@@ -171,9 +168,7 @@ class ConnectNGame:
             bool True if valid move False otherwise
         """
         if col >= self.num_col or self.board[self.num_rows - 1][col] != 0:
-            self.sequence.append(-1)
             return False
-        self.sequence.append(col)
         return True
 
     def is_winning_move(self, row, col):
@@ -227,10 +222,29 @@ class ConnectNGame:
         ):
             return True
 
-    def play_game(self):
+    def string_score(self, string, id):
+        """"""
+        pass
+
+    def score(self, id):
+        """"""
+        score = 0
+        # Horizontal
+        for i in range(self.num_rows):
+            score += self.string_score(
+                "".join(str(int(j)) for j in self.board[i][:]), id
+            )
+
+    def play(self):
+        if self.GamUtil:
+            self.graphic()
+        else:
+            self.cmd_line()
+
+    def cmd_line(self):
         """Method to play the game in command line."""
         turn = random.randint(0, len(self.players) - 1)
-        while not self.is_over:
+        while True:
             try:
                 msg = "Player {0} make your move: ".format(self.players[turn].name)
                 col = int(input(msg)) - 1
@@ -241,21 +255,21 @@ class ConnectNGame:
                 row = self.make_move(col, self.players[turn].id)
                 if self.is_winning_move(row, col):
                     self.winner = self.players[turn]
-                    self.is_over = True
+                    print("Winner: Player", self.winner.name)
+                    return
             else:
                 print("Invalid move column filled, aborting turn!")
             turn = (turn + 1) % len(self.players)
             self.print_board()
-        print("Winner: Player", self.winner.name)
 
-    def play_game_graphic(self):
+    def graphic(self):
         """Method to play the game in GUI using pygame."""
         if not self.GamUtil:  # Switching to command line
-            self.play_game()
+            self.cmd_line()
             return
         turn = random.randint(0, len(self.players) - 1)
-        self.GamUtil.draw_board(self.board)
-        while not self.is_over:
+        self.GamUtil.draw(self.board)
+        while True:
             for event in self.GamUtil.get_event():
                 if self.GamUtil.is_quit_event(event):
                     sys.exit()
@@ -276,16 +290,15 @@ class ConnectNGame:
                             self.GamUtil.blit(
                                 "Player {}!!".format(self.winner.name), turn + 1
                             )
-                            self.is_over = True
+                            self.GamUtil.draw(self.board)
+                            self.GamUtil.wait()
+                            return
                     turn = (turn + 1) % len(self.players)
-                    self.GamUtil.draw_board(self.board)
-        self.GamUtil.wait()
+            self.GamUtil.draw(self.board)
 
     def __str__(self):
-        """
-        Representation format:
-            <class 'CLASS NAME', NUMBER_OF_ROWS NUMBER_OF_COLUMNS CONNECT_LENGTH>
-        """
+        """Representation format:
+            <class 'CLASS NAME', NUMBER_OF_ROWS NUMBER_OF_COLUMNS CONNECT_LENGTH>"""
         return "<class '{0}', {1} {2} {3} >".format(
             self.__class__.__name__, self.num_rows, self.num_col, self.n
         )

@@ -111,7 +111,7 @@ class PygameUtility:
             event (pygame.event): Event."""
         return event.type == pygame.MOUSEBUTTONDOWN
 
-    def draw_board(self, board):
+    def draw(self, board):
         """Draw basic board for the game.
         
         Args:
@@ -129,7 +129,3 @@ class PygameUtility:
                     RADIUS,
                 )
         pygame.display.update()
-
-    def quit(self):
-        """Quit Mathod."""
-        pygame.quit()
