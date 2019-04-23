@@ -5,11 +5,15 @@ Unit tests file for current project."""
 # Python module(s)
 import sys
 import unittest
+import numpy as np
 import HtmlTestRunner
 
 # User module(s)
 from env import *
 from utility import update_readme
+
+# Project module(s)
+from connect_n.ai import AI
 from connect_n.utility import getVersion
 from connect_n.player import Player
 from connect_n.connect_n import ConnectNGame
@@ -25,12 +29,6 @@ class ConnectNTests(unittest.TestCase):
         # Tests tear down
         self.game.reset()
         del self.game
-
-    def test_init(self):
-        """Testing instantiate module"""
-        self.assertEqual(self.game.cols, 3)
-        self.assertEqual(self.game.rows, 3)
-        self.assertEqual(self.game.n, 3)
 
     def test_version(self):
         """Testing version system"""
@@ -67,7 +65,7 @@ class ConnectNTests(unittest.TestCase):
         """Testing simulate method"""
         self.game.add_player(Player("A"))
         self.game.add_player(Player("B"))
-        seq = self.game.simulate([0, 1, 0, 1, 0, 1])
+        self.game.simulate([0, 1, 0, 1, 0, 1])
         self.assertTrue(self.game.winner)
         self.assertEqual(self.game.winner, self.game.players[0])
 
@@ -88,18 +86,62 @@ class ConnectNTests(unittest.TestCase):
         self.game.board = [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0]]
         self.assertFalse(self.game.is_valid_move(0))
 
-    # def test_horizontal_score(self):
-    #     """Testing scoring method"""
-    #     del self.game
-    #     self.game = ConnectNGame(n=3, num_col=5, num_rows=5)
-    #     self.game.board = [
-    #         [1.0, 1.0, 0.0, 1.0, 1.0],
-    #         [0.0, 0.0, 0.0, 0.0, 0.0],
-    #         [0.0, 0.0, 0.0, 0.0, 0.0],
-    #         [0.0, 0.0, 0.0, 0.0, 0.0],
-    #         [0.0, 0.0, 0.0, 0.0, 0.0]
-    #     ]
-    #     self.assertEqual(self.game.score(1), 400)
+
+class AITests(unittest.TestCase):
+    # Tests for project Connect-N.
+    def setUp(self):
+        """"""
+        self.ai = AI(n=N, rows=ROWS, cols=COLUMNS)
+
+    def tearDown(self):
+        """"""
+        del self.ai
+
+    def test_string_score(self):
+        """Testing string_score method"""
+        self.assertEqual(self.ai.string_score("-1-10-1-1", -1), UNIT_SCORE * 4)
+
+    def test_horizontal_score(self):
+        """Testing horizontal_score"""
+        board = np.array(
+            [
+                [0, 1, 1, 0, 0, 1, 1],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+            ]
+        )
+        self.assertEqual(UNIT_SCORE * 4, self.ai.score(board, 1))
+
+    def test_vertical_score(self):
+        """Testing vertical_score"""
+        board = np.array(
+            [
+                [0, 0, 0, 1, 0, 1, 0],
+                [0, 0, 0, 1, 0, 1, 0],
+                [0, 0, 0, 0, 0, 1, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+            ]
+        )
+        self.assertEqual(UNIT_SCORE * 5, self.ai.score(board, 1))
+
+    def test_positive_digonal_score(self):
+        """Testing positive_digonal_score"""
+        board = np.array(
+            [
+                [0, 0, 0, 1, 0, 0, 0],
+                [0, 0, 1, 0, 0, 0, 0],
+                [0, 1, 0, 0, 0, 0, 1],
+                [0, 0, 0, 0, 0, 1, 0],
+                [0, 0, 0, 0, 1, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+            ]
+        )
+        self.assertEqual(UNIT_SCORE * 6, self.ai.score(board, 1))
 
 
 if __name__ == "__main__":
