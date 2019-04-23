@@ -5,7 +5,7 @@ Utility class for pygame.
 # Python module(s)
 import math
 import pygame
-from default_variables import *
+from env import ROWS, COLUMNS
 
 # Colours
 BLUE = (0, 0, 255)

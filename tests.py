@@ -8,8 +8,8 @@ import unittest
 import HtmlTestRunner
 
 # User module(s)
+from env import *
 from utility import update_readme
-from default_variables import *
 from connect_n.utility import getVersion
 from connect_n.player import Player
 from connect_n.connect_n import ConnectNGame
@@ -28,8 +28,8 @@ class ConnectNTests(unittest.TestCase):
 
     def test_init(self):
         """Testing instantiate module"""
-        self.assertEqual(self.game.num_col, 3)
-        self.assertEqual(self.game.num_rows, 3)
+        self.assertEqual(self.game.cols, 3)
+        self.assertEqual(self.game.rows, 3)
         self.assertEqual(self.game.n, 3)
 
     def test_version(self):
@@ -88,18 +88,32 @@ class ConnectNTests(unittest.TestCase):
         self.game.board = [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0]]
         self.assertFalse(self.game.is_valid_move(0))
 
+    # def test_horizontal_score(self):
+    #     """Testing scoring method"""
+    #     del self.game
+    #     self.game = ConnectNGame(n=3, num_col=5, num_rows=5)
+    #     self.game.board = [
+    #         [1.0, 1.0, 0.0, 1.0, 1.0],
+    #         [0.0, 0.0, 0.0, 0.0, 0.0],
+    #         [0.0, 0.0, 0.0, 0.0, 0.0],
+    #         [0.0, 0.0, 0.0, 0.0, 0.0],
+    #         [0.0, 0.0, 0.0, 0.0, 0.0]
+    #     ]
+    #     self.assertEqual(self.game.score(1), 400)
+
 
 if __name__ == "__main__":
     """Test Runner"""
-    argv_tpl = ("--update-readme",)
+
+    # Seprating coustom arguments from mormal unittest argument
+    argv_tpl = ("--update-readme",)  # Expected coustom arguments
     del_lst = []
     coustom_argv = [sys.argv[0]]
     for i, argv in enumerate(sys.argv):
         if argv in argv_tpl:
             del_lst.append(i)
             coustom_argv.append(argv)
-
-    del_lst.reverse()
+    del_lst.reverse()  # Faster deletion when deleting higher index element first
     for i in del_lst:
         del sys.argv[i]
 

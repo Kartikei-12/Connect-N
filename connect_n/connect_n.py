@@ -19,10 +19,13 @@ import random
 import numpy as np
 
 # User module(s)
-from default_variables import *
+from .ai import AI
 from .player import Player
 from .utility import getVersion
 from .pygame_utility import PygameUtility
+
+# Environment Variables
+from env import N, ROWS, COLUMNS
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + "/version.txt"
 
@@ -42,7 +45,7 @@ class ConnectNGame:
         TypeError: Expected 'int' for num_rows, num_col, n 
         TypeError: Expected 'bool' for ai, graphic
         ValueError: Argument [num_rows, num_col, n] needs to be positive.
-        ValueError: No winning combination possible in given [num_rows, num_col, n].
+        ValueError: No winning combination possible in [num_rows, num_col, n].
     """
 
     __version__ = "0.1d."
@@ -61,7 +64,7 @@ class ConnectNGame:
             elif var < 1:
                 raise ValueError("All argument needs to be positive.")
         if num_rows < n and num_col < n:
-            raise ValueError("No winning combination possible in fiven confirigation.")
+            raise ValueError("No winning combination possible.")
 
         self.winner = None
         self.sequence = list()
@@ -69,18 +72,22 @@ class ConnectNGame:
 
         self.__version__ += getVersion(FILE_PATH)
         self.n = n
-        self.num_rows = num_rows
-        self.num_col = num_col
+        self.rows = num_rows
+        self.cols = num_col
 
-        self.board = np.zeros((self.num_rows, self.num_col))
         self.GamUtil = None
-        try:
-            if graphic:
+        self.board = np.zeros((self.rows, self.cols))
+        self.play = self.cmd_line
+
+        if ai:
+            self.players.append(AI(n, num_rows, num_col))
+        if graphic:
+            try:
                 self.GamUtil = PygameUtility(num_rows, num_col)
-        except EnvironmentError as e:
-            print(e)
-            self.GamUtil = None
-            graphic = False
+            except EnvironmentError as e:
+                print(e)
+            else:
+                self.play = self.graphic
 
     def get_sequence(self):
         """Sequence of Moves.
@@ -96,10 +103,10 @@ class ConnectNGame:
 
         Note:
             * As soon as an invalid move is encountered game is aborted,
-            * Index of cloumns belong to [0, self.num_col), for example if self.num_col is 6 column will to 0 to self.col-1, limits included. 
+            * Index of cloumns belong to [0, self.cols), for example if self.cols is 6 column will to 0 to self.cols-1, limits included.
         
         Returns:
-            list : Refer self.sequence."""
+            list : Refer self.sequence(same as .get_sequence)."""
         turn = 0
         for col in sequence:
             if self.is_valid_move(col):
@@ -115,10 +122,10 @@ class ConnectNGame:
     def reset(self):
         """Resets th game for a new run.
         Note:
-            Does NOT removes players."""
+            Does NOT removes players from the game."""
         self.winner = None
         self.sequence = list()
-        self.board = np.zeros((self.num_rows, self.num_col))
+        self.board = np.zeros((self.rows, self.cols))
 
     def add_player(self, p):
         """Method to add players to the game.
@@ -132,7 +139,9 @@ class ConnectNGame:
         """
         if not isinstance(p, Player):
             raise TypeError("Expected 'Player' not {0}".format(type(p)))
-        if p.id in [pi.id for pi in self.players]:
+        if p.id in [pi.id for pi in self.players] or p.name in [
+            pi.name for pi in self.players
+        ]:
             raise ValueError("{} already in game.".format(p))
         self.players.append(p)
 
@@ -151,7 +160,7 @@ class ConnectNGame:
             int : Row in which move was made
         """
         self.sequence.append(col)
-        for row in range(self.num_rows):
+        for row in range(self.rows):
             if self.board[row][col] == 0.0:
                 self.board[row][col] = id
                 return row
@@ -167,7 +176,7 @@ class ConnectNGame:
         Returns:
             bool True if valid move False otherwise
         """
-        if col >= self.num_col or self.board[self.num_rows - 1][col] != 0:
+        if col >= self.cols or self.board[self.rows - 1][col] != 0:
             return False
         return True
 
@@ -191,14 +200,14 @@ class ConnectNGame:
         # Horizontal Check
         if desired_pat in "".join(
             str(int(self.board[row][i]))
-            for i in range(max(0, col - self.n + 1), min(col + self.n, self.num_col))
+            for i in range(max(0, col - self.n + 1), min(col + self.n, self.cols))
         ):
             return True
 
         # Vertical Check
         if desired_pat in "".join(
             str(int(self.board[i][col]))
-            for i in range(max(0, row - self.n + 1), min(row + self.n, self.num_rows))
+            for i in range(max(0, row - self.n + 1), min(row + self.n, self.rows))
         ):
             return True
         # Positive digonal Check
@@ -207,8 +216,8 @@ class ConnectNGame:
             for i in range(-1 * (self.n - 1), self.n)
             if (row + i) >= 0
             and (col + i) >= 0
-            and (row + i) < self.num_rows
-            and (col + i) < self.num_col
+            and (row + i) < self.rows
+            and (col + i) < self.cols
         ):
             return True
         # Negative digonal Check
@@ -217,39 +226,17 @@ class ConnectNGame:
             for i in range(-1 * (self.n - 1), self.n)
             if (row - i) >= 0
             and (col + i) >= 0
-            and (row - i) < self.num_rows
-            and (col + i) < self.num_col
+            and (row - i) < self.rows
+            and (col + i) < self.cols
         ):
             return True
-
-    def string_score(self, string, id):
-        """"""
-        pass
-
-    def score(self, id):
-        """"""
-        score = 0
-        # Horizontal
-        for i in range(self.num_rows):
-            score += self.string_score(
-                "".join(str(int(j)) for j in self.board[i][:]), id
-            )
-
-    def play(self):
-        if self.GamUtil:
-            self.graphic()
-        else:
-            self.cmd_line()
 
     def cmd_line(self):
         """Method to play the game in command line."""
         turn = random.randint(0, len(self.players) - 1)
         while True:
-            try:
-                msg = "Player {0} make your move: ".format(self.players[turn].name)
-                col = int(input(msg)) - 1
-            except ValueError as e:
-                print(e, "Aborting current turn, moving ahead.")
+            col = self.players[turn].get_move()
+            if col == -1:
                 continue
             if self.is_valid_move(col):
                 row = self.make_move(col, self.players[turn].id)
@@ -263,42 +250,48 @@ class ConnectNGame:
             self.print_board()
 
     def graphic(self):
-        """Method to play the game in GUI using pygame."""
-        if not self.GamUtil:  # Switching to command line
+        """Method to play the game in GUI using pygame
+        
+        Note:
+            When playing with AI a mouse click is required to trigger AI move"""
+        if not self.GamUtil:
             self.cmd_line()
             return
         turn = random.randint(0, len(self.players) - 1)
-        self.GamUtil.draw(self.board)
         while True:
+            self.GamUtil.draw(self.board)
             for event in self.GamUtil.get_event():
                 if self.GamUtil.is_quit_event(event):
                     sys.exit()
 
                 if self.GamUtil.is_mouse_motion(event):
                     self.GamUtil.draw_black_rec()
-                    self.GamUtil.draw_player_coin(turn + 1, event)
+                    self.GamUtil.draw_player_coin(self.players[turn].id, event)
                 self.GamUtil.update()
 
                 if self.GamUtil.is_mouse_down(event):
                     self.GamUtil.draw_black_rec()
-                    col = self.GamUtil.get_col(event)
+                    if self.players[turn].name == "AI":
+                        col = self.players[turn].get_move()
+                    else:
+                        col = self.GamUtil.get_col(event)
 
                     if self.is_valid_move(col):
                         row = self.make_move(col, self.players[turn].id)
                         if self.is_winning_move(row, col):
                             self.winner = self.players[turn]
                             self.GamUtil.blit(
-                                "Player {}!!".format(self.winner.name), turn + 1
+                                "Player {} Wins!!".format(self.winner.name),
+                                self.winner.id,
                             )
                             self.GamUtil.draw(self.board)
                             self.GamUtil.wait()
                             return
                     turn = (turn + 1) % len(self.players)
-            self.GamUtil.draw(self.board)
 
     def __str__(self):
         """Representation format:
             <class 'CLASS NAME', NUMBER_OF_ROWS NUMBER_OF_COLUMNS CONNECT_LENGTH>"""
         return "<class '{0}', {1} {2} {3} >".format(
-            self.__class__.__name__, self.num_rows, self.num_col, self.n
+            self.__class__.__name__, self.rows, self.cols, self.n
         )

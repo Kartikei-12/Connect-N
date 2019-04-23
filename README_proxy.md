@@ -13,7 +13,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 
 * This repositry contains a simple game made in **python** similar to **Connect 4**, bit modified to work with any Connect length for any board size.
 * Currently supports for variable number of players on a two dimentional board.
-* Only three players supported in GUI mode, for more players just add new colours `COLOR` and `C_LIST` variable in connect_n/pygame_utility.py
+* Only **three** players supported in GUI mode, for more players just add new colours `COLOR` and `C_LIST` variable in connect_n/pygame_utility.py
 * Tests for python 3.7.
 * Tested on Windows.
 
@@ -58,6 +58,7 @@ Connect-N/
         /index.html
     connect_n/
         __init__.py
+        ai.py
         connect_n.py
         utility.py
         player.py
@@ -71,8 +72,15 @@ Connect-N/
     README.md
     README_proxy.md
     requirements.txt
+    .travis.yml
+    Dockerfile
 
 ```
+
+## TODO
+
+* Implement score method in ai.py
+* Make AI actually work.
 
 ## Documentation
 

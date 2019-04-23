@@ -19,11 +19,10 @@ from connect_n.connect_n import ConnectNGame
 if __name__ == "__main__":
     # Main program block of the project.
     print("Hello World!!\n---------------------------------------------------------")
-    game = ConnectNGame(graphic=True, ai=False)
+    game = ConnectNGame(graphic=True, ai=True)
     print(game)
     print(game.__version__)
     game.add_player(Player("A"))
-    game.add_player(Player("B"))
+    # game.add_player(Player("B"))
     game.play()
-    # print(game.get_sequence())
     print("-----------------------------------------------------------\nBye World!!")
