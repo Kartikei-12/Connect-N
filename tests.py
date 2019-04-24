@@ -99,7 +99,7 @@ class AITests(unittest.TestCase):
 
     def test_string_score(self):
         """Testing string_score method"""
-        self.assertEqual(self.ai.string_score("-1-10-1-1", -1), UNIT_SCORE * 4)
+        self.assertEqual(self.ai.string_score("-1-10-1-1", -1), UNIT_SCORE * 6)
 
     def test_horizontal_score(self):
         """Testing horizontal_score"""
@@ -114,14 +114,14 @@ class AITests(unittest.TestCase):
             ],
             dtype=int,
         )
-        self.assertEqual(UNIT_SCORE * 4, self.ai.score(board, 1))
+        self.assertEqual(UNIT_SCORE * 8, self.ai.score(board, 1))
 
     def test_vertical_score(self):
         """Testing vertical_score"""
         board = np.array(
             [
-                [0, 0, 0, 1, 0, 1, 0],
-                [0, 0, 0, 1, 0, 1, 0],
+                [1, 0, 0, 0, 0, 1, 0],
+                [1, 0, 0, 0, 0, 1, 0],
                 [0, 0, 0, 0, 0, 1, 0],
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
@@ -129,7 +129,7 @@ class AITests(unittest.TestCase):
             ],
             dtype=int,
         )
-        self.assertEqual(UNIT_SCORE * 5, self.ai.score(board, 1))
+        self.assertEqual(UNIT_SCORE * 7, self.ai.score(board, 1))
 
     def test_positive_digonal_score(self):
         """Testing positive_digonal_score"""
@@ -151,15 +151,15 @@ class AITests(unittest.TestCase):
         board = np.array(
             [
                 [0, 0, 1, 0, 0, 0, 0],
-                [0, 0, 0, 1, 0, 0, 0],
-                [1, 0, 0, 0, 1, 0, 0],
-                [0, 1, 0, 0, 0, 0, 0],
-                [0, 0, 1, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
+                [1, 0, 0, 0, 0, 0, 1],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 1, 0, 0],
+                [0, 0, 0, 1, 0, 0, 0],
             ],
             dtype=int,
         )
-        self.assertEqual(UNIT_SCORE * 6, self.ai.score(board, 1))
+        self.assertEqual(UNIT_SCORE * 5, self.ai.score(board, 1))
 
 
 if __name__ == "__main__":

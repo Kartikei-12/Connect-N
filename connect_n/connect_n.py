@@ -125,7 +125,7 @@ class ConnectNGame:
             Does NOT removes players from the game."""
         self.winner = None
         self.sequence = list()
-        self.board = np.zeros((self.rows, self.cols))
+        self.board = np.zeros((self.rows, self.cols), dtype=int)
 
     def add_player(self, p):
         """Method to add players to the game.
@@ -245,7 +245,7 @@ class ConnectNGame:
                     print("Winner: Player", self.winner.name)
                     return
             else:
-                print("Invalid move column filled, aborting turn!")
+                print("Invalid move column already filled, aborting turn!")
             turn = (turn + 1) % len(self.players)
             self.print_board()
 
@@ -291,7 +291,7 @@ class ConnectNGame:
 
     def __str__(self):
         """Representation format:
-            <class 'CLASS NAME', NUMBER_OF_ROWS NUMBER_OF_COLUMNS CONNECT_LENGTH>"""
-        return "<class '{0}', {1} {2} {3} >".format(
-            self.__class__.__name__, self.rows, self.cols, self.n
+            <class 'ConnectNGame', NUMBER_OF_ROWS NUMBER_OF_COLUMNS CONNECT_LENGTH>"""
+        return "<class 'ConnectNGame', {1} {2} {3} >".format(
+            self.rows, self.cols, self.n
         )

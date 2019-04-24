@@ -16,8 +16,7 @@ class Player:
     """Player class
     
     Args:
-        name (str): Name of the player
-    """
+        name (str): Name of the player."""
 
     _ids = count(1)
 
@@ -39,4 +38,4 @@ class Player:
 
     def __str__(self):
         """String representation of class object"""
-        return "<class 'Player'> {} {} ".format(self.id, self.name)
+        return "<class 'Player'> {0} {1} ".format(self.id, self.name)

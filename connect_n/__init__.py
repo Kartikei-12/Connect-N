@@ -19,7 +19,7 @@ try:
     """
     version = str(int(open(FILE_PATH, "r").read()) + 1)
     open(FILE_PATH, "w").write(version)
-except FileNotFoundError or ValueError:
+except (FileNotFoundError, ValueError):
     # version.txt missing.
     with open(FILE_PATH, "w+") as f:
         f.write("1")

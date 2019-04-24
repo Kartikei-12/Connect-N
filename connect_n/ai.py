@@ -38,22 +38,23 @@ class AI:
         Args:
             string (str): Input string
             id (int): ID of player"""
-        score = 0
-        if id == -1:
+        if str(id) not in string:
+            return 0
+        elif id == -1:
             id = "#"
             string = string.replace("-1", "#")
         else:
             id = str(id)
-        dummy_str = "".join("*" for i in range(self.n))
-        desired_pat = "".join(id for i in range(self.n))
-        for i in range(self.n - 1, 1, -1):
-            while len(string) >= i and desired_pat[0:i] in string:
-                score += i * UNIT_SCORE
-                string = string.replace(
-                    desired_pat[0:i],  # dummy_str[0:i],
-                    "",
-                    1,  # 1 to replace only first occurence
-                )
+
+        score = 0
+        for begin in range(len(string) - self.n + 1):
+            end = min(begin + self.n, len(string))
+            for j in range(self.n - 1, 1, -1):
+                if string[begin:end].count(id) == j and string[begin:end].count(
+                    "0"
+                ) == (self.n - j):
+                    score += j * UNIT_SCORE
+                    break
         return score
 
     def score(self, board, id):
@@ -96,5 +97,5 @@ class AI:
         return score
 
     def __str__(self):
-        """"""
+        """String representation."""
         return "<class 'AI'> {}".format(self.id)
