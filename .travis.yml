@@ -13,7 +13,7 @@ matrix:
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
 
 install:
-  - pip3 install --upgrade pip  # all three OSes agree about 'pip3'
+  - pip3 install --user --upgrade pip  # all three OSes agree about 'pip3'
   - pip3 install --user -r requirements.txt
 
 script: python3 tests.py || python tests.py
