@@ -36,22 +36,22 @@ class ConnectNTests(unittest.TestCase):
 
     def test_horizontal_winning_move(self):
         """Testing Winning move(Horizontal Check)"""
-        self.game.board = [[1.0, 1.0, 1.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+        self.game.board = [[1, 1, 1], [0, 0, 0], [0, 0, 0]]
         self.assertTrue(self.game.is_winning_move(0, 2))
 
     def test_vertical_winning_move(self):
         """Testing Winning move(Vertical Check)"""
-        self.game.board = [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0]]
+        self.game.board = [[1, 0, 0], [1, 0, 0], [1, 0, 0]]
         self.assertTrue(self.game.is_winning_move(2, 0))
 
     def test_positive_digonal_winning_move(self):
         """Testing Winning move(Positive digonal Check)"""
-        self.game.board = [[1.0, 2.0, 2.0], [0.0, 1.0, 2.0], [0.0, 0.0, 1.0]]
+        self.game.board = [[1, 2, 2], [0, 1, 2], [0, 0, 1]]
         self.assertTrue(self.game.is_winning_move(1, 1))
 
     def test_negative_digonal_winning_move(self):
         """Testing Winning move()"""
-        self.game.board = [[1.0, 2.0, 1.0], [2.0, 1.0, 0.0], [1.0, 0.0, 0.0]]
+        self.game.board = [[1, 2, 1], [2, 1, 0], [1, 0, 0]]
         self.assertTrue(self.game.is_winning_move(1, 1))
 
     def test_add_player(self):
@@ -83,7 +83,7 @@ class ConnectNTests(unittest.TestCase):
         p = Player("A")
         self.game.add_player(p)
         self.assertTrue(self.game.is_valid_move(0))
-        self.game.board = [[1.0, 0.0, 0.0], [1.0, 0.0, 0.0], [1.0, 0.0, 0.0]]
+        self.game.board = [[1, 0, 0], [1, 0, 0], [1, 0, 0]]
         self.assertFalse(self.game.is_valid_move(0))
 
 
@@ -111,7 +111,8 @@ class AITests(unittest.TestCase):
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
-            ]
+            ],
+            dtype=int,
         )
         self.assertEqual(UNIT_SCORE * 4, self.ai.score(board, 1))
 
@@ -125,7 +126,8 @@ class AITests(unittest.TestCase):
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
-            ]
+            ],
+            dtype=int,
         )
         self.assertEqual(UNIT_SCORE * 5, self.ai.score(board, 1))
 
@@ -139,7 +141,23 @@ class AITests(unittest.TestCase):
                 [0, 0, 0, 0, 0, 1, 0],
                 [0, 0, 0, 0, 1, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0],
-            ]
+            ],
+            dtype=int,
+        )
+        self.assertEqual(UNIT_SCORE * 6, self.ai.score(board, 1))
+
+    def test_negative_digonal_score(self):
+        """Testing negative_digonal_score"""
+        board = np.array(
+            [
+                [0, 0, 1, 0, 0, 0, 0],
+                [0, 0, 0, 1, 0, 0, 0],
+                [1, 0, 0, 0, 1, 0, 0],
+                [0, 1, 0, 0, 0, 0, 0],
+                [0, 0, 1, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+            ],
+            dtype=int,
         )
         self.assertEqual(UNIT_SCORE * 6, self.ai.score(board, 1))
 

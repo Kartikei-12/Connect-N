@@ -63,26 +63,35 @@ class AI:
         score = 0
         # Horizontal
         for i in range(self.rows):
-            score += self.string_score("".join(str(int(j)) for j in board[i][...]), id)
+            score += self.string_score("".join(str(j) for j in board[i][...]), id)
         # Vertical
         for i in range(self.cols):
-            score += self.string_score("".join(str(int(j)) for j in board[..., i]), id)
+            score += self.string_score("".join(str(j) for j in board[..., i]), id)
         # Positive Digonal Along Rows
         for i in range(self.n - 1, self.cols):
             score += self.string_score(
-                "".join(
-                    str(int(board[j][i - j])) for j in range(min(i + 1, self.rows))
-                ),
-                id,
+                "".join(str(board[j][i - j]) for j in range(min(i + 1, self.rows))), id
             )
         # Positive Digonal Along Columns
         for i in range(1, self.rows - self.n + 1):
             score += self.string_score(
                 "".join(
-                    str(int(board[j + i][self.cols - j - 1]))
-                    for j in range(self.rows - i)
+                    str(board[j + i][self.cols - j - 1]) for j in range(self.rows - i)
                 ),
                 id,
+            )
+        # Negative Digonal Along Rows
+        for i in range(self.cols - self.n + 1):
+            score += self.string_score(
+                "".join(
+                    str(board[j][i + j]) for j in range(min(self.rows, self.cols - i))
+                ),
+                id,
+            )
+        # Negative Digonal Along Columns
+        for i in range(1, self.rows - self.n + 1):
+            score += self.string_score(
+                "".join(str(board[i + j][j]) for j in range(self.rows - i)), id
             )
         return score
 

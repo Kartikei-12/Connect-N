@@ -99,7 +99,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Unittest Results</title>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -109,9 +109,9 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-23 23:11:26</p>
-                <p class='attribute'><strong>Duration: </strong>0 ms</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 13, Pass: 13</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-24 11:53:16</p>
+                <p class='attribute'><strong>Duration: </strong>20 ms</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 14, Pass: 14</p>
             </div>
         </div>
         <div class="row">
@@ -127,6 +127,14 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                     <tbody>
                         <tr class='success'>
                             <td class="col-xs-10">test_horizontal_score</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_negative_digonal_score</td>
                             <td class="col-xs-1">
                                 <span class="label label-success" style="display:block;width:40px;">Pass</span>
                             </td>
@@ -159,7 +167,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 4, Pass: 4 -- Duration: 0 ms
+                                Total: 5, Pass: 5 -- Duration: 0 ms
                             </td>
                         </tr>
                     </tbody>
@@ -251,7 +259,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 9, Pass: 9 -- Duration: 0 ms
+                                Total: 9, Pass: 9 -- Duration: 20 ms
                             </td>
                         </tr>
                     </tbody>

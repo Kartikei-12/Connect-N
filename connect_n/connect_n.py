@@ -76,7 +76,7 @@ class ConnectNGame:
         self.cols = num_col
 
         self.GamUtil = None
-        self.board = np.zeros((self.rows, self.cols))
+        self.board = np.zeros((self.rows, self.cols), dtype=int)
         self.play = self.cmd_line
 
         if ai:
@@ -195,24 +195,24 @@ class ConnectNGame:
         """
         if self.board[row][col] == 0.0:
             raise ValueError("Testing Empty slot in board.")
-        desired_pat = "".join(str(int(self.board[row][col])) for i in range(self.n))
+        desired_pat = "".join(str(self.board[row][col]) for i in range(self.n))
 
         # Horizontal Check
         if desired_pat in "".join(
-            str(int(self.board[row][i]))
+            str(self.board[row][i])
             for i in range(max(0, col - self.n + 1), min(col + self.n, self.cols))
         ):
             return True
 
         # Vertical Check
         if desired_pat in "".join(
-            str(int(self.board[i][col]))
+            str(self.board[i][col])
             for i in range(max(0, row - self.n + 1), min(row + self.n, self.rows))
         ):
             return True
         # Positive digonal Check
         if desired_pat in "".join(
-            str(int(self.board[row + i][col + i]))
+            str(self.board[row + i][col + i])
             for i in range(-1 * (self.n - 1), self.n)
             if (row + i) >= 0
             and (col + i) >= 0
@@ -222,7 +222,7 @@ class ConnectNGame:
             return True
         # Negative digonal Check
         if desired_pat in "".join(
-            str(int(self.board[row - i][col + i]))
+            str(self.board[row - i][col + i])
             for i in range(-1 * (self.n - 1), self.n)
             if (row - i) >= 0
             and (col + i) >= 0

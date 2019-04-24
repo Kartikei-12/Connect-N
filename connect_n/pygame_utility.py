@@ -121,7 +121,7 @@ class PygameUtility:
             for r in range(self.num_rows):
                 pygame.draw.circle(
                     self.screen,
-                    C_LIST[int(board[r][c])],
+                    C_LIST[board[r][c]],
                     (
                         int(c * SQUARESIZE + SQUARESIZE / 2),
                         self.height - int(r * SQUARESIZE + SQUARESIZE / 2),
