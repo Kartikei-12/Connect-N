@@ -9,7 +9,7 @@ import numpy as np
 import HtmlTestRunner
 
 # User module(s)
-from env import *
+from env import UNIT_SCORE
 from utility import update_readme
 
 # Project module(s)
@@ -22,11 +22,11 @@ from connect_n.connect_n import ConnectNGame
 class ConnectNTests(unittest.TestCase):
     # Tests for project Connect-N.
     def setUp(self):
-        # Tests Set Up
+        """setUp"""
         self.game = ConnectNGame(n=3, num_col=3, num_rows=3)
 
     def tearDown(self):
-        # Tests tear down
+        """tearDown"""
         self.game.reset()
         del self.game
 
@@ -38,11 +38,19 @@ class ConnectNTests(unittest.TestCase):
         """Testing Winning move(Horizontal Check)"""
         self.game.board = [[1, 1, 1], [0, 0, 0], [0, 0, 0]]
         self.assertTrue(self.game.is_winning_move(0, 2))
+        self.game.board = [[1, 1, 0], [1, 0, 0], [0, 0, 0]]
+        self.assertFalse(self.game.is_winning_move(1, 0))
+        self.game.board = [[1, 1, 0], [0, 1, 0], [0, 0, 0]]
+        self.assertFalse(self.game.is_winning_move(1, 1))
 
     def test_vertical_winning_move(self):
         """Testing Winning move(Vertical Check)"""
         self.game.board = [[1, 0, 0], [1, 0, 0], [1, 0, 0]]
         self.assertTrue(self.game.is_winning_move(2, 0))
+        self.game.board = [[1, 0, 0], [1, 0, 0], [0, 1, 0]]
+        self.assertFalse(self.game.is_winning_move(2, 1))
+        self.game.board = [[1, 1, 0], [1, 0, 0], [0, 0, 0]]
+        self.assertFalse(self.game.is_winning_move(0, 1))
 
     def test_positive_digonal_winning_move(self):
         """Testing Winning move(Positive digonal Check)"""
@@ -90,16 +98,16 @@ class ConnectNTests(unittest.TestCase):
 class AITests(unittest.TestCase):
     # Tests for project Connect-N.
     def setUp(self):
-        """"""
-        self.ai = AI(n=N, rows=ROWS, cols=COLUMNS)
+        """setUp"""
+        self.ai = AI(ConnectNGame(ai=False, graphic=False))
 
     def tearDown(self):
-        """"""
+        """tearDown"""
         del self.ai
 
     def test_string_score(self):
         """Testing string_score method"""
-        self.assertEqual(self.ai.string_score("-1-10-1-1", -1), UNIT_SCORE * 6)
+        self.assertEqual(self.ai.string_score("11011", 1), UNIT_SCORE * 18)
 
     def test_horizontal_score(self):
         """Testing horizontal_score"""
@@ -114,7 +122,7 @@ class AITests(unittest.TestCase):
             ],
             dtype=int,
         )
-        self.assertEqual(UNIT_SCORE * 8, self.ai.score(board, 1))
+        self.assertEqual(UNIT_SCORE * 16, self.ai.score(board, 1))
 
     def test_vertical_score(self):
         """Testing vertical_score"""
@@ -129,7 +137,7 @@ class AITests(unittest.TestCase):
             ],
             dtype=int,
         )
-        self.assertEqual(UNIT_SCORE * 7, self.ai.score(board, 1))
+        self.assertEqual(UNIT_SCORE * 17, self.ai.score(board, 1))
 
     def test_positive_digonal_score(self):
         """Testing positive_digonal_score"""
@@ -144,7 +152,7 @@ class AITests(unittest.TestCase):
             ],
             dtype=int,
         )
-        self.assertEqual(UNIT_SCORE * 6, self.ai.score(board, 1))
+        self.assertEqual(UNIT_SCORE * 18, self.ai.score(board, 1))
 
     def test_negative_digonal_score(self):
         """Testing negative_digonal_score"""
@@ -159,7 +167,7 @@ class AITests(unittest.TestCase):
             ],
             dtype=int,
         )
-        self.assertEqual(UNIT_SCORE * 5, self.ai.score(board, 1))
+        self.assertEqual(UNIT_SCORE * 13, self.ai.score(board, 1))
 
 
 if __name__ == "__main__":

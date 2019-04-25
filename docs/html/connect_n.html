@@ -41,7 +41,7 @@
 <p>File defining AI for the Connect-N Game</p>
 <dl class="class">
 <dt id="connect_n.ai.AI">
-<em class="property">class </em><code class="descclassname">connect_n.ai.</code><code class="descname">AI</code><span class="sig-paren">(</span><em>n</em>, <em>rows</em>, <em>cols</em>, <em>id=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">connect_n.ai.</code><code class="descname">AI</code><span class="sig-paren">(</span><em>game</em>, <em>id=1</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>class representing AI in the game
 :param n: Number of coins required in a line to win.
@@ -151,6 +151,14 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.get_valid_moves">
+<code class="descname">get_valid_moves</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.get_valid_moves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Valid Moves
+:returns: List of valid moves.
+:rtype: list</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.graphic">
 <code class="descname">graphic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.graphic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method to play the game in GUI using pygame</p>
@@ -197,7 +205,7 @@ and vice versa.</p>
 
 <dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.make_move">
-<code class="descname">make_move</code><span class="sig-paren">(</span><em>col</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.make_move" title="Permalink to this definition">¶</a></dt>
+<code class="descname">make_move</code><span class="sig-paren">(</span><em>col</em>, <em>id</em>, <em>board=None</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.make_move" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method to make move, returns row in which move was made</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

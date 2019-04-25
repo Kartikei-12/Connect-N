@@ -80,7 +80,7 @@ class ConnectNGame:
         self.play = self.cmd_line
 
         if ai:
-            self.players.append(AI(n, num_rows, num_col))
+            self.players.append(AI(self))
         if graphic:
             try:
                 self.GamUtil = PygameUtility(num_rows, num_col)
@@ -149,7 +149,7 @@ class ConnectNGame:
         """Prints the board on console."""
         print(np.flip(self.board, 0))
 
-    def make_move(self, col, id):
+    def make_move(self, col, id, board=None):
         """Method to make move, returns row in which move was made
     
         Args:
@@ -159,11 +159,19 @@ class ConnectNGame:
         Returns:
             int : Row in which move was made
         """
+        if board is None:
+            board = self.board
         self.sequence.append(col)
         for row in range(self.rows):
-            if self.board[row][col] == 0.0:
-                self.board[row][col] = id
+            if board[row][col] == 0.0:
+                board[row][col] = id
                 return row
+
+    def get_valid_moves(self):
+        """Valid Moves
+        Returns:
+            list : List of valid moves."""
+        return [i for i in range(self.cols) if self.is_valid_move(i)]
 
     def is_valid_move(self, col):
         """Check validity of move, also appends move to 'sequence' list.
@@ -292,6 +300,6 @@ class ConnectNGame:
     def __str__(self):
         """Representation format:
             <class 'ConnectNGame', NUMBER_OF_ROWS NUMBER_OF_COLUMNS CONNECT_LENGTH>"""
-        return "<class 'ConnectNGame', {1} {2} {3} >".format(
+        return "<class 'ConnectNGame', {0} {1} {2} >".format(
             self.rows, self.cols, self.n
         )

@@ -17,20 +17,32 @@ class AI:
         num_rows (int): Number of rows
         num_col (int): Number of columns"""
 
-    def __init__(self, n, rows, cols, id=-1):
+    def __init__(self, game, id=1):
         """Instantiate Method"""
         self.id = id
         self.name = "AI"
 
-        self.n = n
-        self.rows = rows
-        self.cols = cols
+        self.game = game
+        self.n = game.n
+        self.rows = game.rows
+        self.cols = game.cols
 
     def get_move(self):
         """Simple method to fetch AI move
         Note:
             Currently no actual AI or machine learing implementation, just random guesses."""
-        return random.randint(0, self.cols - 1)
+        valid_loction = self.game.get_valid_moves()
+        max_score = -10 ** 8
+        # best_move = random.choice(valid_loction)
+        best_move = 0
+        for col in valid_loction:
+            temp_board = self.game.board.copy()
+            self.game.make_move(col, self.id, temp_board)
+            if max_score < self.score(temp_board, self.id):
+                max_score = self.score(temp_board, self.id)
+                best_move = col
+            del self.game.sequence[-1]
+        return best_move
 
     def string_score(self, string, id):
         """Calculates score for a player from given string
@@ -40,20 +52,33 @@ class AI:
             id (int): ID of player"""
         if str(id) not in string:
             return 0
-        elif id == -1:
-            id = "#"
-            string = string.replace("-1", "#")
         else:
             id = str(id)
 
         score = 0
         for begin in range(len(string) - self.n + 1):
             end = min(begin + self.n, len(string))
-            for j in range(self.n - 1, 1, -1):
-                if string[begin:end].count(id) == j and string[begin:end].count(
-                    "0"
-                ) == (self.n - j):
-                    score += j * UNIT_SCORE
+            for j in range(self.n, 1, -1):
+                # Only Me
+                if (
+                    string[begin:end].count("0") == (self.n - j)
+                    and string[begin:end].count(id) == j
+                ):
+                    score += j ** 2 * UNIT_SCORE
+                    break
+                # Me and Someone else
+                if (
+                    string[begin:end].count("0") != (self.n - j)
+                    and string[begin:end].count(id) == j
+                ):
+                    score += j ** 2 * UNIT_SCORE * (-1.5)
+                    break
+                # Only Others
+                if (
+                    string[begin:end].count("0") == (self.n - j)
+                    and string[begin:end].count(id) != j
+                ):
+                    score += j ** 2 * UNIT_SCORE * (1.5)
                     break
         return score
 

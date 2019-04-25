@@ -22,7 +22,7 @@ if __name__ == "__main__":
     game = ConnectNGame(graphic=True, ai=True)
     print(game)
     print(game.__version__)
-    game.add_player(Player("A"))
+    game.add_player(Player("Mr.REX"))
     # game.add_player(Player("B"))
     game.play()
     print("-----------------------------------------------------------\nBye World!!")

@@ -11,9 +11,11 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 
 ## Project Description
 
-* This repositry contains a simple game made in **python** similar to **Connect 4**, bit modified to work with any Connect length for any board size.
+* This repositry contains a simple game made in **python** similar to **Connect 4**,a bit modified to work with any Connect length for any board size.
 * Currently supports for variable number of players on a two dimentional board.
 * Only **three** players supported in GUI mode, for more players just add new colours `COLOR` and `C_LIST` variable in connect_n/pygame_utility.py
+* ID 1 is reserved for AI.
+* Currently only supports single AI player in a game.
 * Tests for python 3.7.
 * Tested on Windows.
 
@@ -109,8 +111,8 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-24 17:04:48</p>
-                <p class='attribute'><strong>Duration: </strong>11 ms</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-25 17:11:16</p>
+                <p class='attribute'><strong>Duration: </strong>15 ms</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 14, Pass: 14</p>
             </div>
         </div>
@@ -167,7 +169,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 8 ms
+                                Total: 5, Pass: 5 -- Duration: 0 ms
                             </td>
                         </tr>
                     </tbody>
@@ -259,7 +261,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 9, Pass: 9 -- Duration: 2 ms
+                                Total: 9, Pass: 9 -- Duration: 15 ms
                             </td>
                         </tr>
                     </tbody>

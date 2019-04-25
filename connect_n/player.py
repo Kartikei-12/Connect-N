@@ -18,7 +18,7 @@ class Player:
     Args:
         name (str): Name of the player."""
 
-    _ids = count(1)
+    _ids = count(2)
 
     def __init__(self, name=""):
         """Instantiate method"""
