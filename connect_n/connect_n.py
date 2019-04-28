@@ -21,13 +21,14 @@ import numpy as np
 # User module(s)
 from .ai import AI
 from .player import Player
-from .utility import getVersion
+from .utility import getVersion, recordGame
 from .pygame_utility import PygameUtility
 
 # Environment Variables
 from env import N, ROWS, COLUMNS
 
-FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + "/version.txt"
+PATH = os.path.dirname(os.path.realpath(__file__))
+FILE_PATH = PATH + "/version.txt"
 
 
 class ConnectNGame:
@@ -35,8 +36,10 @@ class ConnectNGame:
     Main module class used Connect-N game.
     
     Args:
-        ai (bool): Wheather to play against AI
-        graphic (bool): Wheather to play in GUI
+        ai (bool): Enable/Disable AI
+        web (bool): Web Interface
+        record (bool): Enable game recording.
+        graphic (bool): GUI(true) or command line interface(false)
         n (int): Number of coins required in a line to win.
         num_rows (int): Number of rows
         num_col (int): Number of columns
@@ -50,11 +53,20 @@ class ConnectNGame:
 
     __version__ = "0.1d."
 
-    def __init__(self, ai=False, graphic=False, n=N, num_rows=ROWS, num_col=COLUMNS):
+    def __init__(
+        self,
+        ai=True,
+        web=False,
+        record=False,
+        graphic=True,
+        n=N,
+        num_rows=ROWS,
+        num_col=COLUMNS,
+    ):
         """Instantiate function for class ConnectNGame"""
 
         # Checking 'bool' argument
-        for var in [ai, graphic]:
+        for var in [ai, graphic, web, record]:
             if not isinstance(var, bool):
                 raise TypeError("Expected 'bool' not {0}.".format(type(var)))
         # Checking 'int' argument
@@ -67,6 +79,7 @@ class ConnectNGame:
             raise ValueError("No winning combination possible.")
 
         self.winner = None
+        self.GUIUtil = None
         self.sequence = list()
         self.players = list()
 
@@ -74,8 +87,8 @@ class ConnectNGame:
         self.n = n
         self.rows = num_rows
         self.cols = num_col
+        self.record = record
 
-        self.GamUtil = None
         self.board = np.zeros((self.rows, self.cols), dtype=int)
         self.play = self.cmd_line
 
@@ -83,18 +96,11 @@ class ConnectNGame:
             self.players.append(AI(self))
         if graphic:
             try:
-                self.GamUtil = PygameUtility(num_rows, num_col)
+                self.GUIUtil = PygameUtility(num_rows, num_col)
             except EnvironmentError as e:
                 print(e)
             else:
                 self.play = self.graphic
-
-    def get_sequence(self):
-        """Sequence of Moves.
-
-        Returns:
-            list : Provides sequence of moves by players in the current game till now."""
-        return self.sequence
 
     def simulate(self, sequence):
         """This method simulate a game from list of integers passed,
@@ -110,7 +116,7 @@ class ConnectNGame:
         turn = 0
         for col in sequence:
             if self.is_valid_move(col):
-                row = self.make_move(col, turn + 1)
+                row = self.make_move(col, self.players[turn].id)
             else:
                 break
             if self.is_winning_move(row, col):
@@ -239,6 +245,12 @@ class ConnectNGame:
         ):
             return True
 
+    def record_game(self):
+        """Records game"""
+        if not self.record:
+            return
+        recordGame(self)
+
     def cmd_line(self):
         """Method to play the game in command line."""
         turn = random.randint(0, len(self.players) - 1)
@@ -250,50 +262,52 @@ class ConnectNGame:
                 row = self.make_move(col, self.players[turn].id)
                 if self.is_winning_move(row, col):
                     self.winner = self.players[turn]
-                    print("Winner: Player", self.winner.name)
+                    print("Winner: ", self.winner.name)
                     return
             else:
                 print("Invalid move column already filled, aborting turn!")
             turn = (turn + 1) % len(self.players)
             self.print_board()
+        self.record_game()
 
     def graphic(self):
         """Method to play the game in GUI using pygame
         
         Note:
             When playing with AI a mouse click is required to trigger AI move"""
-        if not self.GamUtil:
+        if len(self.players) > 3:  # TODO: Remove magic number
+            print("GUI currently only support 3 players.")
             self.cmd_line()
             return
         turn = random.randint(0, len(self.players) - 1)
         while True:
-            self.GamUtil.draw(self.board)
-            for event in self.GamUtil.get_event():
-                if self.GamUtil.is_quit_event(event):
+            self.GUIUtil.draw(self.board)
+            for event in self.GUIUtil.get_event():
+                if self.GUIUtil.is_quit_event(event):
                     sys.exit()
 
-                if self.GamUtil.is_mouse_motion(event):
-                    self.GamUtil.draw_black_rec()
-                    self.GamUtil.draw_player_coin(self.players[turn].id, event)
-                self.GamUtil.update()
+                if self.GUIUtil.is_mouse_motion(event):
+                    self.GUIUtil.draw_black_rec()
+                    self.GUIUtil.draw_player_coin(self.players[turn].id, event)
+                self.GUIUtil.update()
 
-                if self.GamUtil.is_mouse_down(event):
-                    self.GamUtil.draw_black_rec()
+                if self.GUIUtil.is_mouse_down(event):
+                    self.GUIUtil.draw_black_rec()
                     if self.players[turn].name == "AI":
                         col = self.players[turn].get_move()
                     else:
-                        col = self.GamUtil.get_col(event)
+                        col = self.GUIUtil.get_col(event)
 
                     if self.is_valid_move(col):
                         row = self.make_move(col, self.players[turn].id)
                         if self.is_winning_move(row, col):
                             self.winner = self.players[turn]
-                            self.GamUtil.blit(
-                                "Player {} Wins!!".format(self.winner.name),
-                                self.winner.id,
+                            self.GUIUtil.blit(
+                                " {} Wins!!".format(self.winner.name), self.winner.id
                             )
-                            self.GamUtil.draw(self.board)
-                            self.GamUtil.wait()
+                            self.GUIUtil.draw(self.board)
+                            self.GUIUtil.wait()
+                            self.record_game()
                             return
                     turn = (turn + 1) % len(self.players)
 

@@ -4,13 +4,13 @@
 # docker build -t connect-n .
 # docker run -i connect-n
 
-FROM python:latest
+FROM python:3.7
 # The first parameter 'main.py' is the name of the file on the host.
 # The second parameter '/' is the path where to put the file on the image.
 # Here we put the file at the image root folder.
 
 WORKDIR /project
-ADD ./requirements.txt /project/requirements.txt
+COPY ./requirements.txt /project/requirements.txt
 RUN pip install -r requirements.txt
-ADD . /project
+COPY . /project
 CMD ["python", "/project/main.py"]

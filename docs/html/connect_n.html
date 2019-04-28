@@ -91,14 +91,16 @@
 <p><a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
 <dl class="class">
 <dt id="connect_n.connect_n.ConnectNGame">
-<em class="property">class </em><code class="descclassname">connect_n.connect_n.</code><code class="descname">ConnectNGame</code><span class="sig-paren">(</span><em>ai=False</em>, <em>graphic=False</em>, <em>n=4</em>, <em>num_rows=6</em>, <em>num_col=7</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">connect_n.connect_n.</code><code class="descname">ConnectNGame</code><span class="sig-paren">(</span><em>ai=True</em>, <em>web=False</em>, <em>record=False</em>, <em>graphic=True</em>, <em>n=4</em>, <em>num_rows=6</em>, <em>num_col=7</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Main module class used Connect-N game.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ai</strong> (<em>bool</em>) – Wheather to play against AI</p></li>
-<li><p><strong>graphic</strong> (<em>bool</em>) – Wheather to play in GUI</p></li>
+<li><p><strong>ai</strong> (<em>bool</em>) – Enable/Disable AI</p></li>
+<li><p><strong>web</strong> (<em>bool</em>) – Web Interface</p></li>
+<li><p><strong>record</strong> (<em>bool</em>) – Enable game recording.</p></li>
+<li><p><strong>graphic</strong> (<em>bool</em>) – GUI(true) or command line interface(false)</p></li>
 <li><p><strong>n</strong> (<em>int</em>) – Number of coins required in a line to win.</p></li>
 <li><p><strong>num_rows</strong> (<em>int</em>) – Number of rows</p></li>
 <li><p><strong>num_col</strong> (<em>int</em>) – Number of columns</p></li>
@@ -134,20 +136,6 @@
 <dt id="connect_n.connect_n.ConnectNGame.cmd_line">
 <code class="descname">cmd_line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.cmd_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method to play the game in command line.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.get_sequence">
-<code class="descname">get_sequence</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.get_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sequence of Moves.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Provides sequence of moves by players in the current game till now.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="method">
@@ -227,6 +215,12 @@ and vice versa.</p>
 <dt id="connect_n.connect_n.ConnectNGame.print_board">
 <code class="descname">print_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.print_board" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints the board on console.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.record_game">
+<code class="descname">record_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.record_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>Records game</p>
 </dd></dl>
 
 <dl class="method">
@@ -425,7 +419,7 @@ Useful for trainning of AI.</p>
 </div>
 <div class="section" id="module-connect_n.utility">
 <span id="connect-n-utility-module"></span><h2>connect_n.utility module<a class="headerlink" href="#module-connect_n.utility" title="Permalink to this headline">¶</a></h2>
-<p>Utility mathods for project.</p>
+<p>Utility methods for project.</p>
 <dl class="function">
 <dt id="connect_n.utility.getVersion">
 <code class="descclassname">connect_n.utility.</code><code class="descname">getVersion</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.utility.getVersion" title="Permalink to this definition">¶</a></dt>
@@ -436,6 +430,17 @@ Useful for trainning of AI.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Version after reading from given file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="connect_n.utility.recordGame">
+<code class="descclassname">connect_n.utility.</code><code class="descname">recordGame</code><span class="sig-paren">(</span><em>game</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.utility.recordGame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple method to record games using loguru module by <a class="reference external" href="https://pypi.org/project/loguru/">https://pypi.org/project/loguru/</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>game</strong> (<a class="reference internal" href="#connect_n.connect_n.ConnectNGame" title="connect_n.connect_n.ConnectNGame"><em>ConnectNGame</em></a>) – Game object</p>
 </dd>
 </dl>
 </dd></dl>

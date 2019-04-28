@@ -19,7 +19,7 @@ from connect_n.connect_n import ConnectNGame
 if __name__ == "__main__":
     # Main program block of the project.
     print("Hello World!!\n---------------------------------------------------------")
-    game = ConnectNGame(graphic=True, ai=True)
+    game = ConnectNGame(graphic=True, ai=True, record=True)
     print(game)
     print(game.__version__)
     game.add_player(Player("Mr.REX"))

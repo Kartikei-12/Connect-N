@@ -23,7 +23,7 @@ class ConnectNTests(unittest.TestCase):
     # Tests for project Connect-N.
     def setUp(self):
         """setUp"""
-        self.game = ConnectNGame(n=3, num_col=3, num_rows=3)
+        self.game = ConnectNGame(n=3, num_col=3, num_rows=3, ai=False)
 
     def tearDown(self):
         """tearDown"""
@@ -73,9 +73,9 @@ class ConnectNTests(unittest.TestCase):
         """Testing simulate method"""
         self.game.add_player(Player("A"))
         self.game.add_player(Player("B"))
-        self.game.simulate([0, 1, 0, 1, 0, 1])
+        self.game.simulate([0, 1, 0, 1, 0])
         self.assertTrue(self.game.winner)
-        self.assertEqual(self.game.winner, self.game.players[0])
+        self.assertEqual(self.game.winner.name, self.game.players[0].name)
 
     def test_make_move(self):
         """Testing make move method"""
