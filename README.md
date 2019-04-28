@@ -1,7 +1,10 @@
 # Connect-N
 
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+
 [![Build Status](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)](https://travis-ci.org/Kartikei-12/Connect-N)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a053ff3c19247958b88183242723d23)](https://www.codacy.com/app/Kartikei-12/Connect-N?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kartikei-12/Connect-N&amp;utm_campaign=Badge_Grade)
 <hr>
 
 ## Introduction
@@ -10,9 +13,11 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 
 ## Project Description
 
-*  This repositry contains a simple game made in **python** similar to **Connect 4**,a bit modified to work with any Connect length for any board size.
+*  This repositry contains a simple game made in **python** similar to **Connect 4**.
+*  A bit modified to work with any Connect length for any board size.
 *  Currently supports for variable number of players on a two dimentional board.
-*  Only **three** players supported in GUI mode, for more players just add new colours `COLOR` and `C_LIST` variable in connect_n/pygame_utility.py
+*  Only **three** players supported in GUI mode.
+*  For more players add new colours `COLOR` variable in connect_n/pygame_utility.py file.
 *  ID 1 is reserved for AI.
 *  Currently only supports single AI player in a game.
 *  Tests for python 3.7.
@@ -95,19 +100,14 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
 
 <!DOCTYPE html>
 <html>
-<head>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-</head>
+
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-28 11:09:42</p>
-                <p class='attribute'><strong>Duration: </strong>1.38 s</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-28 11:28:43</p>
+                <p class='attribute'><strong>Duration: </strong>1.30 s</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 14, Pass: 14</p>
             </div>
         </div>
@@ -164,7 +164,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 12 ms
+                                Total: 5, Pass: 5 -- Duration: 0 ms
                             </td>
                         </tr>
                     </tbody>
@@ -256,7 +256,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 9, Pass: 9 -- Duration: 1.37 s
+                                Total: 9, Pass: 9 -- Duration: 1.30 s
                             </td>
                         </tr>
                     </tbody>

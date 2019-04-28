@@ -14,7 +14,7 @@ from itertools import count
 
 class Player:
     """Player class
-    
+
     Args:
         name (str): Name of the player."""
 

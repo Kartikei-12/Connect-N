@@ -1,7 +1,10 @@
 # Connect-N
 
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+
 [![Build Status](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)](https://travis-ci.org/Kartikei-12/Connect-N)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a053ff3c19247958b88183242723d23)](https://www.codacy.com/app/Kartikei-12/Connect-N?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kartikei-12/Connect-N&amp;utm_campaign=Badge_Grade)
 <hr>
 
 ## Introduction
@@ -10,9 +13,11 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 
 ## Project Description
 
-*  This repositry contains a simple game made in **python** similar to **Connect 4**,a bit modified to work with any Connect length for any board size.
+*  This repositry contains a simple game made in **python** similar to **Connect 4**.
+*  A bit modified to work with any Connect length for any board size.
 *  Currently supports for variable number of players on a two dimentional board.
-*  Only **three** players supported in GUI mode, for more players just add new colours `COLOR` and `C_LIST` variable in connect_n/pygame_utility.py
+*  Only **three** players supported in GUI mode.
+*  For more players add new colours `COLOR` variable in connect_n/pygame_utility.py file.
 *  ID 1 is reserved for AI.
 *  Currently only supports single AI player in a game.
 *  Tests for python 3.7.

@@ -29,7 +29,7 @@ class WebUtility:
         self.num_rows = r
         self.width = c * SQUARESIZE
         self.height = (r + 1) * SQUARESIZE
-
+        print(math.__name__)
         """"
         try:
             self.screen = pygame.display.set_mode((self.width, self.height))

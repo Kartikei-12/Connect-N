@@ -12,11 +12,9 @@ import os
 FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + "/version.txt"
 
 try:
-    """
-    Version Maintainance.
+    """Version Maintainance.
     Every time anything from connect_m module is imported it's version number
-    in file version.txt is incremented by one. 
-    """
+    in file version.txt is incremented by one."""
     version = str(int(open(FILE_PATH, "r").read()) + 1)
     open(FILE_PATH, "w").write(version)
 except (FileNotFoundError, ValueError):

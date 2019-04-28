@@ -3,9 +3,6 @@
 File defining AI for the Connect-N Game
 """
 
-# Python module(s)
-import random
-
 # User module(s)
 from env import UNIT_SCORE
 
@@ -17,7 +14,7 @@ class AI:
         num_rows (int): Number of rows
         num_col (int): Number of columns"""
 
-    def __init__(self, game, id=1):
+    def __init__(self, game):
         """Instantiate Method"""
         self.id = id
         self.name = "AI"
@@ -44,16 +41,16 @@ class AI:
             del self.game.sequence[-1]
         return best_move
 
-    def string_score(self, string, id):
+    def string_score(self, string, pid):
         """Calculates score for a player from given string
 
         Args:
             string (str): Input string
-            id (int): ID of player"""
-        if str(id) not in string:
+            pid (int): ID of player"""
+        if str(pid) not in string:
             return 0
         else:
-            id = str(id)
+            pid = str(pid)
 
         score = 0
         for begin in range(len(string) - self.n + 1):
@@ -62,41 +59,41 @@ class AI:
                 # Only Me
                 if (
                     string[begin:end].count("0") == (self.n - j)
-                    and string[begin:end].count(id) == j
+                    and string[begin:end].count(pid) == j
                 ):
                     score += j ** 2 * UNIT_SCORE
                     break
                 # Me and Someone else
                 if (
                     string[begin:end].count("0") != (self.n - j)
-                    and string[begin:end].count(id) == j
+                    and string[begin:end].count(pid) == j
                 ):
                     score += j ** 2 * UNIT_SCORE * (-1.5)
                     break
                 # Only Others
                 if (
                     string[begin:end].count("0") == (self.n - j)
-                    and string[begin:end].count(id) != j
+                    and string[begin:end].count(pid) != j
                 ):
                     score += j ** 2 * UNIT_SCORE * (1.5)
                     break
         return score
 
-    def score(self, board, id):
+    def score(self, board, pid):
         """Calculated Score of board for given player.
         Args:
-            id (int): ID of player"""
+            pid (int): ID of player"""
         score = 0
         # Horizontal
         for i in range(self.rows):
-            score += self.string_score("".join(str(j) for j in board[i][...]), id)
+            score += self.string_score("".join(str(j) for j in board[i][...]), pid)
         # Vertical
         for i in range(self.cols):
-            score += self.string_score("".join(str(j) for j in board[..., i]), id)
+            score += self.string_score("".join(str(j) for j in board[..., i]), pid)
         # Positive Digonal Along Rows
         for i in range(self.n - 1, self.cols):
             score += self.string_score(
-                "".join(str(board[j][i - j]) for j in range(min(i + 1, self.rows))), id
+                "".join(str(board[j][i - j]) for j in range(min(i + 1, self.rows))), pid
             )
         # Positive Digonal Along Columns
         for i in range(1, self.rows - self.n + 1):
@@ -104,7 +101,7 @@ class AI:
                 "".join(
                     str(board[j + i][self.cols - j - 1]) for j in range(self.rows - i)
                 ),
-                id,
+                pid,
             )
         # Negative Digonal Along Rows
         for i in range(self.cols - self.n + 1):
@@ -112,12 +109,12 @@ class AI:
                 "".join(
                     str(board[j][i + j]) for j in range(min(self.rows, self.cols - i))
                 ),
-                id,
+                pid,
             )
         # Negative Digonal Along Columns
         for i in range(1, self.rows - self.n + 1):
             score += self.string_score(
-                "".join(str(board[i + j][j]) for j in range(self.rows - i)), id
+                "".join(str(board[i + j][j]) for j in range(self.rows - i)), pid
             )
         return score
 

@@ -171,8 +171,6 @@ class AITests(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    """Test Runner"""
-
     # Seprating coustom arguments from mormal unittest argument
     argv_tpl = ("--update-readme",)  # Expected coustom arguments
     del_lst = []
@@ -197,5 +195,3 @@ if __name__ == "__main__":
 
     if len(coustom_argv) > 1 and coustom_argv[1] == "--update-readme":
         update_readme()
-
-    print("Done")

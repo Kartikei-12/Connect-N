@@ -41,7 +41,7 @@
 <p>File defining AI for the Connect-N Game</p>
 <dl class="class">
 <dt id="connect_n.ai.AI">
-<em class="property">class </em><code class="descclassname">connect_n.ai.</code><code class="descname">AI</code><span class="sig-paren">(</span><em>game</em>, <em>id=1</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">connect_n.ai.</code><code class="descname">AI</code><span class="sig-paren">(</span><em>game</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>class representing AI in the game
 :param n: Number of coins required in a line to win.
@@ -59,21 +59,21 @@
 
 <dl class="method">
 <dt id="connect_n.ai.AI.score">
-<code class="descname">score</code><span class="sig-paren">(</span><em>board</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.score" title="Permalink to this definition">¶</a></dt>
+<code class="descname">score</code><span class="sig-paren">(</span><em>board</em>, <em>pid</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculated Score of board for given player.
-:param id: ID of player
-:type id: int</p>
+:param pid: ID of player
+:type pid: int</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="connect_n.ai.AI.string_score">
-<code class="descname">string_score</code><span class="sig-paren">(</span><em>string</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.string_score" title="Permalink to this definition">¶</a></dt>
+<code class="descname">string_score</code><span class="sig-paren">(</span><em>string</em>, <em>pid</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.string_score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates score for a player from given string</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>string</strong> (<em>str</em>) – Input string</p></li>
-<li><p><strong>id</strong> (<em>int</em>) – ID of player</p></li>
+<li><p><strong>pid</strong> (<em>int</em>) – ID of player</p></li>
 </ul>
 </dd>
 </dl>
