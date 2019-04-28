@@ -61,6 +61,7 @@ For simple example run main.py as `python main.py` on windows and `python3 main.
         connect_n/
             __init__.py
             ai.py
+            web.py
             connect_n.py
             utility.py
             player.py
@@ -88,6 +89,7 @@ For simple example run main.py as `python main.py` on windows and `python3 main.
 ## Limitation
 
 GUI **NOT** working inside docker, because no support for pygame inside Docker.
+**Workaround**: Automatically switch to command line interface and code does not raises error. 
 
 ## Contributer(s)
 
@@ -103,8 +105,8 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-28 11:45:52</p>
-                <p class='attribute'><strong>Duration: </strong>1.25 s</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-28 13:09:10</p>
+                <p class='attribute'><strong>Duration: </strong>1.01 s</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 14, Pass: 14</p>
             </div>
         </div>
@@ -161,7 +163,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 4 ms
+                                Total: 5, Pass: 5 -- Duration: 19 ms
                             </td>
                         </tr>
                     </tbody>
@@ -253,7 +255,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 9, Pass: 9 -- Duration: 1.24 s
+                                Total: 9, Pass: 9 -- Duration: 992 ms
                             </td>
                         </tr>
                     </tbody>

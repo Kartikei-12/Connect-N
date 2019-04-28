@@ -61,6 +61,7 @@ For simple example run main.py as `python main.py` on windows and `python3 main.
         connect_n/
             __init__.py
             ai.py
+            web.py
             connect_n.py
             utility.py
             player.py
@@ -88,6 +89,7 @@ For simple example run main.py as `python main.py` on windows and `python3 main.
 ## Limitation
 
 GUI **NOT** working inside docker, because no support for pygame inside Docker.
+**Workaround**: Automatically switch to command line interface and code does not raises error. 
 
 ## Contributer(s)
 

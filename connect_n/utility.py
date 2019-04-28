@@ -6,10 +6,10 @@ from loguru import logger
 
 def getVersion(file):
     """Method
-    
+
     Args:
         file (str): File path(usually to the file version.txt)
-    
+
     Returns:
         Version after reading from given file"""
     try:  # Integrating file number.

@@ -51,7 +51,7 @@ class WebUtility:
 
     def draw_player_coin(self, p_id, event):
         """Draw player coin
-        
+
         Args:
             p_id (int): Player ID
             event (pygame.event): Event of motion of coin.
@@ -63,10 +63,10 @@ class WebUtility:
 
     def get_col(self, event):
         """Column in which coin was droped.
-        
+
         Args:
             event (pygame.event): Event of dropiung of coin.
-        
+
         Returns:
             int : Column in ehich coin is droped"""
         # return int(math.floor(event.pos[0] / SQUARESIZE))
@@ -74,7 +74,7 @@ class WebUtility:
 
     def blit(self, msg, p_id):
         """Finising game.
-        
+
         Args:
             msg (str): Message to display
             p_id (int): Winnig player p_id"""
@@ -95,7 +95,7 @@ class WebUtility:
 
     def is_quit_event(self, event):
         """Checks QUIT event
-        
+
         Args:
             event (pygame.event): Event."""
         # return event.type == pygame.QUIT
@@ -103,7 +103,7 @@ class WebUtility:
 
     def is_mouse_motion(self, event):
         """Checks MOUSE MOTION event
-        
+
         Args:
             event (pygame.event): Event."""
         # return event.type == pygame.MOUSEMOTION

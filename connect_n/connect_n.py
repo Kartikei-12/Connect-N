@@ -34,7 +34,7 @@ FILE_PATH = PATH + "/version.txt"
 class ConnectNGame:
     """
     Main module class used Connect-N game.
-    
+
     Args:
         ai (bool): Enable/Disable AI
         web (bool): Web Interface
@@ -43,7 +43,7 @@ class ConnectNGame:
         n (int): Number of coins required in a line to win.
         num_rows (int): Number of rows
         num_col (int): Number of columns
-    
+
     Raises:
         TypeError: Expected 'int' for num_rows, num_col, n
         TypeError: Expected 'bool' for ai, graphic
@@ -110,7 +110,7 @@ class ConnectNGame:
         Note:
             * As soon as an invalid move is encountered game is aborted,
             * Index of cloumns belong to [0, self.cols), for example if self.cols is 6 column will to 0 to self.cols-1, limits included.
-        
+
         Returns:
             list : Refer self.sequence(same as .get_sequence)."""
         turn = 0
@@ -135,10 +135,10 @@ class ConnectNGame:
 
     def add_player(self, p):
         """Method to add players to the game.
-    
+
         Args:
             p (Player): player object
-    
+
         Raises:
             TypeError: "Expected 'Player' not {0}".format(type(p))
             ValueError: '{} already in game.'.format(p)
@@ -157,11 +157,11 @@ class ConnectNGame:
 
     def make_move(self, col, p_id, board=None):
         """Method to make move, returns row in which move was made
-    
+
         Args:
             col (int): Column to insert coin in
             p_id (int): Id of player making the move
-    
+
         Returns:
             int : Row in which move was made
         """
@@ -183,10 +183,10 @@ class ConnectNGame:
         """Check validity of move, also appends move to 'sequence' list.
         Note:
             -1 is appended to sequence if in valid move
-    
+
         Args:
             col (int): Checks if move can be made in this column
-    
+
         Returns:
             bool True if valid move False otherwise
         """
@@ -197,12 +197,12 @@ class ConnectNGame:
     def is_winning_move(self, row, col):
         """
         Method to check for winning move,
-    
+
         Note:
             Board is displayed in flipped position so,
             What appears to positive digonal is actually negative digonal,
             and vice versa.
-    
+
         Args:
             row (int): Row in which last move was made.
             col (int): Column in which last move was made.
@@ -272,7 +272,7 @@ class ConnectNGame:
 
     def graphic(self):
         """Method to play the game in GUI using pygame
-        
+
         Note:
             When playing with AI a mouse click is required to trigger AI move"""
         if len(self.players) > 3:  # TODO: Remove magic number
