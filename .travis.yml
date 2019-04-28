@@ -18,4 +18,4 @@ install:
   - pip3 install --user --upgrade pip  # all three OSes agree about 'pip3'
   - pip3 install --user -r requirements.txt
 # 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
-script: python3 my_app.py || python my_app.py
+script: python3 tests.py || python tests.py
