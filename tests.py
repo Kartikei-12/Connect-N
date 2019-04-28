@@ -23,7 +23,7 @@ class ConnectNTests(unittest.TestCase):
     # Tests for project Connect-N.
     def setUp(self):
         """setUp"""
-        self.game = ConnectNGame(n=3, num_col=3, num_rows=3, ai=False)
+        self.game = ConnectNGame(n=3, num_col=3, num_rows=3, ai=False, graphic=False)
 
     def tearDown(self):
         """tearDown"""

@@ -89,7 +89,7 @@ For simple example run main.py as `python main.py` on windows and `python3 main.
 ## Limitation
 
 GUI **NOT** working inside docker, because no support for pygame inside Docker.
-**Workaround**: Automatically switch to command line interface and code does not raises error. 
+**Workaround**: Code automatically switches to command line interface without raising error connect_n/connect_n.py: line 99. 
 
 ## Contributer(s)
 
