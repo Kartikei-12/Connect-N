@@ -45,7 +45,7 @@ class ConnectNGame:
         num_col (int): Number of columns
     
     Raises:
-        TypeError: Expected 'int' for num_rows, num_col, n 
+        TypeError: Expected 'int' for num_rows, num_col, n
         TypeError: Expected 'bool' for ai, graphic
         ValueError: Argument [num_rows, num_col, n] needs to be positive.
         ValueError: No winning combination possible in [num_rows, num_col, n].
@@ -116,7 +116,7 @@ class ConnectNGame:
         turn = 0
         for col in sequence:
             if self.is_valid_move(col):
-                row = self.make_move(col, self.players[turn].id)
+                row = self.make_move(col, self.players[turn].p_id)
             else:
                 break
             if self.is_winning_move(row, col):
@@ -145,7 +145,7 @@ class ConnectNGame:
         """
         if not isinstance(p, Player):
             raise TypeError("Expected 'Player' not {0}".format(type(p)))
-        if p.id in [pi.id for pi in self.players] or p.name in [
+        if p.p_id in [pi.p_id for pi in self.players] or p.name in [
             pi.name for pi in self.players
         ]:
             raise ValueError("{} already in game.".format(p))
@@ -155,12 +155,12 @@ class ConnectNGame:
         """Prints the board on console."""
         print(np.flip(self.board, 0))
 
-    def make_move(self, col, id, board=None):
+    def make_move(self, col, p_id, board=None):
         """Method to make move, returns row in which move was made
     
         Args:
             col (int): Column to insert coin in
-            id (int): Id of player making the move
+            p_id (int): Id of player making the move
     
         Returns:
             int : Row in which move was made
@@ -170,7 +170,7 @@ class ConnectNGame:
         self.sequence.append(col)
         for row in range(self.rows):
             if board[row][col] == 0.0:
-                board[row][col] = id
+                board[row][col] = p_id
                 return row
 
     def get_valid_moves(self):
@@ -259,7 +259,7 @@ class ConnectNGame:
             if col == -1:
                 continue
             if self.is_valid_move(col):
-                row = self.make_move(col, self.players[turn].id)
+                row = self.make_move(col, self.players[turn].p_id)
                 if self.is_winning_move(row, col):
                     self.winner = self.players[turn]
                     print("Winner: ", self.winner.name)
@@ -288,7 +288,7 @@ class ConnectNGame:
 
                 if self.GUIUtil.is_mouse_motion(event):
                     self.GUIUtil.draw_black_rec()
-                    self.GUIUtil.draw_player_coin(self.players[turn].id, event)
+                    self.GUIUtil.draw_player_coin(self.players[turn].p_id, event)
                 self.GUIUtil.update()
 
                 if self.GUIUtil.is_mouse_down(event):
@@ -299,11 +299,11 @@ class ConnectNGame:
                         col = self.GUIUtil.get_col(event)
 
                     if self.is_valid_move(col):
-                        row = self.make_move(col, self.players[turn].id)
+                        row = self.make_move(col, self.players[turn].p_id)
                         if self.is_winning_move(row, col):
                             self.winner = self.players[turn]
                             self.GUIUtil.blit(
-                                " {} Wins!!".format(self.winner.name), self.winner.id
+                                " {} Wins!!".format(self.winner.name), self.winner.p_id
                             )
                             self.GUIUtil.draw(self.board)
                             self.GUIUtil.wait()

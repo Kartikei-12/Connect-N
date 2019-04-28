@@ -23,7 +23,7 @@ def getVersion(file):
 
 def recordGame(game):
     """Simple method to record games using loguru module by https://pypi.org/project/loguru/
-    
+
     Args:
         game (ConnectNGame): Game object"""
     format_ = "<green>{time:DD-MM-YYYY at HH:mm:ss}</green>: <level>{message}</level>"

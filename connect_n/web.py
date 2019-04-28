@@ -49,15 +49,15 @@ class WebUtility:
         # pygame.draw.rect(self.screen, BLACK, (0, 0, self.width, SQUARESIZE))
         pass
 
-    def draw_player_coin(self, id, event):
+    def draw_player_coin(self, p_id, event):
         """Draw player coin
         
         Args:
-            id (int): Player ID
+            p_id (int): Player ID
             event (pygame.event): Event of motion of coin.
         """
         # pygame.draw.circle(
-        #     self.screen, C_LIST[id], (event.pos[0], int(SQUARESIZE / 2)), RADIUS
+        #     self.screen, C_LIST[p_id], (event.pos[0], int(SQUARESIZE / 2)), RADIUS
         # )
         pass
 
@@ -72,14 +72,14 @@ class WebUtility:
         # return int(math.floor(event.pos[0] / SQUARESIZE))
         pass
 
-    def blit(self, msg, id):
+    def blit(self, msg, p_id):
         """Finising game.
         
         Args:
             msg (str): Message to display
-            id (int): Winnig player id"""
+            p_id (int): Winnig player p_id"""
         # size = int((self.num_rows * SQUARESIZE * 1.5) / len(msg))
-        # label = pygame.font.SysFont("monospace", size).render(msg, 1, C_LIST[id])
+        # label = pygame.font.SysFont("monospace", size).render(msg, 1, C_LIST[p_id])
         # self.screen.blit(label, (40, 10))
         pass
 
@@ -119,7 +119,7 @@ class WebUtility:
 
     def draw(self, board):
         """Draw basic board for the game.
-        
+
         Args:
             board (numpy.ndarray): 2-D numpy array representing the board"""
         # self.screen.fill(BLUE, (0, SQUARESIZE, self.width, self.height))

@@ -14,9 +14,9 @@ class AI:
         num_rows (int): Number of rows
         num_col (int): Number of columns"""
 
-    def __init__(self, game):
+    def __init__(self, game, p_id=1):
         """Instantiate Method"""
-        self.id = id
+        self.p_id = p_id
         self.name = "AI"
 
         self.game = game
@@ -34,9 +34,9 @@ class AI:
         best_move = 0
         for col in valid_loction:
             temp_board = self.game.board.copy()
-            self.game.make_move(col, self.id, temp_board)
-            if max_score < self.score(temp_board, self.id):
-                max_score = self.score(temp_board, self.id)
+            self.game.make_move(col, self.p_id, temp_board)
+            if max_score < self.score(temp_board, self.p_id):
+                max_score = self.score(temp_board, self.p_id)
                 best_move = col
             del self.game.sequence[-1]
         return best_move
@@ -120,4 +120,4 @@ class AI:
 
     def __str__(self):
         """String representation."""
-        return "<class 'AI'> {}".format(self.id)
+        return "<class 'AI'> {}".format(self.p_id)

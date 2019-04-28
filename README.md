@@ -1,9 +1,7 @@
 # Connect-N
 
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
-
 [![Build Status](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)](https://travis-ci.org/Kartikei-12/Connect-N)
-
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a053ff3c19247958b88183242723d23)](https://www.codacy.com/app/Kartikei-12/Connect-N?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kartikei-12/Connect-N&amp;utm_campaign=Badge_Grade)
 <hr>
 
@@ -81,8 +79,7 @@ For simple example run main.py as `python main.py` on windows and `python3 main.
 
 ## TODO
 
-*  Implement score method in ai.py
-*  Make AI actually work.
+*  Create web interface.
 
 ## Documentation
 
@@ -106,8 +103,8 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-28 11:28:43</p>
-                <p class='attribute'><strong>Duration: </strong>1.30 s</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-28 11:45:52</p>
+                <p class='attribute'><strong>Duration: </strong>1.25 s</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 14, Pass: 14</p>
             </div>
         </div>
@@ -164,7 +161,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 0 ms
+                                Total: 5, Pass: 5 -- Duration: 4 ms
                             </td>
                         </tr>
                     </tbody>
@@ -256,7 +253,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 9, Pass: 9 -- Duration: 1.30 s
+                                Total: 9, Pass: 9 -- Duration: 1.24 s
                             </td>
                         </tr>
                     </tbody>

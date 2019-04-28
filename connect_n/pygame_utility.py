@@ -11,7 +11,11 @@ from env import ROWS, COLUMNS
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
 COLOR = {"RED": (255, 0, 0), "YELLOW": (255, 255, 0), "GREEN": (0, 255, 0)}
-C_LIST = [BLACK, COLOR["RED"], COLOR["YELLOW"], COLOR["GREEN"]]
+# C_LIST = [BLACK, COLOR["RED"], COLOR["YELLOW"], COLOR["GREEN"]]
+C_LIST = [BLACK]
+for key, value in COLOR.items():
+    C_LIST.append(value)
+
 
 # Some constants
 SQUARESIZE = 100
@@ -51,15 +55,15 @@ class PygameUtility:
         """Draw empty rectangles."""
         pygame.draw.rect(self.screen, BLACK, (0, 0, self.width, SQUARESIZE))
 
-    def draw_player_coin(self, id, event):
+    def draw_player_coin(self, p_id, event):
         """Draw player coin
         
         Args:
-            id (int): Player ID
+            p_id (int): Player ID
             event (pygame.event): Event of motion of coin.
         """
         pygame.draw.circle(
-            self.screen, C_LIST[id], (event.pos[0], int(SQUARESIZE / 2)), RADIUS
+            self.screen, C_LIST[p_id], (event.pos[0], int(SQUARESIZE / 2)), RADIUS
         )
 
     def get_col(self, event):
@@ -72,14 +76,14 @@ class PygameUtility:
             int : Column in ehich coin is droped"""
         return int(math.floor(event.pos[0] / SQUARESIZE))
 
-    def blit(self, msg, id):
+    def blit(self, msg, p_id):
         """Finising game.
         
         Args:
             msg (str): Message to display
-            id (int): Winnig player id"""
+            p_id (int): Winnig player p_id"""
         size = int((self.num_rows * SQUARESIZE * 1.5) / len(msg))
-        label = pygame.font.SysFont("monospace", size).render(msg, 1, C_LIST[id])
+        label = pygame.font.SysFont("monospace", size).render(msg, 1, C_LIST[p_id])
         self.screen.blit(label, (40, 10))
 
     def wait(self):
@@ -113,7 +117,7 @@ class PygameUtility:
 
     def draw(self, board):
         """Draw basic board for the game.
-        
+
         Args:
             board (numpy.ndarray): 2-D numpy array representing the board"""
         self.screen.fill(BLUE, (0, SQUARESIZE, self.width, self.height))

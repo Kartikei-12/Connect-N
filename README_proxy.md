@@ -1,9 +1,7 @@
 # Connect-N
 
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
-
 [![Build Status](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)](https://travis-ci.org/Kartikei-12/Connect-N)
-
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a053ff3c19247958b88183242723d23)](https://www.codacy.com/app/Kartikei-12/Connect-N?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kartikei-12/Connect-N&amp;utm_campaign=Badge_Grade)
 <hr>
 
@@ -81,8 +79,7 @@ For simple example run main.py as `python main.py` on windows and `python3 main.
 
 ## TODO
 
-*  Implement score method in ai.py
-*  Make AI actually work.
+*  Create web interface.
 
 ## Documentation
 

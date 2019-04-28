@@ -81,10 +81,10 @@ class ConnectNTests(unittest.TestCase):
         """Testing make move method"""
         p = Player("A")
         self.game.add_player(p)
-        self.assertEqual(self.game.make_move(0, p.id), 0)
+        self.assertEqual(self.game.make_move(0, p.p_id), 0)
         p = Player("B")
         self.game.add_player(p)
-        self.assertEqual(self.game.make_move(0, p.id), 1)
+        self.assertEqual(self.game.make_move(0, p.p_id), 1)
 
     def test_is_valid_move(self):
         """Testing is_valid_move"""

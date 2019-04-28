@@ -23,7 +23,7 @@ class Player:
     def __init__(self, name=""):
         """Instantiate method"""
         self.name = name
-        self.id = next(self._ids)
+        self.p_id = next(self._ids)
 
     def get_move(self):
         """Simple method to ask for player move"""
@@ -38,4 +38,4 @@ class Player:
 
     def __str__(self):
         """String representation of class object"""
-        return "<class 'Player'> {0} {1} ".format(self.id, self.name)
+        return "<class 'Player'> {0} {1} ".format(self.p_id, self.name)

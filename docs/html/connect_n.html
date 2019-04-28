@@ -41,7 +41,7 @@
 <p>File defining AI for the Connect-N Game</p>
 <dl class="class">
 <dt id="connect_n.ai.AI">
-<em class="property">class </em><code class="descclassname">connect_n.ai.</code><code class="descname">AI</code><span class="sig-paren">(</span><em>game</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">connect_n.ai.</code><code class="descname">AI</code><span class="sig-paren">(</span><em>game</em>, <em>p_id=1</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>class representing AI in the game
 :param n: Number of coins required in a line to win.
@@ -193,13 +193,13 @@ and vice versa.</p>
 
 <dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.make_move">
-<code class="descname">make_move</code><span class="sig-paren">(</span><em>col</em>, <em>id</em>, <em>board=None</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.make_move" title="Permalink to this definition">¶</a></dt>
+<code class="descname">make_move</code><span class="sig-paren">(</span><em>col</em>, <em>p_id</em>, <em>board=None</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.make_move" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method to make move, returns row in which move was made</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>col</strong> (<em>int</em>) – Column to insert coin in</p></li>
-<li><p><strong>id</strong> (<em>int</em>) – Id of player making the move</p></li>
+<li><p><strong>p_id</strong> (<em>int</em>) – Id of player making the move</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -303,13 +303,13 @@ Useful for trainning of AI.</p>
 </dl>
 <dl class="method">
 <dt id="connect_n.pygame_utility.PygameUtility.blit">
-<code class="descname">blit</code><span class="sig-paren">(</span><em>msg</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.blit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">blit</code><span class="sig-paren">(</span><em>msg</em>, <em>p_id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.blit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finising game.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>msg</strong> (<em>str</em>) – Message to display</p></li>
-<li><p><strong>id</strong> (<em>int</em>) – Winnig player id</p></li>
+<li><p><strong>p_id</strong> (<em>int</em>) – Winnig player p_id</p></li>
 </ul>
 </dd>
 </dl>
@@ -334,12 +334,12 @@ Useful for trainning of AI.</p>
 
 <dl class="method">
 <dt id="connect_n.pygame_utility.PygameUtility.draw_player_coin">
-<code class="descname">draw_player_coin</code><span class="sig-paren">(</span><em>id</em>, <em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_player_coin" title="Permalink to this definition">¶</a></dt>
+<code class="descname">draw_player_coin</code><span class="sig-paren">(</span><em>p_id</em>, <em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.draw_player_coin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw player coin</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>id</strong> (<em>int</em>) – Player ID</p></li>
+<li><p><strong>p_id</strong> (<em>int</em>) – Player ID</p></li>
 <li><p><strong>event</strong> (<em>pygame.event</em>) – Event of motion of coin.</p></li>
 </ul>
 </dd>
