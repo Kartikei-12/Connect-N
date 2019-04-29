@@ -41,7 +41,11 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 
 ## Usage
 
-For simple example run main.py as `python main.py` on windows and `python3 main.py` on Linux/Ubuntu, after activating Virtual environment. 
+For simple example,
+
+Run main.py as `python main.py` on **windows** with virtual environment(`./venv/Scripts/activate`).
+
+Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`source /venv/Scripts/activate`).
 
 ## System Requirements
 

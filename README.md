@@ -41,7 +41,11 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 
 ## Usage
 
-For simple example run main.py as `python main.py` on windows and `python3 main.py` on Linux/Ubuntu, after activating Virtual environment. 
+For simple example,
+
+Run main.py as `python main.py` on **windows** with virtual environment(`./venv/Scripts/activate`).
+
+Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`source /venv/Scripts/activate`).
 
 ## System Requirements
 
@@ -105,8 +109,8 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-28 16:10:55</p>
-                <p class='attribute'><strong>Duration: </strong>18 ms</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-29 13:45:23</p>
+                <p class='attribute'><strong>Duration: </strong>14 ms</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 14, Pass: 14</p>
             </div>
         </div>
@@ -163,7 +167,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 9 ms
+                                Total: 5, Pass: 5 -- Duration: 7 ms
                             </td>
                         </tr>
                     </tbody>
@@ -255,7 +259,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 9, Pass: 9 -- Duration: 9 ms
+                                Total: 9, Pass: 9 -- Duration: 7 ms
                             </td>
                         </tr>
                     </tbody>

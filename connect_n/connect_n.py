@@ -14,7 +14,6 @@ __author__ = "Kartikei Mittal"
 
 # Python module(s)
 import os
-import sys
 import random
 import numpy as np
 
@@ -255,6 +254,7 @@ class ConnectNGame:
         """Method to play the game in command line."""
         turn = random.randint(0, len(self.players) - 1)
         while True:
+            self.print_board()
             col = self.players[turn].get_move()
             if col == -1:
                 continue
@@ -263,11 +263,10 @@ class ConnectNGame:
                 if self.is_winning_move(row, col):
                     self.winner = self.players[turn]
                     print("Winner: ", self.winner.name)
-                    return
+                    break
             else:
                 print("Invalid move column already filled, aborting turn!")
             turn = (turn + 1) % len(self.players)
-            self.print_board()
         self.record_game()
 
     def graphic(self):
@@ -279,37 +278,14 @@ class ConnectNGame:
             print("GUI currently only support 3 players.")
             self.cmd_line()
             return
-        turn = random.randint(0, len(self.players) - 1)
-        while True:
-            self.GUIUtil.draw(self.board)
-            for event in self.GUIUtil.get_event():
-                if self.GUIUtil.is_quit_event(event):
-                    sys.exit()
-
-                if self.GUIUtil.is_mouse_motion(event):
-                    self.GUIUtil.draw_black_rec()
-                    self.GUIUtil.draw_player_coin(self.players[turn].p_id, event)
-                self.GUIUtil.update()
-
-                if self.GUIUtil.is_mouse_down(event):
-                    self.GUIUtil.draw_black_rec()
-                    if self.players[turn].name == "AI":
-                        col = self.players[turn].get_move()
-                    else:
-                        col = self.GUIUtil.get_col(event)
-
-                    if self.is_valid_move(col):
-                        row = self.make_move(col, self.players[turn].p_id)
-                        if self.is_winning_move(row, col):
-                            self.winner = self.players[turn]
-                            self.GUIUtil.blit(
-                                " {} Wins!!".format(self.winner.name), self.winner.p_id
-                            )
-                            self.GUIUtil.draw(self.board)
-                            self.GUIUtil.wait()
-                            self.record_game()
-                            return
-                    turn = (turn + 1) % len(self.players)
+        self.winner = self.GUIUtil.play(
+            self.board,
+            self.players,
+            self.is_valid_move,
+            self.make_move,
+            self.is_winning_move,
+        )
+        self.record_game()
 
     def __str__(self):
         """Representation format:

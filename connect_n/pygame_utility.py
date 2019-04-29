@@ -5,6 +5,7 @@ Utility class for pygame.
 # Python module(s)
 import math
 import pygame
+import random
 from env import ROWS, COLUMNS
 
 # Colours
@@ -46,10 +47,6 @@ class PygameUtility:
             raise EnvironmentError("Vedio device not found.")
         pygame.display.update()
 
-    def update(self):
-        """Update Screen"""
-        pygame.display.update()
-
     def draw_black_rec(self):
         """Draw empty rectangles."""
         pygame.draw.rect(self.screen, BLACK, (0, 0, self.width, SQUARESIZE))
@@ -65,16 +62,6 @@ class PygameUtility:
             self.screen, C_LIST[p_id], (event.pos[0], int(SQUARESIZE / 2)), RADIUS
         )
 
-    def get_col(self, event):
-        """Column in which coin was droped.
-
-        Args:
-            event (pygame.event): Event of dropiung of coin.
-
-        Returns:
-            int : Column in ehich coin is droped"""
-        return int(math.floor(event.pos[0] / SQUARESIZE))
-
     def blit(self, msg, p_id):
         """Finising game.
 
@@ -84,35 +71,6 @@ class PygameUtility:
         size = int((self.num_rows * SQUARESIZE * 1.5) / len(msg))
         label = pygame.font.SysFont("monospace", size).render(msg, 1, C_LIST[p_id])
         self.screen.blit(label, (40, 10))
-
-    def wait(self):
-        """Wait mthod for pygame."""
-        pygame.time.wait(3000)
-
-    def get_event(self):
-        """Get list of events."""
-        return pygame.event.get()
-
-    def is_quit_event(self, event):
-        """Checks QUIT event
-
-        Args:
-            event (pygame.event): Event."""
-        return event.type == pygame.QUIT
-
-    def is_mouse_motion(self, event):
-        """Checks MOUSE MOTION event
-
-        Args:
-            event (pygame.event): Event."""
-        return event.type == pygame.MOUSEMOTION
-
-    def is_mouse_down(self, event):
-        """Checks MOUSE CLICK event
-
-        Args:
-            event (pygame.event): Event."""
-        return event.type == pygame.MOUSEBUTTONDOWN
 
     def draw(self, board):
         """Draw basic board for the game.
@@ -132,3 +90,42 @@ class PygameUtility:
                     RADIUS,
                 )
         pygame.display.update()
+
+    def play(self, board, players, is_valid_move, make_move, is_winning_move):
+        """Method to play the game in GUI using pygame
+
+        Note:
+            When playing with AI a mouse click is required to trigger AI move
+            
+        Args:
+            """
+        turn = random.randint(0, len(players) - 1)
+        while True:
+            self.draw(board)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return None
+
+                if event.type == pygame.MOUSEMOTION:
+                    self.draw_black_rec()
+                    self.draw_player_coin(players[turn].p_id, event)
+                pygame.display.update()
+
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    self.draw_black_rec()
+                    if players[turn].name == "AI":
+                        col = players[turn].get_move()
+                    else:
+                        col = int(math.floor(event.pos[0] / SQUARESIZE))
+
+                    if is_valid_move(col):
+                        row = make_move(col, players[turn].p_id)
+                        if is_winning_move(row, col):
+                            self.blit(
+                                " {} Wins!!".format(players[turn].name),
+                                players[turn].p_id,
+                            )
+                            self.draw(board)
+                            pygame.time.wait(3000)
+                            return players[turn]
+                    turn = (turn + 1) % len(players)

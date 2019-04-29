@@ -347,71 +347,14 @@ Useful for trainning of AI.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.get_col">
-<code class="descname">get_col</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.get_col" title="Permalink to this definition">¶</a></dt>
-<dd><p>Column in which coin was droped.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>event</strong> (<em>pygame.event</em>) – Event of dropiung of coin.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Column in ehich coin is droped</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.get_event">
-<code class="descname">get_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.get_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get list of events.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.is_mouse_down">
-<code class="descname">is_mouse_down</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.is_mouse_down" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks MOUSE CLICK event</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>event</strong> (<em>pygame.event</em>) – Event.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.is_mouse_motion">
-<code class="descname">is_mouse_motion</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.is_mouse_motion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks MOUSE MOTION event</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>event</strong> (<em>pygame.event</em>) – Event.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.is_quit_event">
-<code class="descname">is_quit_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.is_quit_event" title="Permalink to this definition">¶</a></dt>
-<dd><p>Checks QUIT event</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>event</strong> (<em>pygame.event</em>) – Event.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.update">
-<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update Screen</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.pygame_utility.PygameUtility.wait">
-<code class="descname">wait</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.wait" title="Permalink to this definition">¶</a></dt>
-<dd><p>Wait mthod for pygame.</p>
+<dt id="connect_n.pygame_utility.PygameUtility.play">
+<code class="descname">play</code><span class="sig-paren">(</span><em>board</em>, <em>players</em>, <em>is_valid_move</em>, <em>make_move</em>, <em>is_winning_move</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.play" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to play the game in GUI using pygame</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When playing with AI a mouse click is required to trigger AI move</p>
+</div>
+<p>Args:</p>
 </dd></dl>
 
 </dd></dl>
@@ -448,17 +391,16 @@ Useful for trainning of AI.</p>
 </div>
 <div class="section" id="module-connect_n">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-connect_n" title="Permalink to this headline">¶</a></h2>
-<p>&#64;author: Kartikei Mittal
-__init__.py file connect_n module</p>
+<p>&#64;author: Kartikei Mittal</p>
+<p>__init__.py file connect_n module</p>
 <p>Tasks:
-Increment Version Number
-<a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
+*  Increment Version Number</p>
+<p><a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
 <dl class="data">
 <dt id="connect_n.FILE_PATH">
 <code class="descclassname">connect_n.</code><code class="descname">FILE_PATH</code><em class="property"> = 'D:\\Coading\\MyProjects\\Connect-N\\connect_n/version.txt'</em><a class="headerlink" href="#connect_n.FILE_PATH" title="Permalink to this definition">¶</a></dt>
 <dd><p>Version Maintainance.
-Every time anything from connect_m module is imported it’s version number
-in file version.txt is incremented by one.</p>
+Every time anything from connect_m module is imported it’s version number in file version.txt is incremented by one</p>
 </dd></dl>
 
 </div>
