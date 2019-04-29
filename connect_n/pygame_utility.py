@@ -96,9 +96,13 @@ class PygameUtility:
 
         Note:
             When playing with AI a mouse click is required to trigger AI move
-            
+
         Args:
-            """
+            board (numpy.ndarray): Game board
+            players (list): List of players
+            is_valid_move (function): Move validator
+            make_move (function): Makes move
+            is_winning_move (function): Ckeck for winning move"""
         turn = random.randint(0, len(players) - 1)
         while True:
             self.draw(board)
