@@ -94,9 +94,37 @@ class ConnectNTests(unittest.TestCase):
         self.game.board = [[1, 0, 0], [1, 0, 0], [1, 0, 0]]
         self.assertFalse(self.game.is_valid_move(0))
 
+    def test_play(self):
+        """Testing command line play method"""
+        game = ConnectNGame(graphic=False, ai=True, record=True)
+        game.players.append(AI(game, 2))
+        game.play()
+        self.assertEqual(game.winner.name, "AI")
+        game.reset()
+        del game
+
+
+class PygameUtilityTests(unittest.TestCase):
+    # Tests for project Connect-N.
+    def setUp(self):
+        """setUp"""
+        self.game = ConnectNGame(graphic=True, ai=True)
+
+    def tearDown(self):
+        """tearDown"""
+        self.game.reset()
+        del self.game
+
+    def test_play(self):
+        """Testing graphic play method"""
+        self.game.players.append(AI(self.game, 2))
+        self.game.play()
+        self.assertEqual(self.game.winner.name, "AI")
+
 
 class AITests(unittest.TestCase):
-    # Tests for project Connect-N.
+    """Tests for project Connect-N"""
+
     def setUp(self):
         """setUp"""
         self.ai = AI(ConnectNGame(ai=False, graphic=False))

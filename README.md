@@ -12,7 +12,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 ## Project Description
 
 *  This repositry contains a simple game made in **python** similar to **Connect 4**.
-*  A bit modified to work with any Connect length for any board size.
+*  A bit modified to work with any connect length for any board size.
 *  Currently supports for variable number of players on a two dimentional board.
 *  Only **three** players supported in GUI mode.
 *  For more players add new colours `COLOR` variable in connect_n/pygame_utility.py file.
@@ -50,7 +50,7 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
 ## System Requirements
 
 *  [Python 3](https://www.python.org/)
-*  [Pip](https://pypi.org/) usually pre-installed with python.
+*  [Pip](https://pypi.org/) usually pre-installed with python, check with `pip3 --version`.
 *  Python module [PyGame](https://pypi.org/project/pygame/) installable via pip.
 
 ## Directory Structure
@@ -93,7 +93,7 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
 ## Limitation
 
 GUI **NOT** working inside docker, because no support for pygame inside Docker.
-**Workaround**: Code automatically switches to command line interface without raising error connect_n/connect_n.py: line 99. 
+**Workaround**: Code automatically switches to command line interface without raising error connect_n/connect_n.py. 
 
 ## Contributer(s)
 
@@ -109,9 +109,9 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-29 14:04:16</p>
-                <p class='attribute'><strong>Duration: </strong>9 ms</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 14, Pass: 14</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-30 15:11:19</p>
+                <p class='attribute'><strong>Duration: </strong>17.69 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 16, Pass: 16</p>
             </div>
         </div>
         <div class="row">
@@ -167,7 +167,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 5 ms
+                                Total: 5, Pass: 5 -- Duration: 7 ms
                             </td>
                         </tr>
                     </tbody>
@@ -226,6 +226,176 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                             </td>
                         </tr>
                         <tr class='success'>
+                            <td class="col-xs-10">test_play</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>[[0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 1 0 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 2 1 0 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 1 0 0 0]
+ [1 0 2 1 0 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 1 0 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 1 1 0 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 2 0 0 0]
+ [2 0 1 1 0 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 1 2 0 0 0]
+ [2 0 1 1 0 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 0 2 0 0 0]
+ [1 0 1 2 0 0 0]
+ [2 0 1 1 0 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 1 2 0 0 0]
+ [2 0 1 1 0 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 1 2 0 0 0]
+ [2 0 1 1 2 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 1 2 1 0 0]
+ [2 0 1 1 2 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 1 2 2 0 0]
+ [1 0 1 2 1 0 0]
+ [2 0 1 1 2 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 0 1 0 0 0]
+ [2 0 1 2 2 0 0]
+ [1 0 1 2 1 0 0]
+ [2 0 1 1 2 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 2 1 0 0 0]
+ [2 0 1 2 2 0 0]
+ [1 0 1 2 1 0 0]
+ [2 0 1 1 2 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 2 1 1 0 0]
+ [2 0 1 2 2 0 0]
+ [1 0 1 2 1 0 0]
+ [2 0 1 1 2 0 0]
+ [1 0 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 2 1 1 0 0]
+ [2 0 1 2 2 0 0]
+ [1 0 1 2 1 0 0]
+ [2 0 1 1 2 0 0]
+ [1 2 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 2 1 1 0 0]
+ [2 0 1 2 2 0 0]
+ [1 0 1 2 1 0 0]
+ [2 1 1 1 2 0 0]
+ [1 2 2 1 2 0 0]]
+[[2 0 0 0 0 0 0]
+ [1 0 2 1 1 0 0]
+ [2 0 1 2 2 0 0]
+ [1 2 1 2 1 0 0]
+ [2 1 1 1 2 0 0]
+ [1 2 2 1 2 0 0]]
+Winner:  AI
+[32m30-04-2019 at 15:11:19[0m: [1m
+Winner: <class 'AI'> 1
+        Players: [<connect_n.ai.AI object at 0x04E91B30>, <connect_n.ai.AI object at 0x04E91BB0>]
+        Game Sequence: [0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]
+
+[0m
+</p>
+                            </td>
+                        </tr>
+                        <tr class='success'>
                             <td class="col-xs-10">test_positive_digonal_winning_move</td>
                             <td class="col-xs-1">
                                 <span class="label label-success" style="display:block;width:40px;">Pass</span>
@@ -259,7 +429,35 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 9, Pass: 9 -- Duration: 3 ms
+                                Total: 10, Pass: 10 -- Duration: 442 ms
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>__main__.PygameUtilityTests</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_play</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 1, Pass: 1 -- Duration: 17.24 s
                             </td>
                         </tr>
                     </tbody>

@@ -166,7 +166,8 @@ class ConnectNGame:
         """
         if board is None:
             board = self.board
-        self.sequence.append(col)
+        else:
+            self.sequence.append(col)
         for row in range(self.rows):
             if board[row][col] == 0.0:
                 board[row][col] = p_id
@@ -180,8 +181,6 @@ class ConnectNGame:
 
     def is_valid_move(self, col):
         """Check validity of move, also appends move to 'sequence' list.
-        Note:
-            -1 is appended to sequence if in valid move
 
         Args:
             col (int): Checks if move can be made in this column
@@ -189,7 +188,7 @@ class ConnectNGame:
         Returns:
             bool True if valid move False otherwise
         """
-        if col >= self.cols or self.board[self.rows - 1][col] != 0:
+        if col < 0 or col >= self.cols or self.board[self.rows - 1][col] != 0:
             return False
         return True
 
@@ -256,8 +255,6 @@ class ConnectNGame:
         while True:
             self.print_board()
             col = self.players[turn].get_move()
-            if col == -1:
-                continue
             if self.is_valid_move(col):
                 row = self.make_move(col, self.players[turn].p_id)
                 if self.is_winning_move(row, col):

@@ -159,8 +159,7 @@
 <dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.is_valid_move">
 <code class="descname">is_valid_move</code><span class="sig-paren">(</span><em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.is_valid_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check validity of move, also appends move to ‘sequence’ list.
-.. note:: -1 is appended to sequence if in valid move</p>
+<dd><p>Check validity of move, also appends move to ‘sequence’ list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – Checks if move can be made in this column</p>
@@ -283,7 +282,11 @@ Useful for trainning of AI.</p>
 </div>
 <div class="section" id="module-connect_n.pygame_utility">
 <span id="connect-n-pygame-utility-module"></span><h2>connect_n.pygame_utility module<a class="headerlink" href="#module-connect_n.pygame_utility" title="Permalink to this headline">¶</a></h2>
-<p>Utility class for pygame.</p>
+<p>Utility class for pygame</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this files pylint configured to ignore ‘no member’ because of C implementation of several pygame members like constants MOUSEBUTTONDOWN and methods like init()</p>
+</div>
 <dl class="class">
 <dt id="connect_n.pygame_utility.PygameUtility">
 <em class="property">class </em><code class="descclassname">connect_n.pygame_utility.</code><code class="descname">PygameUtility</code><span class="sig-paren">(</span><em>r=6</em>, <em>c=7</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility" title="Permalink to this definition">¶</a></dt>
@@ -350,10 +353,6 @@ Useful for trainning of AI.</p>
 <dt id="connect_n.pygame_utility.PygameUtility.play">
 <code class="descname">play</code><span class="sig-paren">(</span><em>board</em>, <em>players</em>, <em>is_valid_move</em>, <em>make_move</em>, <em>is_winning_move</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.pygame_utility.PygameUtility.play" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method to play the game in GUI using pygame</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When playing with AI a mouse click is required to trigger AI move</p>
-</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -406,12 +405,6 @@ Useful for trainning of AI.</p>
 <p>Tasks:
 *  Increment Version Number</p>
 <p><a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
-<dl class="data">
-<dt id="connect_n.FILE_PATH">
-<code class="descclassname">connect_n.</code><code class="descname">FILE_PATH</code><em class="property"> = 'D:\\Coading\\MyProjects\\Connect-N\\connect_n/version.txt'</em><a class="headerlink" href="#connect_n.FILE_PATH" title="Permalink to this definition">¶</a></dt>
-<dd><p>Version Maintainance, Every time anything from connect_m module is imported it’s version number in file version.txt is incremented by one</p>
-</dd></dl>
-
 </div>
 </div>
 

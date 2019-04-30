@@ -1,4 +1,6 @@
 numpy
+codecov
+coverage
 loguru
 pygame
 html-testRunner

@@ -2,6 +2,8 @@
 
 File defining AI for the Connect-N Game
 """
+# Python module(s)
+import random
 
 # User module(s)
 from env import UNIT_SCORE
@@ -29,16 +31,16 @@ class AI:
         Note:
             Currently no actual AI or machine learing implementation, just random guesses."""
         valid_loction = self.game.get_valid_moves()
+        if len(valid_loction) == 0:
+            return -1
         max_score = -10 ** 8
-        # best_move = random.choice(valid_loction)
-        best_move = 0
+        best_move = random.choice(valid_loction)
         for col in valid_loction:
             temp_board = self.game.board.copy()
             self.game.make_move(col, self.p_id, temp_board)
             if max_score < self.score(temp_board, self.p_id):
                 max_score = self.score(temp_board, self.p_id)
                 best_move = col
-            del self.game.sequence[-1]
         return best_move
 
     def string_score(self, string, pid):

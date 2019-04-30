@@ -1,21 +1,26 @@
-"""
-Utility class for pygame.
-"""
+"""Utility class for pygame
+
+Note:
+    In this files pylint configured to ignore 'no member' because of C implementation of several pygame members like constants MOUSEBUTTONDOWN and methods like init()"""
 
 # Python module(s)
 import math
 import pygame
 import random
+
+# Environment Variables
 from env import ROWS, COLUMNS
+
+# Disabling pylint because of implementation of pygame in C
+# pylint: disable=no-member
 
 # Colours
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
 COLOR = {"RED": (255, 0, 0), "YELLOW": (255, 255, 0), "GREEN": (0, 255, 0)}
-C_LIST = [BLACK]
-for key, value in COLOR.items():
-    C_LIST.append(value)
 
+C_LIST = list(value for key, value in COLOR.items())
+C_LIST.insert(0, BLACK)
 
 # Some constants
 SQUARESIZE = 100
@@ -94,9 +99,6 @@ class PygameUtility:
     def play(self, board, players, is_valid_move, make_move, is_winning_move):
         """Method to play the game in GUI using pygame
 
-        Note:
-            When playing with AI a mouse click is required to trigger AI move
-
         Args:
             board (numpy.ndarray): Game board
             players (list): List of players
@@ -105,31 +107,31 @@ class PygameUtility:
             is_winning_move (function): Ckeck for winning move"""
         turn = random.randint(0, len(players) - 1)
         while True:
+            col = -1
             self.draw(board)
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    return None
-
-                if event.type == pygame.MOUSEMOTION:
-                    self.draw_black_rec()
-                    self.draw_player_coin(players[turn].p_id, event)
-                pygame.display.update()
-
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    self.draw_black_rec()
-                    if players[turn].name == "AI":
-                        col = players[turn].get_move()
-                    else:
+            if players[turn].name == "AI":
+                col = players[turn].get_move()
+                pygame.time.wait(500)
+            else:
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        return None
+                    if event.type == pygame.MOUSEMOTION:
+                        self.draw_black_rec()
+                        self.draw_player_coin(players[turn].p_id, event)
+                    pygame.display.update()
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        self.draw_black_rec()
                         col = int(math.floor(event.pos[0] / SQUARESIZE))
-
-                    if is_valid_move(col):
-                        row = make_move(col, players[turn].p_id)
-                        if is_winning_move(row, col):
-                            self.blit(
-                                " {} Wins!!".format(players[turn].name),
-                                players[turn].p_id,
-                            )
-                            self.draw(board)
-                            pygame.time.wait(3000)
-                            return players[turn]
-                    turn = (turn + 1) % len(players)
+            if is_valid_move(col):
+                row = make_move(col, players[turn].p_id)
+                if is_winning_move(row, col):
+                    self.blit(
+                        " {} Wins!!".format(players[turn].name), players[turn].p_id
+                    )
+                    self.draw(board)
+                    pygame.time.wait(3000)
+                    return players[turn]
+                turn = (turn + 1) % len(players)
+            elif players[turn].name == "AI":  # AI makes an invalid move
+                return None
