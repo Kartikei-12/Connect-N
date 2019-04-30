@@ -10,11 +10,9 @@ from env import UNIT_SCORE
 
 
 class AI:
-    """class representing AI in the game
+    """class defining AI for the game
     Args:
-        n (int): Number of coins required in a line to win.
-        num_rows (int): Number of rows
-        num_col (int): Number of columns"""
+        game (ConnectNGame): Game object"""
 
     def __init__(self, game, p_id=1):
         """Instantiate Method"""
@@ -29,11 +27,14 @@ class AI:
     def get_move(self):
         """Simple method to fetch AI move
         Note:
-            Currently no actual AI or machine learing implementation, just random guesses."""
+            Currently no actual AI or machine learing implementation, just random guesses
+
+        Returns:
+            int : Most optimal move (- 1 evan no proper move possible.)"""
         valid_loction = self.game.get_valid_moves()
         if len(valid_loction) == 0:
             return -1
-        max_score = -10 ** 8
+        max_score = -(10 ** 8)  # Really low number
         best_move = random.choice(valid_loction)
         for col in valid_loction:
             temp_board = self.game.board.copy()
@@ -48,7 +49,10 @@ class AI:
 
         Args:
             string (str): Input string
-            pid (int): ID of player"""
+            pid (int): ID of player
+
+        Returns:
+            int : Score of the given string"""
         if str(pid) not in string:
             return 0
         else:
@@ -63,28 +67,31 @@ class AI:
                     string[begin:end].count("0") == (self.n - j)
                     and string[begin:end].count(pid) == j
                 ):
-                    score += j ** 2 * UNIT_SCORE
+                    score += (j ** 2) * UNIT_SCORE
                     break
                 # Me and Someone else
                 if (
                     string[begin:end].count("0") != (self.n - j)
                     and string[begin:end].count(pid) == j
                 ):
-                    score += j ** 2 * UNIT_SCORE * (-1.5)
+                    score += (j ** 2) * UNIT_SCORE * (-1.5)
                     break
                 # Only Others
                 if (
                     string[begin:end].count("0") == (self.n - j)
                     and string[begin:end].count(pid) != j
                 ):
-                    score += j ** 2 * UNIT_SCORE * (1.5)
+                    score += (j ** 2) * UNIT_SCORE * (1.2)
                     break
         return score
 
     def score(self, board, pid):
         """Calculated Score of board for given player.
         Args:
-            pid (int): ID of player"""
+            pid (int): ID of player
+
+        Returns:
+            float : Score of the board for given pid"""
         score = 0
         # Horizontal
         for i in range(self.rows):

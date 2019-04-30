@@ -11,9 +11,6 @@ import random
 # Environment Variables
 from env import ROWS, COLUMNS
 
-# Disabling pylint because of implementation of pygame in C
-# pylint: disable=no-member
-
 # Colours
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
@@ -26,6 +23,9 @@ C_LIST.insert(0, BLACK)
 SQUARESIZE = 100
 RADIUS = int(SQUARESIZE / 2 - 5)
 
+# Disabling pylint because of implementation of pygame in C
+# pylint: disable=no-member
+
 
 class PygameUtility:
     """Utility class for pygame module
@@ -35,8 +35,7 @@ class PygameUtility:
 
     Args:
         r (int): Rows of game
-        c (int): Columns of game
-    """
+        c (int): Columns of game"""
 
     def __init__(self, r=ROWS, c=COLUMNS):
         """Instantiate Method"""
@@ -61,11 +60,7 @@ class PygameUtility:
 
         Args:
             p_id (int): Player ID
-            event (pygame.event): Event of motion of coin.
-        """
-        pygame.draw.circle(
-            self.screen, C_LIST[p_id], (event.pos[0], int(SQUARESIZE / 2)), RADIUS
-        )
+            event (pygame.event): Event of motion of coin."""
 
     def blit(self, msg, p_id):
         """Finising game.
@@ -107,7 +102,9 @@ class PygameUtility:
             is_winning_move (function): Ckeck for winning move"""
         turn = random.randint(0, len(players) - 1)
         while True:
-            col = -1
+            col = (
+                -1
+            )  # Resets col, so game only move forward when a player(AI of human) makes a valid move
             self.draw(board)
             if players[turn].name == "AI":
                 col = players[turn].get_move()
@@ -118,7 +115,12 @@ class PygameUtility:
                         return None
                     if event.type == pygame.MOUSEMOTION:
                         self.draw_black_rec()
-                        self.draw_player_coin(players[turn].p_id, event)
+                        pygame.draw.circle(
+                            self.screen,
+                            C_LIST[players[turn].p_id],
+                            (event.pos[0], int(SQUARESIZE / 2)),
+                            RADIUS,
+                        )
                     pygame.display.update()
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         self.draw_black_rec()

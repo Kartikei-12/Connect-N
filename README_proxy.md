@@ -3,6 +3,7 @@
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 [![Build Status](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)](https://travis-ci.org/Kartikei-12/Connect-N)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a053ff3c19247958b88183242723d23)](https://www.codacy.com/app/Kartikei-12/Connect-N?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kartikei-12/Connect-N&amp;utm_campaign=Badge_Grade)
+![Codecov](https://img.shields.io/codecov/c/github/Kartikei-12/Connect-N.svg)
 <hr>
 
 ## Introduction
@@ -61,7 +62,7 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
             doctrees/: doctrees for documentation
             html/: HTML source files dor documentation
             .nojekyll
-            /index.html
+            index.html
         connect_n/
             __init__.py
             ai.py
@@ -80,6 +81,7 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
         README_proxy.md
         requirements.txt
         .travis.yml
+        .coverage
         Dockerfile
 
 ## TODO
@@ -93,7 +95,7 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
 ## Limitation
 
 GUI **NOT** working inside docker, because no support for pygame inside Docker.
-**Workaround**: Code automatically switches to command line interface without raising error connect_n/connect_n.py. 
+**Workaround**: Code automatically switches to command line interface without raising error connect_n/connect_n.py.
 
 ## Contributer(s)
 

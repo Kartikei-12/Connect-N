@@ -3,6 +3,7 @@
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 [![Build Status](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)](https://travis-ci.org/Kartikei-12/Connect-N)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a053ff3c19247958b88183242723d23)](https://www.codacy.com/app/Kartikei-12/Connect-N?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kartikei-12/Connect-N&amp;utm_campaign=Badge_Grade)
+![Codecov](https://img.shields.io/codecov/c/github/Kartikei-12/Connect-N.svg)
 <hr>
 
 ## Introduction
@@ -61,7 +62,7 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
             doctrees/: doctrees for documentation
             html/: HTML source files dor documentation
             .nojekyll
-            /index.html
+            index.html
         connect_n/
             __init__.py
             ai.py
@@ -80,6 +81,7 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
         README_proxy.md
         requirements.txt
         .travis.yml
+        .coverage
         Dockerfile
 
 ## TODO
@@ -93,7 +95,7 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
 ## Limitation
 
 GUI **NOT** working inside docker, because no support for pygame inside Docker.
-**Workaround**: Code automatically switches to command line interface without raising error connect_n/connect_n.py. 
+**Workaround**: Code automatically switches to command line interface without raising error connect_n/connect_n.py.
 
 ## Contributer(s)
 
@@ -109,8 +111,8 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-30 15:44:13</p>
-                <p class='attribute'><strong>Duration: </strong>17.60 s</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-30 18:57:04</p>
+                <p class='attribute'><strong>Duration: </strong>20.79 s</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 16, Pass: 16</p>
             </div>
         </div>
@@ -167,7 +169,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 51 ms
+                                Total: 5, Pass: 5 -- Duration: 0 ms
                             </td>
                         </tr>
                     </tbody>
@@ -271,125 +273,161 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
  [2 0 0 0 0 0 0]
  [1 0 0 0 0 0 0]
  [2 0 0 0 0 0 0]]
-[[1 0 0 0 0 0 0]
+[[0 0 0 0 0 0 0]
  [2 0 0 0 0 0 0]
  [1 0 0 0 0 0 0]
  [2 0 0 0 0 0 0]
  [1 0 0 0 0 0 0]
- [2 0 0 0 0 0 0]]
-[[1 0 0 0 0 0 0]
+ [2 0 0 1 0 0 0]]
+[[0 0 0 0 0 0 0]
  [2 0 0 0 0 0 0]
  [1 0 0 0 0 0 0]
  [2 0 0 0 0 0 0]
  [1 0 0 0 0 0 0]
- [2 0 0 2 0 0 0]]
-[[1 0 0 0 0 0 0]
+ [2 0 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
  [2 0 0 0 0 0 0]
  [1 0 0 0 0 0 0]
- [2 0 0 0 0 0 0]
- [1 0 0 0 0 0 0]
- [2 0 1 2 0 0 0]]
-[[1 0 0 0 0 0 0]
- [2 0 0 0 0 0 0]
- [1 0 0 0 0 0 0]
- [2 0 0 0 0 0 0]
- [1 0 0 2 0 0 0]
- [2 0 1 2 0 0 0]]
-[[1 0 0 0 0 0 0]
- [2 0 0 0 0 0 0]
- [1 0 0 0 0 0 0]
- [2 0 0 0 0 0 0]
- [1 0 0 2 0 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
- [2 0 0 0 0 0 0]
- [1 0 0 0 0 0 0]
- [2 0 0 0 0 0 0]
- [1 0 2 2 0 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
- [2 0 0 0 0 0 0]
- [1 0 0 0 0 0 0]
- [2 0 0 1 0 0 0]
- [1 0 2 2 0 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
- [2 0 0 0 0 0 0]
- [1 0 0 0 0 0 0]
- [2 0 2 1 0 0 0]
- [1 0 2 2 0 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
  [2 0 0 0 0 0 0]
  [1 0 0 1 0 0 0]
- [2 0 2 1 0 0 0]
- [1 0 2 2 0 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
+ [2 0 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
  [2 0 0 0 0 0 0]
  [1 0 2 1 0 0 0]
- [2 0 2 1 0 0 0]
- [1 0 2 2 0 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
+ [2 0 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
  [2 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
+ [2 0 1 0 0 0 0]
  [1 0 2 1 0 0 0]
- [2 0 2 1 0 0 0]
- [1 0 2 2 1 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
+ [2 0 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
  [2 0 0 0 0 0 0]
- [1 0 2 1 0 0 0]
- [2 0 2 1 2 0 0]
- [1 0 2 2 1 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
- [2 0 0 0 0 0 0]
- [1 0 2 1 1 0 0]
- [2 0 2 1 2 0 0]
- [1 0 2 2 1 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
- [2 0 0 2 0 0 0]
- [1 0 2 1 1 0 0]
- [2 0 2 1 2 0 0]
- [1 0 2 2 1 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
+ [1 0 0 0 0 0 0]
  [2 0 1 2 0 0 0]
- [1 0 2 1 1 0 0]
- [2 0 2 1 2 0 0]
- [1 0 2 2 1 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
- [2 0 1 2 2 0 0]
- [1 0 2 1 1 0 0]
- [2 0 2 1 2 0 0]
- [1 0 2 2 1 0 0]
- [2 0 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
- [2 0 1 2 2 0 0]
- [1 0 2 1 1 0 0]
- [2 0 2 1 2 0 0]
- [1 0 2 2 1 0 0]
- [2 1 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
- [2 0 1 2 2 0 0]
- [1 0 2 1 1 0 0]
- [2 0 2 1 2 0 0]
- [1 2 2 2 1 0 0]
- [2 1 1 2 1 0 0]]
-[[1 0 0 0 0 0 0]
- [2 0 1 2 2 0 0]
- [1 0 2 1 1 0 0]
- [2 1 2 1 2 0 0]
- [1 2 2 2 1 0 0]
- [2 1 1 2 1 0 0]]
+ [1 0 2 1 0 0 0]
+ [2 0 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 1 0 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 2 1 0 0 0]
+ [2 0 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 0 0 0 0 0 0]
+ [1 0 1 2 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 2 1 0 0 0]
+ [2 0 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 0 1 0 0 0 0]
+ [1 0 1 2 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 2 1 0 0 0]
+ [2 0 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 1 2 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 2 1 0 0 0]
+ [2 0 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 1 2 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 2 1 0 0 0]
+ [2 1 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 1 2 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 2 2 1 0 0 0]
+ [2 1 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 0 1 2 0 0 0]
+ [2 1 1 2 0 0 0]
+ [1 2 2 1 0 0 0]
+ [2 1 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 0 1 2 0 0 0]
+ [1 2 1 2 0 0 0]
+ [2 1 1 2 0 0 0]
+ [1 2 2 1 0 0 0]
+ [2 1 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 1 1 2 0 0 0]
+ [1 2 1 2 0 0 0]
+ [2 1 1 2 0 0 0]
+ [1 2 2 1 0 0 0]
+ [2 1 2 1 0 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 1 1 2 0 0 0]
+ [1 2 1 2 0 0 0]
+ [2 1 1 2 0 0 0]
+ [1 2 2 1 0 0 0]
+ [2 1 2 1 2 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 1 1 2 0 0 0]
+ [1 2 1 2 0 0 0]
+ [2 1 1 2 0 0 0]
+ [1 2 2 1 1 0 0]
+ [2 1 2 1 2 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 1 1 2 0 0 0]
+ [1 2 1 2 0 0 0]
+ [2 1 1 2 2 0 0]
+ [1 2 2 1 1 0 0]
+ [2 1 2 1 2 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 1 1 2 0 0 0]
+ [1 2 1 2 1 0 0]
+ [2 1 1 2 2 0 0]
+ [1 2 2 1 1 0 0]
+ [2 1 2 1 2 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 1 1 2 2 0 0]
+ [1 2 1 2 1 0 0]
+ [2 1 1 2 2 0 0]
+ [1 2 2 1 1 0 0]
+ [2 1 2 1 2 0 0]]
+[[0 0 0 0 0 0 0]
+ [2 1 1 2 2 0 0]
+ [1 2 1 2 1 0 0]
+ [2 1 1 2 2 0 0]
+ [1 2 2 1 1 0 0]
+ [2 1 2 1 2 1 0]]
+[[0 0 0 0 0 0 0]
+ [2 1 1 2 2 0 0]
+ [1 2 1 2 1 0 0]
+ [2 1 1 2 2 0 0]
+ [1 2 2 1 1 2 0]
+ [2 1 2 1 2 1 0]]
+[[0 0 0 0 0 0 0]
+ [2 1 1 2 2 0 0]
+ [1 2 1 2 1 0 0]
+ [2 1 1 2 2 1 0]
+ [1 2 2 1 1 2 0]
+ [2 1 2 1 2 1 0]]
+[[0 0 0 0 0 0 0]
+ [2 1 1 2 2 0 0]
+ [1 2 1 2 1 2 0]
+ [2 1 1 2 2 1 0]
+ [1 2 2 1 1 2 0]
+ [2 1 2 1 2 1 0]]
+[[0 0 0 0 0 0 0]
+ [2 1 1 2 2 1 0]
+ [1 2 1 2 1 2 0]
+ [2 1 1 2 2 1 0]
+ [1 2 2 1 1 2 0]
+ [2 1 2 1 2 1 0]]
 Winner:  AI
-[32m30-04-2019 at 15:44:13[0m: [1m
+[32m30-04-2019 at 18:57:05[0m: [1m
 Winner: <class 'AI'> 2
-        Players: [<connect_n.ai.AI object at 0x04FDFB50>, <connect_n.ai.AI object at 0x04FDFC10>]
-        Game Sequence: [0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]
+        Players: [<connect_n.ai.AI object at 0x05CA2B10>, <connect_n.ai.AI object at 0x05CA2B90>]
+        Game Sequence: [0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6]
 
 [0m
 </p>
@@ -429,7 +467,7 @@ Winner: <class 'AI'> 2
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 10, Pass: 10 -- Duration: 390 ms
+                                Total: 10, Pass: 10 -- Duration: 536 ms
                             </td>
                         </tr>
                     </tbody>
@@ -457,7 +495,7 @@ Winner: <class 'AI'> 2
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 17.16 s
+                                Total: 1, Pass: 1 -- Duration: 20.25 s
                             </td>
                         </tr>
                     </tbody>

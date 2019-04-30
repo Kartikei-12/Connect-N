@@ -1,5 +1,4 @@
-"""
-@author: Kartikei Mittal
+"""@author: Kartikei Mittal
 
 @email: kartikeimittal@gmail.com
 
@@ -7,8 +6,7 @@ connect_n.py file
 
 Contains main module of this repositry.
 
-https://github.com/Kartikei-12/Connect-N
-"""
+https://github.com/Kartikei-12/Connect-N"""
 
 __author__ = "Kartikei Mittal"
 
@@ -45,7 +43,7 @@ class ConnectNGame:
 
     Raises:
         TypeError: Expected 'int' for num_rows, num_col, n
-        TypeError: Expected 'bool' for ai, graphic
+        TypeError: Expected 'bool' for ai, graphic, web, record
         ValueError: Argument [num_rows, num_col, n] needs to be positive.
         ValueError: No winning combination possible in [num_rows, num_col, n].
     """
@@ -102,16 +100,14 @@ class ConnectNGame:
                 self.play = self.graphic
 
     def simulate(self, sequence):
-        """This method simulate a game from list of integers passed,
-        each element representing column choosen by corresponding player to make move,
-        Useful for trainning of AI.
+        """This method simulate a game from list of integers passed, each element representing column choosen by corresponding player to make move, Useful for trainning of AI.
 
         Note:
-            * As soon as an invalid move is encountered game is aborted,
-            * Index of cloumns belong to [0, self.cols), for example if self.cols is 6 column will to 0 to self.cols-1, limits included.
+            *  As soon as an invalid move is encountered game is aborted,
+            *  Index of cloumns belong to [0, self.cols), for example if self.cols is 6 column will to 0 to self.cols-1, limits included.
 
         Returns:
-            list : Refer self.sequence(same as .get_sequence)."""
+            list : Refer self.sequence"""
         turn = 0
         for col in sequence:
             if self.is_valid_move(col):
@@ -126,6 +122,7 @@ class ConnectNGame:
 
     def reset(self):
         """Resets th game for a new run.
+
         Note:
             Does NOT removes players from the game."""
         self.winner = None
@@ -175,26 +172,25 @@ class ConnectNGame:
 
     def get_valid_moves(self):
         """Valid Moves
+
         Returns:
-            list : List of valid moves."""
+            list : List of all valid moves."""
         return [i for i in range(self.cols) if self.is_valid_move(i)]
 
     def is_valid_move(self, col):
-        """Check validity of move, also appends move to 'sequence' list.
+        """Check validity of move
 
         Args:
             col (int): Checks if move can be made in this column
 
         Returns:
-            bool True if valid move False otherwise
-        """
+            bool : True if valid move False otherwise"""
         if col < 0 or col >= self.cols or self.board[self.rows - 1][col] != 0:
             return False
         return True
 
     def is_winning_move(self, row, col):
-        """
-        Method to check for winning move,
+        """Method to check for winning move,
 
         Note:
             Board is displayed in flipped position so,
@@ -202,9 +198,11 @@ class ConnectNGame:
             and vice versa.
 
         Args:
-            row (int): Row in which last move was made.
-            col (int): Column in which last move was made.
-        """
+            row (int): Row in which last move was made
+            col (int): Column in which last move was made
+
+        Returns:
+            bool : True if given position enabled a winning move"""
         if self.board[row][col] == 0.0:
             raise ValueError("Testing Empty slot in board.")
         desired_pat = "".join(str(self.board[row][col]) for i in range(self.n))
@@ -244,13 +242,13 @@ class ConnectNGame:
             return True
 
     def record_game(self):
-        """Records game"""
+        """Records game, calls external function from utility.py"""
         if not self.record:
             return
         recordGame(self)
 
     def cmd_line(self):
-        """Method to play the game in command line."""
+        """Method to play the game in command line"""
         turn = random.randint(0, len(self.players) - 1)
         while True:
             self.print_board()
@@ -267,10 +265,7 @@ class ConnectNGame:
         self.record_game()
 
     def graphic(self):
-        """Method to play the game in GUI using pygame
-
-        Note:
-            When playing with AI a mouse click is required to trigger AI move"""
+        """Method to play the game in GUI using pygame"""
         if len(self.players) > 3:  # TODO: Remove magic number
             print("GUI currently only support 3 players.")
             self.cmd_line()

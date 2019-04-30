@@ -1,12 +1,11 @@
-"""
-Utility methods for project maintainance, efficiency and enhancement.
-Have no relation to actual working of project.
-"""
+"""Utility methods for project maintainance, efficiency and enhancement.
+Have no relation to actual working of project"""
 
 
 def update_readme():
     """Function to genrate README.md by concatinating README_proxy.md and unit test result
     in reports/ folder"""
+
     temp = """<head>
     <title>Unittest Results</title>
     <meta charset="utf-8">

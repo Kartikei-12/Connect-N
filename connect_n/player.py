@@ -26,7 +26,10 @@ class Player:
         self.p_id = next(self._ids)
 
     def get_move(self):
-        """Simple method to ask for player move"""
+        """Simple method to ask for player move
+
+        Returns:
+            int : Player input, -1 if invalid input"""
         msg = "Player {0} make your move: ".format(self.name)
         try:
             col = int(input(msg)) - 1
