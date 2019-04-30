@@ -109,8 +109,8 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-04-30 15:11:19</p>
-                <p class='attribute'><strong>Duration: </strong>17.69 s</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-04-30 15:21:24</p>
+                <p class='attribute'><strong>Duration: </strong>18.10 s</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 16, Pass: 16</p>
             </div>
         </div>
@@ -167,7 +167,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 7 ms
+                                Total: 5, Pass: 5 -- Duration: 9 ms
                             </td>
                         </tr>
                     </tbody>
@@ -386,9 +386,9 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
  [2 1 1 1 2 0 0]
  [1 2 2 1 2 0 0]]
 Winner:  AI
-[32m30-04-2019 at 15:11:19[0m: [1m
+[32m30-04-2019 at 15:21:25[0m: [1m
 Winner: <class 'AI'> 1
-        Players: [<connect_n.ai.AI object at 0x04E91B30>, <connect_n.ai.AI object at 0x04E91BB0>]
+        Players: [<connect_n.ai.AI object at 0x04E91AD0>, <connect_n.ai.AI object at 0x04E91B10>]
         Game Sequence: [0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]
 
 [0m
@@ -429,7 +429,7 @@ Winner: <class 'AI'> 1
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 10, Pass: 10 -- Duration: 442 ms
+                                Total: 10, Pass: 10 -- Duration: 951 ms
                             </td>
                         </tr>
                     </tbody>
@@ -457,7 +457,7 @@ Winner: <class 'AI'> 1
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 17.24 s
+                                Total: 1, Pass: 1 -- Duration: 17.14 s
                             </td>
                         </tr>
                     </tbody>

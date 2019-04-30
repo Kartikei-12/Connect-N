@@ -11,10 +11,10 @@ matrix:
       before_install: choco install python
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
 install:
-  - pip3 install --user --upgrade pip # all three OSes agree about 'pip3'
+  - pip3 install --user --upgrade pip # both OSes agree about 'pip3'
   - pip3 install --user -r requirements.txt
 # 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
-script: coverage run tests.py || coverage run python tests.py
+script: coverage run tests.py
 
 after_success:
   - codecov
