@@ -1,5 +1,5 @@
 language: python            # this works for Linux but is an error on macOS or Windows
-
+sudo: false
 python: 3.7
 
 matrix:
@@ -17,6 +17,7 @@ matrix:
 install:
   - pip3 install --user --upgrade pip # both OSes agree about 'pip3'
   - pip3 install --user -r requirements.txt
+  - pip3 install codecov
 
 script:
   - coverage run tests.py
