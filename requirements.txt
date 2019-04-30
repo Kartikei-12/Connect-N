@@ -1,6 +1,6 @@
 numpy
-codecov
 coverage
+codecov
 loguru
 pygame
 html-testRunner
