@@ -38,3 +38,10 @@ def recordGame(game):
     logger.info(
         record, winner=game.winner, players=game.players, sequence=game.sequence
     )
+
+
+def dummy_method(*args, **kwargs):
+    """Dummy method which does nothing
+    Note:
+        Accepts anything and everything"""
+    pass

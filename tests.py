@@ -9,8 +9,8 @@ import numpy as np
 import HtmlTestRunner
 
 # User module(s)
-from env import UNIT_SCORE
-from utility import update_readme
+from env import UNIT_SCORE, OFFSET
+from utility import update_readme, clear_trailling_space
 
 # Project module(s)
 from connect_n.ai import AI
@@ -73,7 +73,7 @@ class ConnectNTests(unittest.TestCase):
         """Testing simulate method"""
         self.game.add_player(Player("A"))
         self.game.add_player(Player("B"))
-        self.game.simulate([0, 1, 0, 1, 0])
+        self.game.simulate(turn=0, sequence=[0, 1, 0, 1, 0])
         self.assertTrue(self.game.winner)
         self.assertEqual(self.game.winner.name, self.game.players[0].name)
 
@@ -96,7 +96,7 @@ class ConnectNTests(unittest.TestCase):
 
     def test_play(self):
         """Testing command line play method"""
-        game = ConnectNGame(graphic=False, ai=True, record=True)
+        game = ConnectNGame(graphic=False, ai=True)
         game.players.append(AI(game, 2))
         game.play()
         self.assertEqual(game.winner.name, "AI")
@@ -135,7 +135,7 @@ class AITests(unittest.TestCase):
 
     def test_string_score(self):
         """Testing string_score method"""
-        self.assertEqual(self.ai.string_score("11011", 1), UNIT_SCORE * 18)
+        self.assertEqual(self.ai.string_score("11011", 1), UNIT_SCORE * 488 + OFFSET)
 
     def test_horizontal_score(self):
         """Testing horizontal_score"""
@@ -150,7 +150,7 @@ class AITests(unittest.TestCase):
             ],
             dtype=int,
         )
-        self.assertEqual(UNIT_SCORE * 16, self.ai.score(board, 1))
+        self.assertEqual(UNIT_SCORE * 4752 + OFFSET, self.ai.score(board, 1))
 
     def test_vertical_score(self):
         """Testing vertical_score"""
@@ -165,7 +165,7 @@ class AITests(unittest.TestCase):
             ],
             dtype=int,
         )
-        self.assertEqual(UNIT_SCORE * 17, self.ai.score(board, 1))
+        self.assertEqual(UNIT_SCORE * 4680 + OFFSET, self.ai.score(board, 1))
 
     def test_positive_digonal_score(self):
         """Testing positive_digonal_score"""
@@ -180,7 +180,7 @@ class AITests(unittest.TestCase):
             ],
             dtype=int,
         )
-        self.assertEqual(UNIT_SCORE * 18, self.ai.score(board, 1))
+        self.assertEqual(UNIT_SCORE * 6462 + OFFSET, self.ai.score(board, 1))
 
     def test_negative_digonal_score(self):
         """Testing negative_digonal_score"""
@@ -195,12 +195,15 @@ class AITests(unittest.TestCase):
             ],
             dtype=int,
         )
-        self.assertEqual(UNIT_SCORE * 13, self.ai.score(board, 1))
+        self.assertEqual(UNIT_SCORE * 5200 + OFFSET, self.ai.score(board, 1))
 
 
 if __name__ == "__main__":
-    # Seprating coustom arguments from mormal unittest argument
-    argv_tpl = ("--update-readme",)  # Expected coustom arguments
+    # Seprating coustom arguments from normal unittest argument
+    argv_tpl = (
+        "--update-readme",
+        "--clear-trailling-space",
+    )  # Expected coustom arguments
     del_lst = []
     coustom_argv = [sys.argv[0]]
     for i, argv in enumerate(sys.argv):
@@ -221,5 +224,7 @@ if __name__ == "__main__":
     )
     unittest.main(testRunner=testRunner, exit=False)
 
-    if len(coustom_argv) > 1 and coustom_argv[1] == "--update-readme":
+    if "--update-readme" in coustom_argv:
         update_readme()
+    if "--clear-trailling-space" in coustom_argv:
+        clear_trailling_space()

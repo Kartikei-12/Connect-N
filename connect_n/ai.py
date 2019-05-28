@@ -1,17 +1,17 @@
 """ai.py
 
-File defining AI for the Connect-N Game
-"""
+File defining AI for the Connect-N Game"""
 # Python module(s)
 import random
 
 # User module(s)
-from env import UNIT_SCORE
+from env import UNIT_SCORE, OFFSET, LARGE_VALUE, SMALL_VALUE
 
 
 class AI:
     """class defining AI for the game
     Args:
+        p_id (int): ID for AI(default: 1)
         game (ConnectNGame): Game object"""
 
     def __init__(self, game, p_id=1):
@@ -32,9 +32,9 @@ class AI:
         Returns:
             int : Most optimal move (- 1 evan no proper move possible.)"""
         valid_loction = self.game.get_valid_moves()
-        if len(valid_loction) == 0:
+        if len(valid_loction) == 0:  # No valid moves
             return -1
-        max_score = -(10 ** 8)  # Really low number
+        max_score = SMALL_VALUE
         best_move = random.choice(valid_loction)
         for col in valid_loction:
             temp_board = self.game.board.copy()
@@ -43,6 +43,10 @@ class AI:
                 max_score = self.score(temp_board, self.p_id)
                 best_move = col
         return best_move
+
+    def get_move2(self):
+        """"""
+        pass
 
     def string_score(self, string, pid):
         """Calculates score for a player from given string
@@ -57,75 +61,26 @@ class AI:
             return 0
         else:
             pid = str(pid)
-
-        score = 0
+        score = OFFSET
         for begin in range(len(string) - self.n + 1):
-            end = min(begin + self.n, len(string))
-            for j in range(self.n, 1, -1):
-                # Only Me
-                if (
-                    string[begin:end].count("0") == (self.n - j)
-                    and string[begin:end].count(pid) == j
-                ):
-                    score += (j ** 2) * UNIT_SCORE
-                    break
-                # Me and Someone else
-                if (
-                    string[begin:end].count("0") != (self.n - j)
-                    and string[begin:end].count(pid) == j
-                ):
-                    score += (j ** 2) * UNIT_SCORE * (-1.5)
-                    break
-                # Only Others
-                if (
-                    string[begin:end].count("0") == (self.n - j)
-                    and string[begin:end].count(pid) != j
-                ):
-                    score += (j ** 2) * UNIT_SCORE * (1.2)
-                    break
+            end = begin + self.n
+            zeros = string[begin:end].count("0")
+            me = string[begin:end].count(pid)
+            other = self.n - zeros - me
+            score += UNIT_SCORE * (zeros ** 4 + (me ** 4) * 3 + (other ** 4) * (-2.5))
         return score
 
     def score(self, board, pid):
         """Calculated Score of board for given player.
         Args:
+            board (numpy.ndarray): A 2-D int numpy array representing current state of game
             pid (int): ID of player
 
         Returns:
             float : Score of the board for given pid"""
-        score = 0
-        # Horizontal
-        for i in range(self.rows):
-            score += self.string_score("".join(str(j) for j in board[i][...]), pid)
-        # Vertical
-        for i in range(self.cols):
-            score += self.string_score("".join(str(j) for j in board[..., i]), pid)
-        # Positive Digonal Along Rows
-        for i in range(self.n - 1, self.cols):
-            score += self.string_score(
-                "".join(str(board[j][i - j]) for j in range(min(i + 1, self.rows))), pid
-            )
-        # Positive Digonal Along Columns
-        for i in range(1, self.rows - self.n + 1):
-            score += self.string_score(
-                "".join(
-                    str(board[j + i][self.cols - j - 1]) for j in range(self.rows - i)
-                ),
-                pid,
-            )
-        # Negative Digonal Along Rows
-        for i in range(self.cols - self.n + 1):
-            score += self.string_score(
-                "".join(
-                    str(board[j][i + j]) for j in range(min(self.rows, self.cols - i))
-                ),
-                pid,
-            )
-        # Negative Digonal Along Columns
-        for i in range(1, self.rows - self.n + 1):
-            score += self.string_score(
-                "".join(str(board[i + j][j]) for j in range(self.rows - i)), pid
-            )
-        return score
+        return sum(
+            self.string_score(string, pid) for string in self.game.get_strings(board)
+        )
 
     def __str__(self):
         """String representation."""

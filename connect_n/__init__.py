@@ -5,6 +5,8 @@ __init__.py file connect_n module
 Tasks:
 *  Increment Version Number"""
 
+__author__ = "Kartikei Mittal"
+
 import os
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + "/version.txt"

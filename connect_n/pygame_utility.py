@@ -23,7 +23,7 @@ C_LIST.insert(0, BLACK)
 SQUARESIZE = 100
 RADIUS = int(SQUARESIZE / 2 - 5)
 
-# Disabling pylint because of implementation of pygame in C
+# Disabling pylint because of partial implementation of pygame in C, which is not recognizable by pylint
 # pylint: disable=no-member
 
 

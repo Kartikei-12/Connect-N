@@ -2,6 +2,9 @@
 Have no relation to actual working of project"""
 
 
+import os
+
+
 def update_readme():
     """Function to genrate README.md by concatinating README_proxy.md and unit test result
     in reports/ folder"""
@@ -22,3 +25,21 @@ def update_readme():
 
     with open("README.md", "w") as new_readme_file:
         new_readme_file.write(old_readme_txt + "\n\n\n" + html + "</body></html>")
+
+
+def clear_trailling_space():
+    EXTENTIONS = [".py", ".yml", ".js", ".md"]
+    PATH = os.path.dirname(os.path.realpath(__file__))
+
+    for path, dirs, files in os.walk(PATH):
+        for f in files:
+            file_name, file_extension = os.path.splitext(f)
+            if file_extension in EXTENTIONS:
+                path_name = os.path.join(path, f)
+                with open(path_name, "r") as fh:
+                    new = [line.rstrip() for line in fh]
+                with open(path_name, "w") as fh:
+                    [fh.write("{}\n".format(line)) for line in new]
+
+    del dirs
+    del file_name

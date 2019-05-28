@@ -100,3 +100,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
 ## Contributer(s)
 
 [@Kartikei Mittal](https://github.com/Kartikei-12)
+
+## You are wanted!
+
+Looking for any algorithm which may be useful for designing AI for turn based games with more than two players.

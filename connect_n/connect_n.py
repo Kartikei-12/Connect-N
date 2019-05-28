@@ -8,7 +8,6 @@ Contains main module of this repositry.
 
 https://github.com/Kartikei-12/Connect-N"""
 
-__author__ = "Kartikei Mittal"
 
 # Python module(s)
 import os
@@ -18,19 +17,15 @@ import numpy as np
 # User module(s)
 from .ai import AI
 from .player import Player
-from .utility import getVersion, recordGame
 from .pygame_utility import PygameUtility
+from .utility import getVersion, recordGame, dummy_method
 
 # Environment Variables
 from env import N, ROWS, COLUMNS
 
-PATH = os.path.dirname(os.path.realpath(__file__))
-FILE_PATH = PATH + "/version.txt"
-
 
 class ConnectNGame:
-    """
-    Main module class used Connect-N game.
+    """Main module class used Connect-N game.
 
     Args:
         ai (bool): Enable/Disable AI
@@ -44,9 +39,8 @@ class ConnectNGame:
     Raises:
         TypeError: Expected 'int' for num_rows, num_col, n
         TypeError: Expected 'bool' for ai, graphic, web, record
-        ValueError: Argument [num_rows, num_col, n] needs to be positive.
-        ValueError: No winning combination possible in [num_rows, num_col, n].
-    """
+        ValueError: Argument [num_rows, num_col, n] needs to be positive
+        ValueError: No winning combination possible in [num_rows, num_col, n]"""
 
     __version__ = "0.1d."
 
@@ -63,34 +57,40 @@ class ConnectNGame:
         """Instantiate function for class ConnectNGame"""
 
         # Checking 'bool' argument
-        for var in [ai, graphic, web, record]:
+        for var in (ai, graphic, web, record):
             if not isinstance(var, bool):
                 raise TypeError("Expected 'bool' not {0}.".format(type(var)))
         # Checking 'int' argument
-        for var in [num_rows, num_col, n]:
+        for var in (n, num_rows, num_col):
             if not isinstance(var, int):
                 raise TypeError("Expected 'int' not {0}".format(type(var)))
             elif var < 1:
                 raise ValueError("All argument needs to be positive.")
-        if num_rows < n and num_col < n:
-            raise ValueError("No winning combination possible.")
+            elif var < n:
+                raise ValueError("No winning combination possible")
+
+        PATH = os.path.dirname(os.path.realpath(__file__))
+        FILE_PATH = PATH + "/version.txt"
+        self.__version__ += getVersion(FILE_PATH)
 
         self.winner = None
         self.GUIUtil = None
         self.sequence = list()
         self.players = list()
 
-        self.__version__ += getVersion(FILE_PATH)
         self.n = n
         self.rows = num_rows
         self.cols = num_col
-        self.record = record
 
         self.board = np.zeros((self.rows, self.cols), dtype=int)
+
         self.play = self.cmd_line
+        self.record_game = dummy_method
 
         if ai:
             self.players.append(AI(self))
+        if record:
+            self.record_game = recordGame
         if graphic:
             try:
                 self.GUIUtil = PygameUtility(num_rows, num_col)
@@ -99,16 +99,19 @@ class ConnectNGame:
             else:
                 self.play = self.graphic
 
-    def simulate(self, sequence):
+    def simulate(self, turn, sequence):
         """This method simulate a game from list of integers passed, each element representing column choosen by corresponding player to make move, Useful for trainning of AI.
 
         Note:
-            *  As soon as an invalid move is encountered game is aborted,
-            *  Index of cloumns belong to [0, self.cols), for example if self.cols is 6 column will to 0 to self.cols-1, limits included.
+            * As soon as an invalid move is encountered game is aborted,
+            * Index of cloumns belong to [0, self.cols), for example if self.cols is 6 column will to 0 to self.cols-1, limits included.
+
+        Args:
+            turn (int): Index of player from self.players list who gets the first turn
+            sequence (list): List of moves by player in order of thir occurence in self.players list
 
         Returns:
             list : Refer self.sequence"""
-        turn = 0
         for col in sequence:
             if self.is_valid_move(col):
                 row = self.make_move(col, self.players[turn].p_id)
@@ -124,7 +127,7 @@ class ConnectNGame:
         """Resets th game for a new run.
 
         Note:
-            Does NOT removes players from the game."""
+            Does NOT removes players from the game"""
         self.winner = None
         self.sequence = list()
         self.board = np.zeros((self.rows, self.cols), dtype=int)
@@ -141,15 +144,13 @@ class ConnectNGame:
         """
         if not isinstance(p, Player):
             raise TypeError("Expected 'Player' not {0}".format(type(p)))
-        if p.p_id in [pi.p_id for pi in self.players] or p.name in [
-            pi.name for pi in self.players
-        ]:
+        if p.p_id in [player.p_id for player in self.players]:
             raise ValueError("{} already in game.".format(p))
         self.players.append(p)
 
     def print_board(self):
-        """Prints the board on console."""
-        print(np.flip(self.board, 0))
+        """Prints the board on console"""
+        print(np.flip(self.board, 0))  # 0: Vertical flip
 
     def make_move(self, col, p_id, board=None):
         """Method to make move, returns row in which move was made
@@ -157,39 +158,62 @@ class ConnectNGame:
         Args:
             col (int): Column to insert coin in
             p_id (int): Id of player making the move
+            board (numpy.ndarray): 2-D numpy array representing board in which game is being played
 
         Returns:
-            int : Row in which move was made
-        """
+            int : Row in which move was made"""
         if board is None:
             board = self.board
-        else:
             self.sequence.append(col)
         for row in range(self.rows):
-            if board[row][col] == 0.0:
+            if board[row][col] == 0:
                 board[row][col] = p_id
                 return row
+        return None
 
-    def get_valid_moves(self):
-        """Valid Moves
+    def get_open_row(self, col, board=None):
+        """Method to get next open row
+
+        Args:
+            col (int): Column to insert coin in
+            board (numpy.ndarray): 2-D numpy array representing board in which game is being played
 
         Returns:
-            list : List of all valid moves."""
-        return [i for i in range(self.cols) if self.is_valid_move(i)]
+            int : Row in which move can be made"""
+        if board is None:
+            board = self.board
+        for row in range(self.rows):
+            if board[row][col] == 0:
+                return row
 
-    def is_valid_move(self, col):
+    def get_valid_moves(self, board=None):
+        """Valid Moves
+
+        Args:
+            board (numpy.ndarray): 2-D numpy array representing board in which game is being played
+
+        Returns:
+            list : List of all valid moves"""
+        if board is None:
+            board = self.board
+        return [i for i in range(self.cols) if self.is_valid_move(i, board)]
+
+    def is_valid_move(self, col, board=None):
         """Check validity of move
 
         Args:
             col (int): Checks if move can be made in this column
+            board (numpy.ndarray): 2-D numpy array representing board in which game is being played
 
         Returns:
             bool : True if valid move False otherwise"""
-        if col < 0 or col >= self.cols or self.board[self.rows - 1][col] != 0:
+        if board is None:
+            board = self.board
+        if col < 0 or col >= self.cols or board[self.rows - 1][col] != 0:
             return False
         return True
 
-    def is_winning_move(self, row, col):
+    def is_winning_move(self, row, col, board=None):
         """Method to check for winning move,
 
         Note:
@@ -200,29 +224,32 @@ class ConnectNGame:
         Args:
             row (int): Row in which last move was made
             col (int): Column in which last move was made
+            board (numpy.ndarray): 2-D numpy array representing board in which game is being played
 
         Returns:
             bool : True if given position enabled a winning move"""
-        if self.board[row][col] == 0.0:
+        if board is None:
+            board = self.board
+        if board[row][col] == 0:
             raise ValueError("Testing Empty slot in board.")
-        desired_pat = "".join(str(self.board[row][col]) for i in range(self.n))
+        desired_pat = "".join(str(board[row][col]) for i in range(self.n))
 
         # Horizontal Check
         if desired_pat in "".join(
-            str(self.board[row][i])
+            str(board[row][i])
             for i in range(max(0, col - self.n + 1), min(col + self.n, self.cols))
         ):
             return True
 
         # Vertical Check
         if desired_pat in "".join(
-            str(self.board[i][col])
+            str(board[i][col])
             for i in range(max(0, row - self.n + 1), min(row + self.n, self.rows))
         ):
             return True
         # Positive digonal Check
         if desired_pat in "".join(
-            str(self.board[row + i][col + i])
+            str(board[row + i][col + i])
             for i in range(-1 * (self.n - 1), self.n)
             if (row + i) >= 0
             and (col + i) >= 0
@@ -232,7 +259,7 @@ class ConnectNGame:
             return True
         # Negative digonal Check
         if desired_pat in "".join(
-            str(self.board[row - i][col + i])
+            str(board[row - i][col + i])
             for i in range(-1 * (self.n - 1), self.n)
             if (row - i) >= 0
             and (col + i) >= 0
@@ -241,11 +268,46 @@ class ConnectNGame:
         ):
             return True
 
-    def record_game(self):
-        """Records game, calls external function from utility.py"""
-        if not self.record:
-            return
-        recordGame(self)
+    def get_strings(self, board=None):
+        """Method generates all string of 'n' length from board
+
+        Args:
+            board (numpy.ndarray): A 2-D int numpy array representing current state of game
+
+        Returns:
+            list : A list of strings which may have any significance in the game"""
+        strings = list()
+        if board is None:
+            board = self.board
+        # Horizontal
+        for i in range(self.rows):
+            strings.append("".join(str(j) for j in board[i][...]))
+        # Vertical
+        for i in range(self.cols):
+            strings.append("".join(str(j) for j in board[..., i]))
+        # Positive Digonal Along Rows
+        for i in range(self.n - 1, self.cols):
+            strings.append(
+                "".join(str(board[j][i - j]) for j in range(min(i + 1, self.rows)))
+            )
+        # Positive Digonal Along Columns
+        for i in range(1, self.rows - self.n + 1):
+            strings.append(
+                "".join(
+                    str(board[j + i][self.cols - j - 1]) for j in range(self.rows - i)
+                )
+            )
+        # Negative Digonal Along Rows
+        for i in range(self.cols - self.n + 1):
+            strings.append(
+                "".join(
+                    str(board[j][i + j]) for j in range(min(self.rows, self.cols - i))
+                )
+            )
+        # Negative Digonal Along Columns
+        for i in range(1, self.rows - self.n + 1):
+            strings.append("".join(str(board[i + j][j]) for j in range(self.rows - i)))
+        return strings
 
     def cmd_line(self):
         """Method to play the game in command line"""
@@ -262,7 +324,7 @@ class ConnectNGame:
             else:
                 print("Invalid move column already filled, aborting turn!")
             turn = (turn + 1) % len(self.players)
-        self.record_game()
+        self.record_game(self)
 
     def graphic(self):
         """Method to play the game in GUI using pygame"""
@@ -277,7 +339,7 @@ class ConnectNGame:
             self.make_move,
             self.is_winning_move,
         )
-        self.record_game()
+        self.record_game(self)
 
     def __str__(self):
         """Representation format:
