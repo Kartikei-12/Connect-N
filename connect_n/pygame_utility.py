@@ -108,7 +108,6 @@ class PygameUtility:
             self.draw(board)
             if players[turn].name == "AI":
                 col = players[turn].get_move()
-                pygame.time.wait(100)
             else:
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:

@@ -86,9 +86,9 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-05-30 13:39:33</p>
-                <p class='attribute'><strong>Duration: </strong>40.78 s</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 16, Pass: 16</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-05-30 22:54:00</p>
+                <p class='attribute'><strong>Duration: </strong>25.35 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 15, Pass: 15</p>
             </div>
         </div>
         <div class="row">
@@ -144,7 +144,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 0 ms
+                                Total: 5, Pass: 5 -- Duration: 13 ms
                             </td>
                         </tr>
                     </tbody>
@@ -203,86 +203,6 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                             </td>
                         </tr>
                         <tr class='success'>
-                            <td class="col-xs-10">test_play</td>
-                            <td class="col-xs-1">
-                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
-                            </td>
-                            <td class="col-xs-1">
-                                <button class="btn btn-default btn-xs">View</button>
-                            </td>
-                        </tr>
-                        <tr style="display:none;">
-                            <td class="col-xs-9" colspan="3"><p>[[0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]]
-[[0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [1 0 0 0 0 0 0]]
-[[0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [1 2 0 0 0 0 0]]
-[[0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [1 2 0 0 0 0 1]]
-[[0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [1 2 0 0 0 0 1]]
-[[0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 1 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [1 2 0 0 0 0 1]]
-[[0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [0 1 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [1 2 0 0 0 0 1]]
-[[0 0 0 0 0 0 0]
- [0 0 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [0 1 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [1 2 0 0 0 1 1]]
-[[0 0 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [0 1 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [1 2 0 0 0 1 1]]
-[[0 0 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [0 1 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [1 2 0 1 0 1 1]]
-[[0 2 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [0 1 0 0 0 0 0]
- [0 2 0 0 0 0 0]
- [1 2 0 1 0 1 1]]
-Winner:  AI
-</p>
-                            </td>
-                        </tr>
-                        <tr class='success'>
                             <td class="col-xs-10">test_positive_digonal_winning_move</td>
                             <td class="col-xs-1">
                                 <span class="label label-success" style="display:block;width:40px;">Pass</span>
@@ -316,7 +236,7 @@ Winner:  AI
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 10, Pass: 10 -- Duration: 17.90 s
+                                Total: 9, Pass: 9 -- Duration: 15 ms
                             </td>
                         </tr>
                     </tbody>
@@ -344,7 +264,7 @@ Winner:  AI
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 22.88 s
+                                Total: 1, Pass: 1 -- Duration: 25.33 s
                             </td>
                         </tr>
                     </tbody>

@@ -94,15 +94,6 @@ class ConnectNTests(unittest.TestCase):
         self.game.board = [[1, 0, 0], [1, 0, 0], [1, 0, 0]]
         self.assertFalse(self.game.is_valid_move(0))
 
-    def test_play(self):
-        """Testing command line play method"""
-        game = ConnectNGame(graphic=False, ai=True)
-        game.players.append(AI(game, 2))
-        game.play()
-        self.assertEqual(game.winner.name, "AI")
-        game.reset()
-        del game
-
 
 class PygameUtilityTests(unittest.TestCase):
     # Tests for project Connect-N.
@@ -198,7 +189,7 @@ class AITests(unittest.TestCase):
         self.assertEqual(UNIT_SCORE * 5200 + OFFSET, self.ai.score(board, 1))
 
 
-if __name__ == "__main__":
+def main():
     # Seprating coustom arguments from normal unittest argument
     argv_tpl = (
         "--update-readme",
@@ -228,3 +219,7 @@ if __name__ == "__main__":
         update_readme()
     if "--clear-trailling-space" in coustom_argv:
         clear_trailling_space()
+
+
+if __name__ == "__main__":
+    main()
