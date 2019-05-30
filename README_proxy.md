@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master)](https://travis-ci.org/Kartikei-12/Connect-N)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a053ff3c19247958b88183242723d23)](https://www.codacy.com/app/Kartikei-12/Connect-N?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kartikei-12/Connect-N&amp;utm_campaign=Badge_Grade)
 ![Codecov](https://img.shields.io/codecov/c/github/Kartikei-12/Connect-N.svg)
+![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)
 <hr>
 
 ## Introduction
@@ -19,8 +20,8 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 *  For more players add new colours `COLOR` variable in connect_n/pygame_utility.py file.
 *  ID 1 is reserved for AI.
 *  Currently only supports single AI player in a game.
-*  Tests for python 3.7.
-*  Tested on Windows.
+*  Tests in python 3.7 on Windows OS(by developer).
+*  Special Note: Method(get_move*()) in class AI in connect_n/ai.py represent different types of AI which may be used to play the game.
 
 ## Installation
 
@@ -54,36 +55,6 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
 *  [Pip](https://pypi.org/) usually pre-installed with python, check with `pip3 --version`.
 *  Python module [PyGame](https://pypi.org/project/pygame/) installable via pip.
 
-## Directory Structure
-
-    Connect-N/
-        .gitignore
-        docs/
-            doctrees/: doctrees for documentation
-            html/: HTML source files dor documentation
-            .nojekyll
-            index.html
-        connect_n/
-            __init__.py
-            ai.py
-            web.py
-            connect_n.py
-            utility.py
-            player.py
-        reports/
-            test_result.html
-        LICENSE
-        main.py
-        tests.py
-        utility.py
-        default_variables.py
-        README.md
-        README_proxy.md
-        requirements.txt
-        .travis.yml
-        .coverage
-        Dockerfile
-
 ## TODO
 
 *  Create web interface.
@@ -101,6 +72,6 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
 
 [@Kartikei Mittal](https://github.com/Kartikei-12)
 
-## You are wanted!
+## You are wanted
 
 Looking for any algorithm which may be useful for designing AI for turn based games with more than two players.

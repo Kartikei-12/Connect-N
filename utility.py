@@ -39,7 +39,8 @@ def clear_trailling_space():
                 with open(path_name, "r") as fh:
                     new = [line.rstrip() for line in fh]
                 with open(path_name, "w") as fh:
-                    [fh.write("{}\n".format(line)) for line in new]
+                    temporary_variable = [fh.write("{}\n".format(line)) for line in new]
 
     del dirs
     del file_name
+    del temporary_variable

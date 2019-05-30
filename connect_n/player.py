@@ -29,13 +29,13 @@ class Player:
         """Simple method to ask for player move
 
         Returns:
-            int : Player input, -1 if invalid input"""
+            int : Player input, None if invalid input"""
         msg = "Player {0} make your move: ".format(self.name)
         try:
             col = int(input(msg)) - 1
         except ValueError as e:
             print(e, "Aborting current turn, moving ahead.")
-            return -1  # Signifies invalid type of input
+            return None
         else:
             return col
 

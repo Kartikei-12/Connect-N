@@ -19,6 +19,9 @@ if __name__ == "__main__":
     game = ConnectNGame(graphic=True, ai=True, record=False)
     print(game)
     print(game.__version__)
-    game.add_player(Player("Mr.REX"))
+    # game.add_player(Player("Mr.REX"))
+    from connect_n.ai import AI
+
+    game.players.append(AI(game, p_id=2))
     game.play()
     print("-----------------------------------------------------------\nBye World!!")

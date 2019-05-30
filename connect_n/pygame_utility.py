@@ -20,7 +20,7 @@ C_LIST = list(value for key, value in COLOR.items())
 C_LIST.insert(0, BLACK)
 
 # Some constants
-SQUARESIZE = 100
+SQUARESIZE = 90
 RADIUS = int(SQUARESIZE / 2 - 5)
 
 # Disabling pylint because of partial implementation of pygame in C, which is not recognizable by pylint
@@ -108,7 +108,7 @@ class PygameUtility:
             self.draw(board)
             if players[turn].name == "AI":
                 col = players[turn].get_move()
-                pygame.time.wait(500)
+                pygame.time.wait(100)
             else:
                 for event in pygame.event.get():
                     if event.type == pygame.QUIT:

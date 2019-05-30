@@ -39,6 +39,7 @@
 <a class="reference external image-reference" href="https://travis-ci.org/Kartikei-12/Connect-N"><img alt="Build Status" src="https://travis-ci.org/Kartikei-12/Connect-N.svg?branch=master" /></a>
 <a class="reference external image-reference" href="https://www.codacy.com/app/Kartikei-12/Connect-N?utm_source=github.com&amp;amp;utm_medium=referral&amp;amp;utm_content=Kartikei-12/Connect-N&amp;amp;utm_campaign=Badge_Grade"><img alt="Codacy Badge" src="https://api.codacy.com/project/badge/Grade/4a053ff3c19247958b88183242723d23" /></a>
 <a class="reference external image-reference" href="https://img.shields.io/codecov/c/github/Kartikei-12/Connect-N.svg"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/Kartikei-12/Connect-N.svg" /></a>
+<a class="reference external image-reference" href="https://img.shields.io/badge/code%20style-black-000000.svg"><img alt="Code Style" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
 <hr><div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>A simple modified version of Connect Four Game implemented with AI in Python using PyGame.</p>
@@ -53,29 +54,29 @@
 <li><p>For more players add new colours <code class="docutils literal notranslate"><span class="pre">COLOR</span></code> variable in connect_n/pygame_utility.py file.</p></li>
 <li><p>ID 1 is reserved for AI.</p></li>
 <li><p>Currently only supports single AI player in a game.</p></li>
-<li><p>Tests for python 3.7.</p></li>
-<li><p>Tested on Windows.</p></li>
+<li><p>Tests in python 3.7 on Windows OS(by developer).</p></li>
+<li><p>Special Note: Method(get_move*()) in class AI in connect_n/ai.py represent different types of AI which may be used to play the game.</p></li>
 </ul>
 </div>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/Kartikei-12/Connect-N
-cd Connect-N-master
-python -m venv venv
-./venv/Scripts/activate
-pip install -r requirements.txt
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="nv">git</span> <span class="nv">clone</span> <span class="nv">https</span>:<span class="o">//</span><span class="nv">github</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">Kartikei</span><span class="o">-</span><span class="mi">12</span><span class="o">/</span><span class="k">Connect</span><span class="o">-</span><span class="nv">N</span>
+<span class="nv">cd</span> <span class="k">Connect</span><span class="o">-</span><span class="nv">N</span><span class="o">-</span><span class="nv">master</span>
+<span class="nv">python</span> <span class="o">-</span><span class="nv">m</span> <span class="nv">venv</span> <span class="nv">venv</span>
+.<span class="o">/</span><span class="nv">venv</span><span class="o">/</span><span class="nv">Scripts</span><span class="o">/</span><span class="nv">activate</span>
+<span class="nv">pip</span> <span class="nv">install</span> <span class="o">-</span><span class="nv">r</span> <span class="nv">requirements</span>.<span class="nv">txt</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="linux-based-os">
 <h3>Linux based OS<a class="headerlink" href="#linux-based-os" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/Kartikei-12/Connect-N
-cd Connect-N-master
-python3 -m venv venv
-source venv/bin/activate
-pip3 install -r requirements.txt
+<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="nv">git</span> <span class="nv">clone</span> <span class="nv">https</span>:<span class="o">//</span><span class="nv">github</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">Kartikei</span><span class="o">-</span><span class="mi">12</span><span class="o">/</span><span class="k">Connect</span><span class="o">-</span><span class="nv">N</span>
+<span class="nv">cd</span> <span class="k">Connect</span><span class="o">-</span><span class="nv">N</span><span class="o">-</span><span class="nv">master</span>
+<span class="nv">python3</span> <span class="o">-</span><span class="nv">m</span> <span class="nv">venv</span> <span class="nv">venv</span>
+<span class="nv">source</span> <span class="nv">venv</span><span class="o">/</span><span class="nv">bin</span><span class="o">/</span><span class="nv">activate</span>
+<span class="nv">pip3</span> <span class="nv">install</span> <span class="o">-</span><span class="nv">r</span> <span class="nv">requirements</span>.<span class="nv">txt</span>
 </pre></div>
 </div>
 </div>
@@ -93,38 +94,6 @@ pip3 install -r requirements.txt
 <li><p><a class="reference external" href="https://pypi.org/">Pip</a> usually pre-installed with python, check with <code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">--version</span></code>.</p></li>
 <li><p>Python module <a class="reference external" href="https://pypi.org/project/pygame/">PyGame</a> installable via pip.</p></li>
 </ul>
-</div>
-<div class="section" id="directory-structure">
-<h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>Connect-N/
-    .gitignore
-    docs/
-        doctrees/: doctrees for documentation
-        html/: HTML source files dor documentation
-        .nojekyll
-        index.html
-    connect_n/
-        __init__.py
-        ai.py
-        web.py
-        connect_n.py
-        utility.py
-        player.py
-    reports/
-        test_result.html
-    LICENSE
-    main.py
-    tests.py
-    utility.py
-    default_variables.py
-    README.md
-    README_proxy.md
-    requirements.txt
-    .travis.yml
-    .coverage
-    Dockerfile
-</pre></div>
-</div>
 </div>
 <div class="section" id="todo">
 <h2>TODO<a class="headerlink" href="#todo" title="Permalink to this headline">¶</a></h2>
@@ -144,6 +113,10 @@ pip3 install -r requirements.txt
 <div class="section" id="contributer-s">
 <h2>Contributer(s)<a class="headerlink" href="#contributer-s" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/Kartikei-12">&#64;Kartikei Mittal</a></p>
+</div>
+<div class="section" id="you-are-wanted">
+<h2>You are wanted<a class="headerlink" href="#you-are-wanted" title="Permalink to this headline">¶</a></h2>
+<p>Looking for any algorithm which may be useful for designing AI for turn based games with more than two players.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>

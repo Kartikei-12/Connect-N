@@ -148,6 +148,21 @@ class ConnectNGame:
             raise ValueError("{} already in game.".format(p))
         self.players.append(p)
 
+    def is_p_id_winning(self, p_id, board=None):
+        """"""
+        if board is None:
+            board = self.board
+        for col in self.get_valid_moves(board):
+            board_copy = board.copy()
+            row = self.make_move(col, p_id, board_copy)
+            if self.is_winning_move(row, col, board_copy):
+                return col
+        return None
+
+    # def is_ayone_winning(self):
+    #     """"""
+    #     pass
+
     def print_board(self):
         """Prints the board on console"""
         print(np.flip(self.board, 0))  # 0: Vertical flip
@@ -171,20 +186,20 @@ class ConnectNGame:
                 return row
         return None
 
-    def get_open_row(self, col, board=None):
-        """Method to get next open row
+    # def get_open_row(self, col, board=None):
+    #     """Method to get next open row
 
-        Args:
-            col (int): Column to insert coin in
-            board (numpy.ndarray): 2-D numpy array representing board in which game is being played
+    #     Args:
+    #         col (int): Column to insert coin in
+    #         board (numpy.ndarray): 2-D numpy array representing board in which game is being played
 
-        Returns:
-            int : Row in which move can be made"""
-        if board is None:
-            board = self.board
-        for row in range(self.rows):
-            if board[row][col] == 0:
-                return row
+    #     Returns:
+    #         int : Row in which move can be made"""
+    #     if board is None:
+    #         board = self.board
+    #     for row in range(self.rows):
+    #         if board[row][col] == 0:
+    #             return row
 
     def get_valid_moves(self, board=None):
         """Valid Moves

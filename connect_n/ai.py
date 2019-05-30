@@ -1,7 +1,9 @@
 """ai.py
 
 File defining AI for the Connect-N Game"""
+
 # Python module(s)
+import math
 import random
 
 # User module(s)
@@ -24,7 +26,7 @@ class AI:
         self.rows = game.rows
         self.cols = game.cols
 
-    def get_move(self):
+    def get_move2(self):
         """Simple method to fetch AI move
         Note:
             Currently no actual AI or machine learing implementation, just random guesses
@@ -33,7 +35,7 @@ class AI:
             int : Most optimal move (- 1 evan no proper move possible.)"""
         valid_loction = self.game.get_valid_moves()
         if len(valid_loction) == 0:  # No valid moves
-            return -1
+            return None
         max_score = SMALL_VALUE
         best_move = random.choice(valid_loction)
         for col in valid_loction:
@@ -44,9 +46,86 @@ class AI:
                 best_move = col
         return best_move
 
-    def get_move2(self):
-        """"""
-        pass
+    def get_move(self):
+        """Experimental method, trying to implement algorithm inspired by min max algorithm"""
+        if len(self.game.get_valid_moves()) == 0:
+            return None
+        # Check if AI winning, and win
+        col = self.game.is_p_id_winning(self.p_id)
+        if col:
+            return col  # Retuen only if non None value returned
+
+        try:  # Checks if next player is known, if not known finds out
+            a = self.next_player.p_id
+        except AttributeError:
+            i = 0
+            self.next_player = self.game.players[0]
+            for p in self.game.players:
+                if p.p_id == 1:
+                    break
+                i += 1
+            if i < len(self.game.players):
+                self.next_player = self.game.players[i + 1]
+        else:
+            del a
+
+        # Check if next player is winning, and stop him/her
+        col = self.game.is_p_id_winning(self.next_player.p_id)
+        if col:
+            return col
+
+        return self.minmax(
+            self.game.board.copy(), self.n + 1, -math.inf, math.inf, True
+        )[0]
+
+    def minmax(self, board, depth, alpha, beta, maximizingPlayer):
+        """MinMax algortihm for AI implementation
+
+        Args:
+            board (numpu.ndarray): 2-D numpy array representing board in which game is being played
+            depth (int): Depth upto which to look
+            alpha (int): Parameter for alpha-beta purning
+            beta (int): Parameter for alpha-beta purning
+            maximizingPlayer (bool): Wheather maximizing player or not
+
+        Returns:
+            tuple : 2 length tuple, first element column, second score"""
+        if self.game.is_p_id_winning(self.p_id, board):
+            return (None, LARGE_VALUE)
+        if self.game.is_p_id_winning(self.next_player.p_id, board):
+            return (None, SMALL_VALUE)
+        if len(self.game.get_valid_moves(board)) == 0:
+            return (None, 0)
+        if depth == 0:
+            return (None, self.score(board, self.p_id))
+
+        value = math.inf
+        p_id = self.next_player.p_id
+        column = random.choice(self.game.get_valid_moves(board))
+        if maximizingPlayer:
+            value = -math.inf
+            p_id = self.p_id
+
+        for col in self.game.get_valid_moves(board):
+            b_copy = board.copy()
+            row = self.game.make_move(col, p_id, b_copy)
+            new_score = self.minmax(
+                b_copy, depth - 1, alpha, beta, not maximizingPlayer
+            )[1]
+            if maximizingPlayer:
+                if new_score > value:
+                    value = new_score
+                    column = col
+                alpha = max(alpha, value)
+            else:
+                if new_score < value:
+                    value = new_score
+                    column = col
+                beta = min(beta, value)
+            if alpha >= beta:
+                break
+        del row
+        return (column, value)
 
     def string_score(self, string, pid):
         """Calculates score for a player from given string

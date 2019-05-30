@@ -44,11 +44,19 @@
 <em class="property">class </em><code class="descclassname">connect_n.ai.</code><code class="descname">AI</code><span class="sig-paren">(</span><em>game</em>, <em>p_id=1</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>class defining AI for the game
+:param p_id: ID for AI(default: 1)
+:type p_id: int
 :param game: Game object
 :type game: ConnectNGame</p>
 <dl class="method">
 <dt id="connect_n.ai.AI.get_move">
 <code class="descname">get_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.get_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Experimental method, trying to implement algorithm inspired by min max algorithm</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.ai.AI.get_move2">
+<code class="descname">get_move2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.get_move2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple method to fetch AI move
 .. note:: Currently no actual AI or machine learing implementation, just random guesses</p>
 <dl class="field-list simple">
@@ -62,9 +70,34 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="connect_n.ai.AI.minmax">
+<code class="descname">minmax</code><span class="sig-paren">(</span><em>board</em>, <em>depth</em>, <em>alpha</em>, <em>beta</em>, <em>maximizingPlayer</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.minmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>MinMax algortihm for AI implementation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>board</strong> (<em>numpu.ndarray</em>) – 2-D numpy array representing board in which game is being played</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – Depth upto which to look</p></li>
+<li><p><strong>alpha</strong> (<em>int</em>) – Parameter for alpha-beta purning</p></li>
+<li><p><strong>beta</strong> (<em>int</em>) – Parameter for alpha-beta purning</p></li>
+<li><p><strong>maximizingPlayer</strong> (<em>bool</em>) – Wheather maximizing player or not</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>2 length tuple, first element column, second score</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="connect_n.ai.AI.score">
 <code class="descname">score</code><span class="sig-paren">(</span><em>board</em>, <em>pid</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculated Score of board for given player.
+:param board: A 2-D int numpy array representing current state of game
+:type board: numpy.ndarray
 :param pid: ID of player
 :type pid: int</p>
 <dl class="field-list simple">
@@ -128,8 +161,8 @@
 <dd class="field-even"><ul class="simple">
 <li><p><strong>TypeError</strong> – Expected ‘int’ for num_rows, num_col, n</p></li>
 <li><p><strong>TypeError</strong> – Expected ‘bool’ for ai, graphic, web, record</p></li>
-<li><p><strong>ValueError</strong> – Argument [num_rows, num_col, n] needs to be positive.</p></li>
-<li><p><strong>ValueError</strong> – No winning combination possible in [num_rows, num_col, n].</p></li>
+<li><p><strong>ValueError</strong> – Argument [num_rows, num_col, n] needs to be positive</p></li>
+<li><p><strong>ValueError</strong> – No winning combination possible in [num_rows, num_col, n]</p></li>
 </ul>
 </dd>
 </dl>
@@ -157,15 +190,35 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.get_strings">
+<code class="descname">get_strings</code><span class="sig-paren">(</span><em>board=None</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.get_strings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method generates all string of ‘n’ length from board</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>board</strong> (<em>numpy.ndarray</em>) – A 2-D int numpy array representing current state of game</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of strings which may have any significance in the game</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.get_valid_moves">
-<code class="descname">get_valid_moves</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.get_valid_moves" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_valid_moves</code><span class="sig-paren">(</span><em>board=None</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.get_valid_moves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Valid Moves</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>List of all valid moves.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>board</strong> (<em>numpy.ndarray</em>) – 2-D numpy array representing board in which game is being played</p>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of all valid moves</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
@@ -177,12 +230,20 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.is_p_id_winning">
+<code class="descname">is_p_id_winning</code><span class="sig-paren">(</span><em>p_id</em>, <em>board=None</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.is_p_id_winning" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.is_valid_move">
-<code class="descname">is_valid_move</code><span class="sig-paren">(</span><em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.is_valid_move" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_valid_move</code><span class="sig-paren">(</span><em>col</em>, <em>board=None</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.is_valid_move" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check validity of move</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>col</strong> (<em>int</em>) – Checks if move can be made in this column</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>col</strong> (<em>int</em>) – Checks if move can be made in this column</p></li>
+<li><p><strong>board</strong> (<em>numpy.ndarray</em>) – 2-D numpy array representing board in which game is being played</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>True if valid move False otherwise</p>
@@ -195,7 +256,7 @@
 
 <dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.is_winning_move">
-<code class="descname">is_winning_move</code><span class="sig-paren">(</span><em>row</em>, <em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.is_winning_move" title="Permalink to this definition">¶</a></dt>
+<code class="descname">is_winning_move</code><span class="sig-paren">(</span><em>row</em>, <em>col</em>, <em>board=None</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.is_winning_move" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method to check for winning move,</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -208,6 +269,7 @@ and vice versa.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>row</strong> (<em>int</em>) – Row in which last move was made</p></li>
 <li><p><strong>col</strong> (<em>int</em>) – Column in which last move was made</p></li>
+<li><p><strong>board</strong> (<em>numpy.ndarray</em>) – 2-D numpy array representing board in which game is being played</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -228,6 +290,7 @@ and vice versa.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>col</strong> (<em>int</em>) – Column to insert coin in</p></li>
 <li><p><strong>p_id</strong> (<em>int</em>) – Id of player making the move</p></li>
+<li><p><strong>board</strong> (<em>numpy.ndarray</em>) – 2-D numpy array representing board in which game is being played</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -242,13 +305,7 @@ and vice versa.</p>
 <dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.print_board">
 <code class="descname">print_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.print_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prints the board on console.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.connect_n.ConnectNGame.record_game">
-<code class="descname">record_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.record_game" title="Permalink to this definition">¶</a></dt>
-<dd><p>Records game, calls external function from utility.py</p>
+<dd><p>Prints the board on console</p>
 </dd></dl>
 
 <dl class="method">
@@ -257,13 +314,13 @@ and vice versa.</p>
 <dd><p>Resets th game for a new run.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Does NOT removes players from the game.</p>
+<p>Does NOT removes players from the game</p>
 </div>
 </dd></dl>
 
 <dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.simulate">
-<code class="descname">simulate</code><span class="sig-paren">(</span><em>sequence</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.simulate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">simulate</code><span class="sig-paren">(</span><em>turn</em>, <em>sequence</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.simulate" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method simulate a game from list of integers passed, each element representing column choosen by corresponding player to make move, Useful for trainning of AI.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -273,11 +330,17 @@ and vice versa.</p>
 </ul>
 </div>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Refer self.sequence</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>turn</strong> (<em>int</em>) – Index of player from self.players list who gets the first turn</p></li>
+<li><p><strong>sequence</strong> (<em>list</em>) – List of moves by player in order of thir occurence in self.players list</p></li>
+</ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>list</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Refer self.sequence</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
@@ -307,7 +370,7 @@ and vice versa.</p>
 <dd><p>Simple method to ask for player move</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Player input, -1 if invalid input</p>
+<dd class="field-odd"><p>Player input, None if invalid input</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>int</p>
@@ -410,6 +473,13 @@ and vice versa.</p>
 <div class="section" id="module-connect_n.utility">
 <span id="connect-n-utility-module"></span><h2>connect_n.utility module<a class="headerlink" href="#module-connect_n.utility" title="Permalink to this headline">¶</a></h2>
 <p>Utility methods for project.</p>
+<dl class="function">
+<dt id="connect_n.utility.dummy_method">
+<code class="descclassname">connect_n.utility.</code><code class="descname">dummy_method</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.utility.dummy_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dummy method which does nothing
+.. note:: Accepts anything and everything</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="connect_n.utility.getVersion">
 <code class="descclassname">connect_n.utility.</code><code class="descname">getVersion</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.utility.getVersion" title="Permalink to this definition">¶</a></dt>
