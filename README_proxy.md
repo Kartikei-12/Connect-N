@@ -21,7 +21,6 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 *  ID 1 is reserved for AI.
 *  Currently only supports single AI player in a game.
 *  Tests in python 3.7 on Windows OS(by developer).
-*  Special Note: Method(get_move*()) in class AI in connect_n/ai.py represent different types of AI which may be used to play the game.
 
 ## Installation
 

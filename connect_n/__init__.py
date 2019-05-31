@@ -1,9 +1,6 @@
 """@author: Kartikei Mittal
 
-__init__.py file connect_n module
-
-Tasks:
-*  Increment Version Number"""
+__init__.py file connect_n module"""
 
 __author__ = "Kartikei Mittal"
 

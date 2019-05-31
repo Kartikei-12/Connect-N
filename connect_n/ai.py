@@ -26,13 +26,11 @@ class AI:
         self.rows = game.rows
         self.cols = game.cols
 
-    def get_move2(self):
-        """Simple method to fetch AI move
-        Note:
-            Currently no actual AI or machine learing implementation, just random guesses
+    def greedy(self):
+        """Simple method to fetch AI move, Uses scoring method to determine highest ranking move(greddy approach)
 
         Returns:
-            int : Most optimal move (- 1 evan no proper move possible.)"""
+            int : Most optimal move (None if no legal moves)"""
         valid_loction = self.game.get_valid_moves()
         if len(valid_loction) == 0:  # No valid moves
             return None
@@ -47,7 +45,10 @@ class AI:
         return best_move
 
     def get_move(self):
-        """Experimental method, trying to implement algorithm inspired by min max algorithm"""
+        """Fetches AI  move
+
+        Returns:
+            int : Most optimal move (None if no legal moves)"""
         if len(self.game.get_valid_moves()) == 0:
             return None
         # Check if AI winning, and win

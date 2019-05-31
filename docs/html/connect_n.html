@@ -51,17 +51,24 @@
 <dl class="method">
 <dt id="connect_n.ai.AI.get_move">
 <code class="descname">get_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.get_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Experimental method, trying to implement algorithm inspired by min max algorithm</p>
+<dd><p>Fetches AI  move</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Most optimal move (None if no legal moves)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
-<dt id="connect_n.ai.AI.get_move2">
-<code class="descname">get_move2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.get_move2" title="Permalink to this definition">¶</a></dt>
-<dd><p>Simple method to fetch AI move
-.. note:: Currently no actual AI or machine learing implementation, just random guesses</p>
+<dt id="connect_n.ai.AI.greedy">
+<code class="descname">greedy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.greedy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple method to fetch AI move, Uses scoring method to determine highest ranking move(greddy approach)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Most optimal move (- 1 evan no proper move possible.)</p>
+<dd class="field-odd"><p>Most optimal move (None if no legal moves)</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>int</p>
@@ -510,8 +517,6 @@ and vice versa.</p>
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-connect_n" title="Permalink to this headline">¶</a></h2>
 <p>&#64;author: Kartikei Mittal</p>
 <p>__init__.py file connect_n module</p>
-<p>Tasks:
-*  Increment Version Number</p>
 </div>
 </div>
 

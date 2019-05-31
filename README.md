@@ -21,7 +21,6 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 *  ID 1 is reserved for AI.
 *  Currently only supports single AI player in a game.
 *  Tests in python 3.7 on Windows OS(by developer).
-*  Special Note: Method(get_move*()) in class AI in connect_n/ai.py represent different types of AI which may be used to play the game.
 
 ## Installation
 
@@ -86,8 +85,8 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-05-30 22:54:00</p>
-                <p class='attribute'><strong>Duration: </strong>25.35 s</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-05-31 10:32:10</p>
+                <p class='attribute'><strong>Duration: </strong>25.49 s</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 15, Pass: 15</p>
             </div>
         </div>
@@ -144,7 +143,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 13 ms
+                                Total: 5, Pass: 5 -- Duration: 0 ms
                             </td>
                         </tr>
                     </tbody>
@@ -236,7 +235,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 9, Pass: 9 -- Duration: 15 ms
+                                Total: 9, Pass: 9 -- Duration: 0 ms
                             </td>
                         </tr>
                     </tbody>
@@ -264,7 +263,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 25.33 s
+                                Total: 1, Pass: 1 -- Duration: 25.49 s
                             </td>
                         </tr>
                     </tbody>
