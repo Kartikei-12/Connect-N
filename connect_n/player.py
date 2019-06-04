@@ -1,12 +1,6 @@
-"""
-@author: Kartikei Mittal
+"""player.py file
 
-player.py file
-
-Contains player module.
-
-https://github.com/Kartikei-12/Connect-N
-"""
+Contains player module"""
 
 # Python module(s)
 from itertools import count
@@ -16,7 +10,7 @@ class Player:
     """Player class
 
     Args:
-        name (str): Name of the player."""
+        name (str): Name of the player"""
 
     _ids = count(2)
 

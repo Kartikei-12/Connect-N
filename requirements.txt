@@ -2,3 +2,4 @@ numpy
 loguru
 pygame
 html-testRunner
+flask

@@ -21,6 +21,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 *  ID 1 is reserved for AI.
 *  Currently only supports single AI player in a game.
 *  Tests in python 3.7 on Windows OS(by developer).
+*  API: used [flask](http://flask.pocoo.org/) for API development.
 
 ## Installation
 
@@ -74,3 +75,12 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
 ## You are wanted
 
 Looking for any algorithm which may be useful for designing AI for turn based games with more than two players.
+
+## Additional Resources
+
+* Flask Totorial:
+  * [Youtube](https://www.youtube.com/watch?v=Z1RJmh_OqeA)
+  * [Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+
+
+
