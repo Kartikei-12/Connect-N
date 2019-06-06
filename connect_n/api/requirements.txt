@@ -1,0 +1,6 @@
+httpie
+flask
+flask-migrate
+flask-httpauth
+flask-sqlalchemy
+python-dotenv

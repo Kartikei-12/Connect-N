@@ -3,6 +3,12 @@ branch = True
 cover_pylib = False
 omit = *\Python\Python37\*
 
+[paths]
+source =
+    ./
+    ./connect_n/
+    ./connect_n/api/
+
 [report]
 # Regexes for lines to exclude from consideration
 exclude_lines =

@@ -115,13 +115,11 @@ class AI:
             )[1]
             if maximizingPlayer:
                 if new_score > value:
-                    value = new_score
-                    column = col
+                    value, column = new_score, col
                 alpha = max(alpha, value)
             else:
                 if new_score < value:
-                    value = new_score
-                    column = col
+                    value, column = new_score, col
                 beta = min(beta, value)
             if alpha >= beta:
                 break
@@ -163,5 +161,5 @@ class AI:
         )
 
     def __str__(self):
-        """String representation."""
-        return "<class 'AI'> {}".format(self.p_id)
+        """String representation"""
+        return "<class 'AI' {}>".format(self.p_id)

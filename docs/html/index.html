@@ -56,6 +56,7 @@
 <li><p>Currently only supports single AI player in a game.</p></li>
 <li><p>Tests in python 3.7 on Windows OS(by developer).</p></li>
 <li><p>API: used <a class="reference external" href="http://flask.pocoo.org/">flask</a> for API development.</p></li>
+<li><p>Using <a class="reference external" href="https://pypi.org/project/Flask-Migrate/">flask-migrate</a> for database migration.</p></li>
 </ul>
 </div>
 <div class="section" id="installation">
@@ -81,26 +82,34 @@
 </div>
 </div>
 </div>
-<div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="direct-usage">
+<h2>Direct Usage<a class="headerlink" href="#direct-usage" title="Permalink to this headline">¶</a></h2>
 <p>For simple example,</p>
 <p>Run main.py as <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">main.py</span></code> on <strong>windows</strong> with virtual environment(<code class="docutils literal notranslate"><span class="pre">./venv/Scripts/activate</span></code>).</p>
 <p>Run main.py as <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">main.py</span></code> on <strong>Ubuntu/Linux</strong> with virtual environment(<code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/venv/Scripts/activate</span></code>).</p>
 </div>
 <div class="section" id="api">
 <h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>Usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="api-setup-one-time">
+<h3>API Setup(One time)<a class="headerlink" href="#api-setup-one-time" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span><span class="nv">git</span> <span class="nv">clone</span> <span class="nv">https</span>:<span class="o">//</span><span class="nv">github</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">Kartikei</span><span class="o">-</span><span class="mi">12</span><span class="o">/</span><span class="k">Connect</span><span class="o">-</span><span class="nv">N</span>
 <span class="nv">cd</span> <span class="k">Connect</span><span class="o">-</span><span class="nv">N</span><span class="o">-</span><span class="nv">master</span>
 <span class="nv">python</span> <span class="o">-</span><span class="nv">m</span> <span class="nv">venv</span> <span class="nv">venv</span>
 .<span class="o">/</span><span class="nv">venv</span><span class="o">/</span><span class="nv">Scripts</span><span class="o">/</span><span class="nv">activate</span>
 <span class="nv">pip</span> <span class="nv">install</span> <span class="o">-</span><span class="nv">r</span> <span class="nv">requirements</span>.<span class="nv">txt</span>
 <span class="nv">cd</span> <span class="nv">connect_n</span><span class="o">/</span><span class="nv">api</span><span class="o">/</span>
-<span class="nv">flask</span> <span class="nv">run</span>
+<span class="nv">pip</span> <span class="nv">install</span> <span class="o">-</span><span class="nv">r</span> <span class="nv">requirements</span>.<span class="nv">txt</span>
+<span class="nv">flask</span> <span class="nv">db</span> <span class="nv">init</span>
+<span class="nv">flask</span> <span class="nv">db</span> <span class="nv">migrate</span> <span class="o">-</span><span class="nv">m</span> <span class="s2">&quot;</span><span class="s">Initial migration</span><span class="s2">&quot;</span>
+<span class="nv">flask</span> <span class="nv">db</span> <span class="nv">upgrade</span>
+<span class="nv">cd</span> ..<span class="o">/</span>..<span class="o">/</span>
 </pre></div>
 </div>
-<p>In new terminal do <code class="docutils literal notranslate"><span class="pre">http</span> <span class="pre">http://127.0.0.1:5000/test</span></code></p>
+</div>
+<div class="section" id="api-usage">
+<h3>API Usage<a class="headerlink" href="#api-usage" title="Permalink to this headline">¶</a></h3>
+<p>Run server with <code class="docutils literal notranslate"><span class="pre">flask</span> <span class="pre">run</span></code> in <code class="docutils literal notranslate"><span class="pre">Connect-N/connect_n/api</span></code> directory.</p>
+<p>API Call: In new terminal do <code class="docutils literal notranslate"><span class="pre">http</span> <span class="pre">http://127.0.0.1:5000/test</span></code></p>
 </div>
 </div>
 <div class="section" id="system-requirements">

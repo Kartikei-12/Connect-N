@@ -94,6 +94,17 @@ class ConnectNTests(unittest.TestCase):
         self.game.board = [[1, 0, 0], [1, 0, 0], [1, 0, 0]]
         self.assertFalse(self.game.is_valid_move(0))
 
+    def test_get_valid_moves(self):
+        """Testing valid moves"""
+        board = [[0, 0, 0], [0, 0, 0], [1, 0, 0]]
+        self.assertEqual(self.game.get_valid_moves(board=board), [1, 2])
+
+    def test_get_strings(self):
+        """Testing get_strings"""
+        board = np.array([[0, 0, 0], [0, 0, 0], [1, 0, 0]], dtype=int)
+        strings = ["000", "000", "100", "001", "000", "000", "001", "000"]
+        self.assertEqual(self.game.get_strings(board=board), strings)
+
 
 class PygameUtilityTests(unittest.TestCase):
     # Tests for project Connect-N.
@@ -118,7 +129,7 @@ class AITests(unittest.TestCase):
 
     def setUp(self):
         """setUp"""
-        self.ai = AI(ConnectNGame(ai=False, graphic=False))
+        self.ai = AI(ConnectNGame(ai=True, graphic=False))
 
     def tearDown(self):
         """tearDown"""
@@ -187,6 +198,37 @@ class AITests(unittest.TestCase):
             dtype=int,
         )
         self.assertEqual(UNIT_SCORE * 5200 + OFFSET, self.ai.score(board, 1))
+
+    def test_greedy(self):
+        """Greedy Test"""
+        self.ai.game.board = np.array(
+            [
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [1, 0, 0, 0, 0, 0, 0],
+                [1, 0, 2, 0, 2, 0, 2],
+            ],
+            dtype=int,
+        )
+        self.assertEqual(self.ai.greedy(), 1)
+
+    def test_get_move(self):
+        """Greedy Test"""
+        self.ai.game.players.append(Player("Rex"))
+        self.ai.game.board = np.array(
+            [
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [0, 0, 0, 0, 0, 0, 0],
+                [1, 0, 0, 0, 0, 0, 0],
+                [1, 0, 0, 0, 0, 0, 0],
+                [1, 0, 2, 0, 2, 0, 2],
+            ],
+            dtype=int,
+        )
+        self.assertEqual(self.ai.get_move(), 1)
 
 
 def main():

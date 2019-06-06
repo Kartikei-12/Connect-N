@@ -22,6 +22,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 *  Currently only supports single AI player in a game.
 *  Tests in python 3.7 on Windows OS(by developer).
 *  API: used [flask](http://flask.pocoo.org/) for API development.
+*  Using [flask-migrate](https://pypi.org/project/Flask-Migrate/) for database migration.
 
 ## Installation
 
@@ -41,7 +42,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
     source venv/bin/activate
     pip3 install -r requirements.txt
 
-## Usage
+## Direct Usage
 
 For simple example,
 
@@ -51,7 +52,7 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
 
 ## API
 
-### Usage
+### API Setup(One time)
 
     git clone https://github.com/Kartikei-12/Connect-N
     cd Connect-N-master
@@ -59,10 +60,17 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
     ./venv/Scripts/activate
     pip install -r requirements.txt
     cd connect_n/api/
-    flask run
+    pip install -r requirements.txt
+    flask db init
+    flask db migrate -m "Initial migration"
+    flask db upgrade
+    cd ../../
 
+### API Usage
 
-In new terminal do `http http://127.0.0.1:5000/test`
+Run server with `flask run` in `Connect-N/connect_n/api` directory.
+
+API Call: In new terminal do `http http://127.0.0.1:5000/test`
 
 ## System Requirements
 
@@ -105,6 +113,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
 
 
 
+
 <!DOCTYPE html>
 <html>
 
@@ -113,9 +122,9 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-06-06 12:07:23</p>
-                <p class='attribute'><strong>Duration: </strong>26.20 s</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 15, Pass: 15</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-06-06 14:38:29</p>
+                <p class='attribute'><strong>Duration: </strong>25.72 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 19, Pass: 19</p>
             </div>
         </div>
         <div class="row">
@@ -129,6 +138,22 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                     </thead>
                     <tbody>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_get_move</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_greedy</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
                         <tr class='success'>
                             <td class="col-xs-10">test_horizontal_score</td>
                             <td class="col-xs-1">
@@ -171,7 +196,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 0 ms
+                                Total: 7, Pass: 7 -- Duration: 114 ms
                             </td>
                         </tr>
                     </tbody>
@@ -191,6 +216,22 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                     <tbody>
                         <tr class='success'>
                             <td class="col-xs-10">test_add_player</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_get_strings</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_get_valid_moves</td>
                             <td class="col-xs-1">
                                 <span class="label label-success" style="display:block;width:40px;">Pass</span>
                             </td>
@@ -263,7 +304,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 9, Pass: 9 -- Duration: 1 ms
+                                Total: 11, Pass: 11 -- Duration: 3 ms
                             </td>
                         </tr>
                     </tbody>
@@ -291,7 +332,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 26.20 s
+                                Total: 1, Pass: 1 -- Duration: 25.60 s
                             </td>
                         </tr>
                     </tbody>

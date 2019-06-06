@@ -22,6 +22,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 *  Currently only supports single AI player in a game.
 *  Tests in python 3.7 on Windows OS(by developer).
 *  API: used [flask](http://flask.pocoo.org/) for API development.
+*  Using [flask-migrate](https://pypi.org/project/Flask-Migrate/) for database migration.
 
 ## Installation
 
@@ -41,7 +42,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
     source venv/bin/activate
     pip3 install -r requirements.txt
 
-## Usage
+## Direct Usage
 
 For simple example,
 
@@ -51,7 +52,7 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
 
 ## API
 
-### Usage
+### API Setup(One time)
 
     git clone https://github.com/Kartikei-12/Connect-N
     cd Connect-N-master
@@ -59,10 +60,17 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
     ./venv/Scripts/activate
     pip install -r requirements.txt
     cd connect_n/api/
-    flask run
+    pip install -r requirements.txt
+    flask db init
+    flask db migrate -m "Initial migration"
+    flask db upgrade
+    cd ../../
 
+### API Usage
 
-In new terminal do `http http://127.0.0.1:5000/test`
+Run server with `flask run` in `Connect-N/connect_n/api` directory.
+
+API Call: In new terminal do `http http://127.0.0.1:5000/test`
 
 ## System Requirements
 
@@ -102,3 +110,4 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
 
 *  Thanks to [Miguel Grinberg](https://github.com/miguelgrinberg) for excelent resource on flask and how to learn it.
 *  Thanks to [freecodecamp](https://www.freecodecamp.org/) for the great beginning boost.
+

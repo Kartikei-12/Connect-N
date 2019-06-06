@@ -1,3 +1,5 @@
+"""Environment variable(s) for Connect-N API"""
+
 API_DB_NAME = "api.db"
 
 RESPONSE_TEMPLATE = {

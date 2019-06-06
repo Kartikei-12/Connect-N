@@ -1,3 +1,6 @@
+"""error.py Error managment for API"""
+
+# Flask modules(s)
 from flask import jsonify
 from werkzeug.http import HTTP_STATUS_CODES
 
@@ -5,7 +8,7 @@ from utility import compile_response
 
 
 def bad_request(text, status_code):
-    """"""
+    """Response generator for bad request to API"""
     payload = {
         "error": HTTP_STATUS_CODES.get(status_code, "Unknown error"),
         "message": text,
