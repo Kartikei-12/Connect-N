@@ -2,4 +2,11 @@ numpy
 loguru
 pygame
 html-testRunner
+
+# Comment below package if you are not planning on using API
+httpie
 flask
+flask-migrate
+flask-httpauth
+flask-sqlclchemy
+python-dotenv

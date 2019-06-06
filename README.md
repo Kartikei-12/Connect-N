@@ -49,6 +49,21 @@ Run main.py as `python main.py` on **windows** with virtual environment(`./venv/
 
 Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`source /venv/Scripts/activate`).
 
+## API
+
+### Usage
+
+    git clone https://github.com/Kartikei-12/Connect-N
+    cd Connect-N-master
+    python -m venv venv
+    ./venv/Scripts/activate
+    pip install -r requirements.txt
+    cd connect_n/api/
+    flask run
+
+
+In new terminal do `http http://127.0.0.1:5000/test`
+
 ## System Requirements
 
 *  [Python 3](https://www.python.org/)
@@ -81,9 +96,12 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
 * Flask Totorial:
   * [Youtube](https://www.youtube.com/watch?v=Z1RJmh_OqeA)
   * [Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+* freecodecamp [tutorial](https://www.youtube.com/watch?v=8392NJjj8s0)
 
+## Acknowledgment
 
-
+*  Thanks to [Miguel Grinberg](https://github.com/miguelgrinberg) for excelent resource on flask and how to learn it.
+*  Thanks to [freecodecamp](https://www.freecodecamp.org/) for the great beginning boost.
 
 
 
@@ -95,8 +113,8 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-06-04 20:09:01</p>
-                <p class='attribute'><strong>Duration: </strong>25.10 s</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-06-06 12:07:23</p>
+                <p class='attribute'><strong>Duration: </strong>26.20 s</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 15, Pass: 15</p>
             </div>
         </div>
@@ -153,7 +171,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 5, Pass: 5 -- Duration: 2 ms
+                                Total: 5, Pass: 5 -- Duration: 0 ms
                             </td>
                         </tr>
                     </tbody>
@@ -245,7 +263,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 9, Pass: 9 -- Duration: 3 ms
+                                Total: 9, Pass: 9 -- Duration: 1 ms
                             </td>
                         </tr>
                     </tbody>
@@ -273,7 +291,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 25.09 s
+                                Total: 1, Pass: 1 -- Duration: 26.20 s
                             </td>
                         </tr>
                     </tbody>

@@ -49,6 +49,21 @@ Run main.py as `python main.py` on **windows** with virtual environment(`./venv/
 
 Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`source /venv/Scripts/activate`).
 
+## API
+
+### Usage
+
+    git clone https://github.com/Kartikei-12/Connect-N
+    cd Connect-N-master
+    python -m venv venv
+    ./venv/Scripts/activate
+    pip install -r requirements.txt
+    cd connect_n/api/
+    flask run
+
+
+In new terminal do `http http://127.0.0.1:5000/test`
+
 ## System Requirements
 
 *  [Python 3](https://www.python.org/)
@@ -81,6 +96,9 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
 * Flask Totorial:
   * [Youtube](https://www.youtube.com/watch?v=Z1RJmh_OqeA)
   * [Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+* freecodecamp [tutorial](https://www.youtube.com/watch?v=8392NJjj8s0)
 
+## Acknowledgment
 
-
+*  Thanks to [Miguel Grinberg](https://github.com/miguelgrinberg) for excelent resource on flask and how to learn it.
+*  Thanks to [freecodecamp](https://www.freecodecamp.org/) for the great beginning boost.
