@@ -134,5 +134,3 @@ class PygameUtility:
                     pygame.time.wait(3000)
                     return players[turn]
                 turn = (turn + 1) % len(players)
-            elif players[turn].name == "AI":  # AI makes an invalid move
-                return None

@@ -12,13 +12,10 @@ def getVersion(file):
 
     Returns:
         Version after reading from given file"""
-    try:  # Integrating file number.
-        with open(file, "r") as f:
-            temp = f.read()
-            f.close()
-            return temp
+    try:
+        return open(file, "r").read()
     except FileNotFoundError:
-        return ""
+        return '0'
 
 
 def recordGame(game):
