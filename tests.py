@@ -4,6 +4,8 @@ Unit tests file for current project."""
 
 # Python module(s)
 import sys
+import time
+import json
 import unittest
 import numpy as np
 import HtmlTestRunner
@@ -19,6 +21,7 @@ from connect_n.player import Player
 from connect_n.connect_n import ConnectNGame
 from connect_n.api.app import create_app, app, db
 from connect_n.api.db_model import User
+from connect_n.api.utility import compile_response
 
 
 class ConnectNTests(unittest.TestCase):
@@ -255,6 +258,31 @@ class UserModelCase(unittest.TestCase):
         u.set_password("cat")
         self.assertFalse(u.check_password("dog"))
         self.assertTrue(u.check_password("cat"))
+
+    def test_check_token(self):
+        """Tesing token verification"""
+        u = User(username="susan")
+        token = u.get_token()
+        self.assertIsNotNone(User.check_token(token))
+        u.revoke_token()
+
+    def test_token_expiration(self):
+        """"""
+        u = User(username="susan")
+        token = u.get_token(expires_in=1)
+        time.sleep(2)
+        self.assertIsNone(User.check_token(token))
+
+
+class APIUtility(unittest.TestCase):
+    """API utility method testing"""
+
+    def test_compile_response(self):
+        """Testing compile_response"""
+        json_str = compile_response(test="test")
+        json_dict = json.loads(json_str)
+        self.assertEqual(json_dict["test"], "test")
+        self.assertEqual(json_dict["description"], "")
 
 
 def main():

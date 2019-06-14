@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>api module &#8212; Connect-N 0.1d documentation</title>
+    <title>api package &#8212; Connect-N 0.1d documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -30,8 +30,268 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="module-api">
-<span id="api-module"></span><h1>api module<a class="headerlink" href="#module-api" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="api-package">
+<h1>api package<a class="headerlink" href="#api-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="api-app-module">
+<h2>api.app module<a class="headerlink" href="#api-app-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-api.auth">
+<span id="api-auth-module"></span><h2>api.auth module<a class="headerlink" href="#module-api.auth" title="Permalink to this headline">¶</a></h2>
+<p>auth.py file for Connect-N game API</p>
+<dl class="function">
+<dt id="api.auth.basic_auth_error">
+<code class="descclassname">api.auth.</code><code class="descname">basic_auth_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.auth.basic_auth_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error Handaler for Authorization Error</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="api.auth.token_auth_error">
+<code class="descclassname">api.auth.</code><code class="descname">token_auth_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.auth.token_auth_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error Handaler for Authentication Error</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="api.auth.verify_password">
+<code class="descclassname">api.auth.</code><code class="descname">verify_password</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#api.auth.verify_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>API method used to verify password</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<em>str</em>) – Username</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – Password for login</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If valid password for supplied username</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="api.auth.verify_token">
+<code class="descclassname">api.auth.</code><code class="descname">verify_token</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#api.auth.verify_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>API token verification method</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-api.db_model">
+<span id="api-db-model-module"></span><h2>api.db_model module<a class="headerlink" href="#module-api.db_model" title="Permalink to this headline">¶</a></h2>
+<p>Database Model(s) for Connect-N API</p>
+<dl class="class">
+<dt id="api.db_model.User">
+<em class="property">class </em><code class="descclassname">api.db_model.</code><code class="descname">User</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#api.db_model.User" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>User table defination</p>
+<dl class="method">
+<dt id="api.db_model.User.check_password">
+<code class="descname">check_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#api.db_model.User.check_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check user password</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em>) – Password to check against</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if correct password</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="api.db_model.User.check_token">
+<em class="property">static </em><code class="descname">check_token</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#api.db_model.User.check_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Static method for token search and verification</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>token</strong> (<em>str</em>) – Token to check</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reurns:</dt><dd><p>User : User to whom supplied token belongs to</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="api.db_model.User.email">
+<code class="descname">email</code><a class="headerlink" href="#api.db_model.User.email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="api.db_model.User.from_dict">
+<code class="descname">from_dict</code><span class="sig-paren">(</span><em>data</em>, <em>new_user=False</em><span class="sig-paren">)</span><a class="headerlink" href="#api.db_model.User.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to read user from dictioary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>dict</em>) – Must contain username, email and password fields</p></li>
+<li><p><strong>new_user</strong> (<em>bool</em>) – If new user registrations</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="api.db_model.User.game">
+<code class="descname">game</code><a class="headerlink" href="#api.db_model.User.game" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="api.db_model.User.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>expires_in=3600</em><span class="sig-paren">)</span><a class="headerlink" href="#api.db_model.User.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Token generator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>expires_in</strong> (<em>int</em>) – Seconds in which token expires</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>API token for the user</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="api.db_model.User.id">
+<code class="descname">id</code><a class="headerlink" href="#api.db_model.User.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="api.db_model.User.last_request">
+<code class="descname">last_request</code><a class="headerlink" href="#api.db_model.User.last_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="api.db_model.User.password_hash">
+<code class="descname">password_hash</code><a class="headerlink" href="#api.db_model.User.password_hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="api.db_model.User.revoke_token">
+<code class="descname">revoke_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.db_model.User.revoke_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to revoke API token</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="api.db_model.User.set_password">
+<code class="descname">set_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#api.db_model.User.set_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method used to set user password</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em>) – Password set as password hash</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="api.db_model.User.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><em>include_email=False</em><span class="sig-paren">)</span><a class="headerlink" href="#api.db_model.User.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides dictionary representation of user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>include_email</strong> – Wheather to include email</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="api.db_model.User.token">
+<code class="descname">token</code><a class="headerlink" href="#api.db_model.User.token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="api.db_model.User.token_expiration">
+<code class="descname">token_expiration</code><a class="headerlink" href="#api.db_model.User.token_expiration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="api.db_model.User.username">
+<code class="descname">username</code><a class="headerlink" href="#api.db_model.User.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-api.env">
+<span id="api-env-module"></span><h2>api.env module<a class="headerlink" href="#module-api.env" title="Permalink to this headline">¶</a></h2>
+<p>Environment variable(s) for Connect-N API</p>
+</div>
+<div class="section" id="module-api.error">
+<span id="api-error-module"></span><h2>api.error module<a class="headerlink" href="#module-api.error" title="Permalink to this headline">¶</a></h2>
+<p>error.py Error managment for API</p>
+<dl class="function">
+<dt id="api.error.bad_request">
+<code class="descclassname">api.error.</code><code class="descname">bad_request</code><span class="sig-paren">(</span><em>text</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#api.error.bad_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Response generator for bad request to API</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="api.error.internal_error">
+<code class="descclassname">api.error.</code><code class="descname">internal_error</code><span class="sig-paren">(</span><em>error</em><span class="sig-paren">)</span><a class="headerlink" href="#api.error.internal_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="api.error.not_found_error">
+<code class="descclassname">api.error.</code><code class="descname">not_found_error</code><span class="sig-paren">(</span><em>error</em><span class="sig-paren">)</span><a class="headerlink" href="#api.error.not_found_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="api-routes-module">
+<h2>api.routes module<a class="headerlink" href="#api-routes-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-api.tokens">
+<span id="api-tokens-module"></span><h2>api.tokens module<a class="headerlink" href="#module-api.tokens" title="Permalink to this headline">¶</a></h2>
+<p>API tokens handaling</p>
+<dl class="function">
+<dt id="api.tokens.get_token">
+<code class="descclassname">api.tokens.</code><code class="descname">get_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.tokens.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>API endpoint to generate new token</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="api.tokens.revoke_token">
+<code class="descclassname">api.tokens.</code><code class="descname">revoke_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.tokens.revoke_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>API endpoint to revoke user token</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-api.utility">
+<span id="api-utility-module"></span><h2>api.utility module<a class="headerlink" href="#module-api.utility" title="Permalink to this headline">¶</a></h2>
+<p>Utility method(s) for Connect-N API</p>
+<dl class="function">
+<dt id="api.utility.compile_response">
+<code class="descclassname">api.utility.</code><code class="descname">compile_response</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#api.utility.compile_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to compile response</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>JSON response to API call</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-api">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-api" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 

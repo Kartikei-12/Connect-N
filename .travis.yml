@@ -17,6 +17,7 @@ matrix:
 install:
   - pip3 install --user --upgrade pip # both OSes agree about 'pip3'
   - pip3 install --user -r requirements.txt
+  - pip3 install --user -r connect_n/api/requirements.txt
   - pip3 install codecov
 
 script:

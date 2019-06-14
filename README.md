@@ -70,17 +70,13 @@ Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`s
 
 Run server with `flask run` in `Connect-N/connect_n/api` directory.
 
-API Call: In new terminal do `http http://127.0.0.1:5000/test`
+API Call: In new terminal do `http GET http://127.0.0.1:5000/test`
 
 ## System Requirements
 
 *  [Python 3](https://www.python.org/)
 *  [Pip](https://pypi.org/) usually pre-installed with python, check with `pip3 --version`.
 *  Python module [PyGame](https://pypi.org/project/pygame/) installable via pip.
-
-## TODO
-
-*  Create web interface.
 
 ## Documentation
 
@@ -95,9 +91,10 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
 
 [@Kartikei Mittal](https://github.com/Kartikei-12)
 
-## You are wanted
+## Help Needed
 
-Looking for any algorithm which may be useful for designing AI for turn based games with more than two players.
+* Looking for any algorithm which may be useful for designing AI for turn based games with more than two players.
+* Looking for a front end developer for making API front end for web and android.
 
 ## Additional Resources
 
@@ -122,9 +119,9 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-06-14 09:32:05</p>
-                <p class='attribute'><strong>Duration: </strong>26.39 s</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 20, Pass: 20</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-06-14 10:08:59</p>
+                <p class='attribute'><strong>Duration: </strong>28.78 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 23, Pass: 23</p>
             </div>
         </div>
         <div class="row">
@@ -197,6 +194,34 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         <tr>
                             <td colspan="3">
                                 Total: 7, Pass: 7 -- Duration: 114 ms
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>__main__.APIUtility</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_compile_response</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 1, Pass: 1 -- Duration: 0 ms
                             </td>
                         </tr>
                     </tbody>
@@ -304,7 +329,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 11, Pass: 11 -- Duration: 3 ms
+                                Total: 11, Pass: 11 -- Duration: 4 ms
                             </td>
                         </tr>
                     </tbody>
@@ -332,7 +357,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 25.71 s
+                                Total: 1, Pass: 1 -- Duration: 25.99 s
                             </td>
                         </tr>
                     </tbody>
@@ -351,7 +376,23 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                     </thead>
                     <tbody>
                         <tr class='success'>
+                            <td class="col-xs-10">test_check_token</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
                             <td class="col-xs-10">test_password_hashing</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_token_expiration</td>
                             <td class="col-xs-1">
                                 <span class="label label-success" style="display:block;width:40px;">Pass</span>
                             </td>
@@ -360,7 +401,7 @@ Looking for any algorithm which may be useful for designing AI for turn based ga
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 564 ms
+                                Total: 3, Pass: 3 -- Duration: 2.66 s
                             </td>
                         </tr>
                     </tbody>

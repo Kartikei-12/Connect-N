@@ -79,7 +79,7 @@ def start_new_game():
 @app.route("/get-game", methods=["GET"])
 @token_auth.login_required
 def get_game():
-    """"""
+    """API endpoint to retrive current game"""
     user = User.query.get(g.current_user.id)
     game = user.game
     response = jsonify(compile_response(description="Game ended", game=game))
@@ -94,7 +94,6 @@ def get_game():
 #     user = User.query.get(g.current_user.id)
 #     game_dict = json.loads(user.game)
 #     game = ConnectNGame(n = )
-
 #     game.make_move(move)
 #     user.game = json.dumps(game.to_dict())
 #     db.session.commit()

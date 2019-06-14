@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>connect_n.api package &#8212; Connect-N 0.1d documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="connect-n-api-package">
+<h1>connect_n.api package<a class="headerlink" href="#connect-n-api-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-connect_n.api.app">
+<span id="connect-n-api-app-module"></span><h2>connect_n.api.app module<a class="headerlink" href="#module-connect_n.api.app" title="Permalink to this headline">¶</a></h2>
+<p>API for Connect-N game</p>
+<dl class="function">
+<dt id="connect_n.api.app.create_app">
+<code class="descclassname">connect_n.api.app.</code><code class="descname">create_app</code><span class="sig-paren">(</span><em>api_db_name='/api.db'</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.app.create_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>App factory function which runs setup for Flask app</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.app.make_shell_context">
+<code class="descclassname">connect_n.api.app.</code><code class="descname">make_shell_context</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.app.make_shell_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-connect_n.api.auth">
+<span id="connect-n-api-auth-module"></span><h2>connect_n.api.auth module<a class="headerlink" href="#module-connect_n.api.auth" title="Permalink to this headline">¶</a></h2>
+<p>auth.py file for Connect-N game API</p>
+<dl class="function">
+<dt id="connect_n.api.auth.basic_auth_error">
+<code class="descclassname">connect_n.api.auth.</code><code class="descname">basic_auth_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.auth.basic_auth_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error Handaler for Authorization Error</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.auth.token_auth_error">
+<code class="descclassname">connect_n.api.auth.</code><code class="descname">token_auth_error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.auth.token_auth_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error Handaler for Authentication Error</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.auth.verify_password">
+<code class="descclassname">connect_n.api.auth.</code><code class="descname">verify_password</code><span class="sig-paren">(</span><em>username</em>, <em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.auth.verify_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>API method used to verify password</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> (<em>str</em>) – Username</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – Password for login</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If valid password for supplied username</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.auth.verify_token">
+<code class="descclassname">connect_n.api.auth.</code><code class="descname">verify_token</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.auth.verify_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>API token verification method</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-connect_n.api.db_model">
+<span id="connect-n-api-db-model-module"></span><h2>connect_n.api.db_model module<a class="headerlink" href="#module-connect_n.api.db_model" title="Permalink to this headline">¶</a></h2>
+<p>Database Model(s) for Connect-N API</p>
+<dl class="class">
+<dt id="connect_n.api.db_model.User">
+<em class="property">class </em><code class="descclassname">connect_n.api.db_model.</code><code class="descname">User</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.db_model.User" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>User table defination</p>
+<dl class="method">
+<dt id="connect_n.api.db_model.User.check_password">
+<code class="descname">check_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.db_model.User.check_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check user password</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em>) – Password to check against</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if correct password</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="connect_n.api.db_model.User.check_token">
+<em class="property">static </em><code class="descname">check_token</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.db_model.User.check_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Static method for token search and verification</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>token</strong> (<em>str</em>) – Token to check</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Reurns:</dt><dd><p>User : User to whom supplied token belongs to</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="connect_n.api.db_model.User.email">
+<code class="descname">email</code><a class="headerlink" href="#connect_n.api.db_model.User.email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="connect_n.api.db_model.User.from_dict">
+<code class="descname">from_dict</code><span class="sig-paren">(</span><em>data</em>, <em>new_user=False</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.db_model.User.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to read user from dictioary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>dict</em>) – Must contain username, email and password fields</p></li>
+<li><p><strong>new_user</strong> (<em>bool</em>) – If new user registrations</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="connect_n.api.db_model.User.game">
+<code class="descname">game</code><a class="headerlink" href="#connect_n.api.db_model.User.game" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="connect_n.api.db_model.User.get_token">
+<code class="descname">get_token</code><span class="sig-paren">(</span><em>expires_in=3600</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.db_model.User.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Token generator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>expires_in</strong> (<em>int</em>) – Seconds in which token expires</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>API token for the user</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="connect_n.api.db_model.User.id">
+<code class="descname">id</code><a class="headerlink" href="#connect_n.api.db_model.User.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="connect_n.api.db_model.User.last_request">
+<code class="descname">last_request</code><a class="headerlink" href="#connect_n.api.db_model.User.last_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="connect_n.api.db_model.User.password_hash">
+<code class="descname">password_hash</code><a class="headerlink" href="#connect_n.api.db_model.User.password_hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="connect_n.api.db_model.User.revoke_token">
+<code class="descname">revoke_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.db_model.User.revoke_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to revoke API token</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.api.db_model.User.set_password">
+<code class="descname">set_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.db_model.User.set_password" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method used to set user password</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em>) – Password set as password hash</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.api.db_model.User.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><em>include_email=False</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.db_model.User.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides dictionary representation of user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>include_email</strong> – Wheather to include email</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dictionary representation</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="connect_n.api.db_model.User.token">
+<code class="descname">token</code><a class="headerlink" href="#connect_n.api.db_model.User.token" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="connect_n.api.db_model.User.token_expiration">
+<code class="descname">token_expiration</code><a class="headerlink" href="#connect_n.api.db_model.User.token_expiration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="connect_n.api.db_model.User.username">
+<code class="descname">username</code><a class="headerlink" href="#connect_n.api.db_model.User.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-connect_n.api.env">
+<span id="connect-n-api-env-module"></span><h2>connect_n.api.env module<a class="headerlink" href="#module-connect_n.api.env" title="Permalink to this headline">¶</a></h2>
+<p>Environment variable(s) for Connect-N API</p>
+</div>
+<div class="section" id="module-connect_n.api.error">
+<span id="connect-n-api-error-module"></span><h2>connect_n.api.error module<a class="headerlink" href="#module-connect_n.api.error" title="Permalink to this headline">¶</a></h2>
+<p>error.py Error managment for API</p>
+<dl class="function">
+<dt id="connect_n.api.error.bad_request">
+<code class="descclassname">connect_n.api.error.</code><code class="descname">bad_request</code><span class="sig-paren">(</span><em>text</em>, <em>status_code</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.error.bad_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Response generator for bad request to API</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.error.internal_error">
+<code class="descclassname">connect_n.api.error.</code><code class="descname">internal_error</code><span class="sig-paren">(</span><em>error</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.error.internal_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.error.not_found_error">
+<code class="descclassname">connect_n.api.error.</code><code class="descname">not_found_error</code><span class="sig-paren">(</span><em>error</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.error.not_found_error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-connect_n.api.routes">
+<span id="connect-n-api-routes-module"></span><h2>connect_n.api.routes module<a class="headerlink" href="#module-connect_n.api.routes" title="Permalink to this headline">¶</a></h2>
+<p>API endpoints for Connect-N API</p>
+<dl class="function">
+<dt id="connect_n.api.routes.create_user">
+<code class="descclassname">connect_n.api.routes.</code><code class="descname">create_user</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.routes.create_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>API endpoint to create new user</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.routes.end_game">
+<code class="descclassname">connect_n.api.routes.</code><code class="descname">end_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.routes.end_game" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.routes.get_game">
+<code class="descclassname">connect_n.api.routes.</code><code class="descname">get_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.routes.get_game" title="Permalink to this definition">¶</a></dt>
+<dd><p>API endpoint to retrive current game</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.routes.get_user">
+<code class="descclassname">connect_n.api.routes.</code><code class="descname">get_user</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.routes.get_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>API endpoint to retrive specefic user info from id</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.routes.index">
+<code class="descclassname">connect_n.api.routes.</code><code class="descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.routes.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>API endpoint for index/homepage/testing</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.routes.start_new_game">
+<code class="descclassname">connect_n.api.routes.</code><code class="descname">start_new_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.routes.start_new_game" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-connect_n.api.tokens">
+<span id="connect-n-api-tokens-module"></span><h2>connect_n.api.tokens module<a class="headerlink" href="#module-connect_n.api.tokens" title="Permalink to this headline">¶</a></h2>
+<p>API tokens handaling</p>
+<dl class="function">
+<dt id="connect_n.api.tokens.get_token">
+<code class="descclassname">connect_n.api.tokens.</code><code class="descname">get_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.tokens.get_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>API endpoint to generate new token</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="connect_n.api.tokens.revoke_token">
+<code class="descclassname">connect_n.api.tokens.</code><code class="descname">revoke_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.tokens.revoke_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>API endpoint to revoke user token</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-connect_n.api.utility">
+<span id="connect-n-api-utility-module"></span><h2>connect_n.api.utility module<a class="headerlink" href="#module-connect_n.api.utility" title="Permalink to this headline">¶</a></h2>
+<p>Utility method(s) for Connect-N API</p>
+<dl class="function">
+<dt id="connect_n.api.utility.compile_response">
+<code class="descclassname">connect_n.api.utility.</code><code class="descname">compile_response</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.api.utility.compile_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to compile response</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>JSON response to API call</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-connect_n.api">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-connect_n.api" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Connect-N</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Kartikei Mittal.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/connect_n.api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
