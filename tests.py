@@ -267,11 +267,21 @@ class UserModelCase(unittest.TestCase):
         u.revoke_token()
 
     def test_token_expiration(self):
-        """"""
+        """Testing token expiration"""
         u = User(username="susan")
         token = u.get_token(expires_in=1)
         time.sleep(2)
         self.assertIsNone(User.check_token(token))
+
+    def test_to_dict(self):
+        """"""
+        u = User(username="susan", email="susan@example.com")
+        db.session.add(u)
+        db.session.commit()
+        u_dict = u.to_dict(include_email=True)
+        self.assertEqual("susan@example.com", u_dict["email"])
+        u_dict = u.to_dict(include_email=False)
+        self.assertNotIn("email", u_dict)
 
 
 class APIUtility(unittest.TestCase):
@@ -302,7 +312,7 @@ def main():
         del sys.argv[i]
 
     testRunner = HtmlTestRunner.HTMLTestRunner(
-        verbosity=3,
+        verbosity=2,
         descriptions=False,
         open_in_browser=False,
         combine_reports=True,

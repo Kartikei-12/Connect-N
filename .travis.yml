@@ -21,7 +21,7 @@ install:
   - pip3 install codecov
 
 script:
-  - coverage run tests.py
+  - coverage run tests.py --update-readme --clear-trailling-space
 
 after_success:
   - codecov

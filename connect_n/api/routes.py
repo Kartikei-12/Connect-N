@@ -87,25 +87,29 @@ def get_game():
     return response
 
 
-# @app.route("/make-game/<int:move>", methods=["GET"])
-# @token_auth.login_required
-# def make_move(move):
-#     """"""
-#     user = User.query.get(g.current_user.id)
-#     game_dict = json.loads(user.game)
-#     game = ConnectNGame(n = )
-#     game.make_move(move)
-#     user.game = json.dumps(game.to_dict())
-#     db.session.commit()
-#     response = jsonify(compile_response(description='Game ended', game=game.to_dict()))
-#     response.status_code = 201
-#     return response
+@app.route("/make-game/<int:move>", methods=["GET"])
+@token_auth.login_required
+def make_move(move):
+    """API endpoit to make move in the game
+
+    Args:
+        move (int): Player move"""
+    user = User.query.get(g.current_user.id)
+    game_dict = json.loads(user.game)
+    game = ConnectNGame()
+    game.from_dict(game_dict)
+    game.make_move(move, 2)
+    user.game = json.dumps(game.to_dict())
+    db.session.commit()
+    response = jsonify(compile_response(description="Game ended", game=game.to_dict()))
+    response.status_code = 201
+    return response
 
 
 @app.route("/end-game", methods=["GET"])
 @token_auth.login_required
 def end_game():
-    """"""
+    """API endpoint to delete current game if any"""
     user = User.query.get(g.current_user.id)
     game = user.game
     user.game = "Empty"

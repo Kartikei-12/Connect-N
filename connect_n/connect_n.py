@@ -62,8 +62,7 @@ class ConnectNGame:
                 raise ValueError("No winning combination possible")
 
         PATH = os.path.dirname(os.path.realpath(__file__))
-        FILE_PATH = PATH + "/version.txt"
-        self.__version__ += getVersion(FILE_PATH)
+        self.__version__ += getVersion(PATH + "/version.txt")
 
         self.winner = None
         self.GUIUtil = None
@@ -105,8 +104,22 @@ class ConnectNGame:
                 object_dict["board"].append(int(self.board[row][col]))
         return object_dict
 
-    def from_dict(self):
-        pass
+    def from_dict(self, game_dict):
+        """Method to create game from dictioay
+
+        Args:
+            game_dict (dict): Dictionary containning state of the game"""
+        self.winner = game_dict["winner"]
+        self.sequence = game_dict["sequence"]
+
+        self.n = game_dict["n"]
+        self.rows = game_dict["rows"]
+        self.cols = game_dict["cols"]
+
+        self.board = np.reshape(game_dict["board"], (self.rows, self.cols))
+        self.play = dummy_method
+        self.record_game = dummy_method
+        self.players.append(AI(self))
 
     def simulate(self, turn, sequence):
         """This method simulate a game from list of integers passed, each element representing column choosen by corresponding player to make move, Useful for trainning of AI.

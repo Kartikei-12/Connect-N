@@ -23,6 +23,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 *  Tests in python 3.7 on Windows OS(by developer).
 *  API: used [flask](http://flask.pocoo.org/) for API development.
 *  Using [flask-migrate](https://pypi.org/project/Flask-Migrate/) for database migration.
+*  Using [httpie](https://pypi.org/project/httpie/) for API calls and testing, similar to postman.
 
 ## Installation
 
@@ -119,9 +120,9 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-06-14 10:08:59</p>
-                <p class='attribute'><strong>Duration: </strong>28.78 s</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 23, Pass: 23</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-06-14 18:51:49</p>
+                <p class='attribute'><strong>Duration: </strong>30.55 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 24, Pass: 24</p>
             </div>
         </div>
         <div class="row">
@@ -193,7 +194,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 7, Pass: 7 -- Duration: 114 ms
+                                Total: 7, Pass: 7 -- Duration: 116 ms
                             </td>
                         </tr>
                     </tbody>
@@ -329,7 +330,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 11, Pass: 11 -- Duration: 4 ms
+                                Total: 11, Pass: 11 -- Duration: 3 ms
                             </td>
                         </tr>
                     </tbody>
@@ -357,7 +358,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 25.99 s
+                                Total: 1, Pass: 1 -- Duration: 27.78 s
                             </td>
                         </tr>
                     </tbody>
@@ -392,6 +393,14 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                             </td>
                         </tr>
                         <tr class='success'>
+                            <td class="col-xs-10">test_to_dict</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
                             <td class="col-xs-10">test_token_expiration</td>
                             <td class="col-xs-1">
                                 <span class="label label-success" style="display:block;width:40px;">Pass</span>
@@ -401,7 +410,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 3, Pass: 3 -- Duration: 2.66 s
+                                Total: 4, Pass: 4 -- Duration: 2.64 s
                             </td>
                         </tr>
                     </tbody>
