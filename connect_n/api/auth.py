@@ -5,8 +5,8 @@ from flask import g
 from flask_httpauth import HTTPBasicAuth, HTTPTokenAuth
 
 # User module(s)
-from db_model import User
-from error import bad_request
+from .db_model import User
+from .error import bad_request
 
 token_auth = HTTPTokenAuth()
 basic_auth = HTTPBasicAuth()

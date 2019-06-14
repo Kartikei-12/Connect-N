@@ -17,11 +17,13 @@ from connect_n.connect_n import ConnectNGame
 if __name__ == "__main__":
     print("Hello World!!\n---------------------------------------------------------")
     game = ConnectNGame(graphic=True, ai=True, record=False)
-    print(game)
-    print(game.__version__)
-    # game.add_player(Player("Mr.REX"))
-    from connect_n.ai import AI
+    game.add_player(Player("Mr.REX"))
+    # game.play()
 
-    game.players.append(AI(game, p_id=2))
-    game.play()
+    from pprint import pprint
+
+    pprint(game.to_dict())
+
+    # from connect_n.ai import AI
+    # game.players.append(AI(game, p_id=2))
     print("-----------------------------------------------------------\nBye World!!")

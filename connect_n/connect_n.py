@@ -29,7 +29,6 @@ class ConnectNGame:
 
     Args:
         ai (bool): Enable/Disable AI
-        web (bool): Web Interface
         record (bool): Enable game recording.
         graphic (bool): GUI(true) or command line interface(false)
         n (int): Number of coins required in a line to win.
@@ -38,26 +37,19 @@ class ConnectNGame:
 
     Raises:
         TypeError: Expected 'int' for num_rows, num_col, n
-        TypeError: Expected 'bool' for ai, graphic, web, record
+        TypeError: Expected 'bool' for ai, graphic, record
         ValueError: Argument [num_rows, num_col, n] needs to be positive
         ValueError: No winning combination possible in [num_rows, num_col, n]"""
 
     __version__ = "0.1d."
 
     def __init__(
-        self,
-        ai=True,
-        web=False,
-        record=False,
-        graphic=True,
-        n=N,
-        num_rows=ROWS,
-        num_col=COLUMNS,
+        self, ai=True, record=False, graphic=False, n=N, num_rows=ROWS, num_col=COLUMNS
     ):
         """Instantiate function for class ConnectNGame"""
 
         # Checking 'bool' argument
-        for var in (ai, graphic, web, record):
+        for var in (ai, graphic, record):
             if not isinstance(var, bool):
                 raise TypeError("Expected 'bool' not {0}.".format(type(var)))
         # Checking 'int' argument
@@ -98,6 +90,23 @@ class ConnectNGame:
                 print(e)
             else:
                 self.play = self.graphic
+
+    def to_dict(self):
+        """Provides a dictionary representaion of object"""
+        object_dict = vars(self).copy()
+        del object_dict["GUIUtil"]
+        del object_dict["__version__"]
+        del object_dict["play"]
+        del object_dict["record_game"]
+        del object_dict["players"]
+        object_dict["board"] = list()
+        for row in range(self.rows):
+            for col in range(self.cols):
+                object_dict["board"].append(int(self.board[row][col]))
+        return object_dict
+
+    def from_dict(self):
+        pass
 
     def simulate(self, turn, sequence):
         """This method simulate a game from list of integers passed, each element representing column choosen by corresponding player to make move, Useful for trainning of AI.

@@ -1,11 +1,10 @@
 """API tokens handaling"""
 
 from flask import jsonify, g
-from app import db
 
-from app import app
-from auth import basic_auth, token_auth
-from utility import compile_response
+from .app import app, db
+from .auth import basic_auth, token_auth
+from .utility import compile_response
 
 
 @app.route("/tokens", methods=["POST"])

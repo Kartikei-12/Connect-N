@@ -15,7 +15,7 @@ def getVersion(file):
     try:
         return open(file, "r").read()
     except FileNotFoundError:
-        return '0'
+        return "0"
 
 
 def recordGame(game):

@@ -1,12 +1,20 @@
 """API endpoints for Connect-N API"""
 
-from flask import request, jsonify
+# Python module(s)
+import json
 
-from app import app, db
-from db_model import User
+# Flask module(s)
+from flask import request, jsonify, g
 
-from utility import compile_response
-from error import bad_request
+# App module(s)
+from .app import app, db
+from .db_model import User
+from .auth import token_auth
+from .utility import compile_response
+from .error import bad_request
+
+# Project module(s)
+from ..connect_n import ConnectNGame
 
 
 @app.route("/", methods=["GET"])
@@ -17,7 +25,7 @@ def index():
     return compile_response(description="Test Request")
 
 
-@app.route("/users", methods=["POST"])
+@app.route("/new-user", methods=["POST"])
 def create_user():
     """API endpoint to create new user"""
     data = request.get_json() or {}
@@ -32,5 +40,77 @@ def create_user():
     db.session.add(user)
     db.session.commit()
     response = jsonify(compile_response(description=user.to_dict()))
+    response.status_code = 201
+    return response
+
+
+@app.route("/get-user/<int:id>", methods=["GET"])
+@token_auth.login_required
+def get_user(id):
+    """API endpoint to retrive specefic user info from id"""
+    u = User.query.get(id).to_dict() or {}
+    response = jsonify(compile_response(user=u))
+    response.status_code = 201
+    return response
+
+
+@app.route("/new-game", methods=["GET"])
+@token_auth.login_required
+def start_new_game():
+    """"""
+    user = User.query.get(g.current_user.id)
+    if user.game != "Empty":
+        return jsonify(
+            compile_response(
+                description="Previous game already in progress, try /delete to remove previous game"
+            )
+        )
+    game = ConnectNGame()
+    g.current_user.game = json.dumps(game.to_dict(), default=lambda x: x.__dict__)
+    db.session.commit()
+    response = jsonify(
+        compile_response(description="New game created", game=g.current_user.game)
+    )
+    response.status_code = 201
+    del game
+    return response
+
+
+@app.route("/get-game", methods=["GET"])
+@token_auth.login_required
+def get_game():
+    """"""
+    user = User.query.get(g.current_user.id)
+    game = user.game
+    response = jsonify(compile_response(description="Game ended", game=game))
+    response.status_code = 201
+    return response
+
+
+# @app.route("/make-game/<int:move>", methods=["GET"])
+# @token_auth.login_required
+# def make_move(move):
+#     """"""
+#     user = User.query.get(g.current_user.id)
+#     game_dict = json.loads(user.game)
+#     game = ConnectNGame(n = )
+
+#     game.make_move(move)
+#     user.game = json.dumps(game.to_dict())
+#     db.session.commit()
+#     response = jsonify(compile_response(description='Game ended', game=game.to_dict()))
+#     response.status_code = 201
+#     return response
+
+
+@app.route("/end-game", methods=["GET"])
+@token_auth.login_required
+def end_game():
+    """"""
+    user = User.query.get(g.current_user.id)
+    game = user.game
+    user.game = "Empty"
+    db.session.commit()
+    response = jsonify(compile_response(description="Game ended", game=game))
     response.status_code = 201
     return response

@@ -17,6 +17,8 @@ from connect_n.ai import AI
 from connect_n.utility import getVersion
 from connect_n.player import Player
 from connect_n.connect_n import ConnectNGame
+from connect_n.api.app import create_app, app, db
+from connect_n.api.db_model import User
 
 
 class ConnectNTests(unittest.TestCase):
@@ -229,6 +231,30 @@ class AITests(unittest.TestCase):
             dtype=int,
         )
         self.assertEqual(self.ai.get_move(), 1)
+
+
+class UserModelCase(unittest.TestCase):
+    """API Database User Model testing"""
+
+    def setUp(self):
+        """Setup"""
+        self.app = create_app("")
+        self.app_context = self.app.app_context()
+        self.app_context.push()
+        db.create_all()
+
+    def tearDown(self):
+        """Tear Down"""
+        db.session.remove()
+        db.drop_all()
+        self.app_context.pop()
+
+    def test_password_hashing(self):
+        """Testing Password hashing"""
+        u = User(username="susan")
+        u.set_password("cat")
+        self.assertFalse(u.check_password("dog"))
+        self.assertTrue(u.check_password("cat"))
 
 
 def main():

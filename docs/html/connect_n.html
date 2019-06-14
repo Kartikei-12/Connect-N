@@ -149,14 +149,13 @@
 <p><a class="reference external" href="https://github.com/Kartikei-12/Connect-N">https://github.com/Kartikei-12/Connect-N</a></p>
 <dl class="class">
 <dt id="connect_n.connect_n.ConnectNGame">
-<em class="property">class </em><code class="descclassname">connect_n.connect_n.</code><code class="descname">ConnectNGame</code><span class="sig-paren">(</span><em>ai=True</em>, <em>web=False</em>, <em>record=False</em>, <em>graphic=True</em>, <em>n=4</em>, <em>num_rows=6</em>, <em>num_col=7</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">connect_n.connect_n.</code><code class="descname">ConnectNGame</code><span class="sig-paren">(</span><em>ai=True</em>, <em>record=False</em>, <em>graphic=False</em>, <em>n=4</em>, <em>num_rows=6</em>, <em>num_col=7</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Main module class used Connect-N game.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ai</strong> (<em>bool</em>) – Enable/Disable AI</p></li>
-<li><p><strong>web</strong> (<em>bool</em>) – Web Interface</p></li>
 <li><p><strong>record</strong> (<em>bool</em>) – Enable game recording.</p></li>
 <li><p><strong>graphic</strong> (<em>bool</em>) – GUI(true) or command line interface(false)</p></li>
 <li><p><strong>n</strong> (<em>int</em>) – Number of coins required in a line to win.</p></li>
@@ -167,7 +166,7 @@
 <dt class="field-even">Raises</dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>TypeError</strong> – Expected ‘int’ for num_rows, num_col, n</p></li>
-<li><p><strong>TypeError</strong> – Expected ‘bool’ for ai, graphic, web, record</p></li>
+<li><p><strong>TypeError</strong> – Expected ‘bool’ for ai, graphic, record</p></li>
 <li><p><strong>ValueError</strong> – Argument [num_rows, num_col, n] needs to be positive</p></li>
 <li><p><strong>ValueError</strong> – No winning combination possible in [num_rows, num_col, n]</p></li>
 </ul>
@@ -195,6 +194,11 @@
 <code class="descname">cmd_line</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.cmd_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method to play the game in command line</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.from_dict">
+<code class="descname">from_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="connect_n.connect_n.ConnectNGame.get_strings">
@@ -350,6 +354,12 @@ and vice versa.</p>
 <dd class="field-odd"><p>list</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="connect_n.connect_n.ConnectNGame.to_dict">
+<code class="descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.connect_n.ConnectNGame.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a dictionary representaion of object</p>
 </dd></dl>
 
 </dd></dl>

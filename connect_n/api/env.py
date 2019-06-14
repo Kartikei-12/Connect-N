@@ -1,6 +1,8 @@
 """Environment variable(s) for Connect-N API"""
 
-API_DB_NAME = "api.db"
+MINIMUM_REQUEST_DURATION = 5
+
+API_DB_NAME = "/api.db"
 
 RESPONSE_TEMPLATE = {
     "@author": "Kartikei Mittal",

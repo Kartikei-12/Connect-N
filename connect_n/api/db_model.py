@@ -9,7 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 # pylint: disable=no-member
 
-from app import db
+from .app import db
 
 
 class User(db.Model):
@@ -21,7 +21,8 @@ class User(db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     last_request = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     token = db.Column(db.String(32), index=True, unique=True)
-    token_expiration = db.Column(db.DateTime)
+    token_expiration = db.Column(db.DateTime, default=datetime.utcnow)
+    game = db.Column(db.Text, default="Empty")
 
     def set_password(self, password):
         """Method used to set user password
