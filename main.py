@@ -15,15 +15,13 @@ from connect_n.connect_n import ConnectNGame
 
 
 if __name__ == "__main__":
-    print("Hello World!!\n---------------------------------------------------------")
     game = ConnectNGame(graphic=True, ai=True, record=False)
-    game.add_player(Player("Mr.REX"))
-    # game.play()
+    game.add_player(Player("Miss. Vaani Naani Bina Pani"))
+    game.play()
 
-    from pprint import pprint
+    # from pprint import pprint
 
-    pprint(game.to_dict())
+    # pprint(game.to_dict())
 
     # from connect_n.ai import AI
     # game.players.append(AI(game, p_id=2))
-    print("-----------------------------------------------------------\nBye World!!")
