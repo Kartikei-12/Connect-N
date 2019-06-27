@@ -36,10 +36,13 @@ def clear_trailling_space():
             file_name, file_extension = os.path.splitext(f)
             if file_extension in EXTENTIONS:
                 path_name = os.path.join(path, f)
-                with open(path_name, "r") as fh:
-                    new = [line.rstrip() for line in fh]
-                with open(path_name, "w") as fh:
-                    temporary_variable = [fh.write("{}\n".format(line)) for line in new]
+                if "\\Lib\\site-packages\\" not in path_name:
+                    with open(path_name, "r") as fh:
+                        new = [line.rstrip() for line in fh]
+                    with open(path_name, "w") as fh:
+                        temporary_variable = [
+                            fh.write("{}\n".format(line)) for line in new
+                        ]
 
     del dirs
     del file_name

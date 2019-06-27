@@ -120,8 +120,8 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-06-14 18:51:49</p>
-                <p class='attribute'><strong>Duration: </strong>30.55 s</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-06-27 21:02:45</p>
+                <p class='attribute'><strong>Duration: </strong>12.24 s</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 24, Pass: 24</p>
             </div>
         </div>
@@ -194,7 +194,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 7, Pass: 7 -- Duration: 116 ms
+                                Total: 7, Pass: 7 -- Duration: 100 ms
                             </td>
                         </tr>
                     </tbody>
@@ -330,7 +330,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 11, Pass: 11 -- Duration: 3 ms
+                                Total: 11, Pass: 11 -- Duration: 0 ms
                             </td>
                         </tr>
                     </tbody>
@@ -358,7 +358,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 27.78 s
+                                Total: 1, Pass: 1 -- Duration: 9.76 s
                             </td>
                         </tr>
                     </tbody>
@@ -410,7 +410,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 4, Pass: 4 -- Duration: 2.64 s
+                                Total: 4, Pass: 4 -- Duration: 2.38 s
                             </td>
                         </tr>
                     </tbody>

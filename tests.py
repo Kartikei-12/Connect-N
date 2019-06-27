@@ -8,7 +8,7 @@ import time
 import json
 import unittest
 import numpy as np
-import HtmlTestRunner
+from HtmlTestRunner import HTMLTestRunner
 
 # User module(s)
 from env import UNIT_SCORE, OFFSET
@@ -311,8 +311,8 @@ def main():
     for i in del_lst:
         del sys.argv[i]
 
-    testRunner = HtmlTestRunner.HTMLTestRunner(
-        verbosity=2,
+    testRunner = HTMLTestRunner(
+        verbosity=3,
         descriptions=False,
         open_in_browser=False,
         combine_reports=True,
