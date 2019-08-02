@@ -9,6 +9,7 @@ from connect_n.player import Player
 from connect_n.utility import getVersion
 from connect_n.connect_n import ConnectNGame
 
+
 class ConnectNTests(unittest.TestCase):
     # Tests for project Connect-N.
     def setUp(self):
@@ -104,8 +105,9 @@ def main():
         combine_reports=True,
         report_name="../reports/test_result_connect_n",
         add_timestamp=False,
-        exit=False
+        exit=False,
     )
+
 
 if __name__ == "__main__":
     main()

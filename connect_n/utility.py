@@ -3,6 +3,7 @@
 import sys
 from loguru import logger
 
+
 def getVersion(file):
     """Method
 

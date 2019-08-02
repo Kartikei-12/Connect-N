@@ -12,6 +12,7 @@ from connect_n.ai import AI
 from connect_n.player import Player
 from connect_n.connect_n import ConnectNGame
 
+
 class AITests(unittest.TestCase):
     """Tests for project Connect-N"""
 
@@ -118,6 +119,7 @@ class AITests(unittest.TestCase):
         )
         self.assertEqual(self.ai.get_move(), 1)
 
+
 def main():
     """Test Runner"""
     unittest.main(
@@ -126,9 +128,9 @@ def main():
         combine_reports=True,
         report_name="../reports/test_result_ai",
         add_timestamp=False,
-        exit=False
+        exit=False,
     )
+
 
 if __name__ == "__main__":
     main()
-

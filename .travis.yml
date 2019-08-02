@@ -1,4 +1,4 @@
-language: python            # this works for Linux but is an error on macOS or Windows
+language: python # this works for Linux but is an error on macOS or Windows
 sudo: false
 python: 3.7
 
@@ -21,7 +21,7 @@ install:
   - pip3 install codecov
 
 script:
-  - coverage run tests.py --clear-trailling-space
+  - coverage run -m unittest discover
 
 after_success:
   - codecov

@@ -10,6 +10,7 @@ from env import UNIT_SCORE, OFFSET
 from connect_n.ai import AI
 from connect_n.connect_n import ConnectNGame
 
+
 class PygameUtilityTests(unittest.TestCase):
     # Tests for project Connect-N.
     def setUp(self):
@@ -27,6 +28,7 @@ class PygameUtilityTests(unittest.TestCase):
         self.game.play()
         self.assertEqual(self.game.winner.name, "AI")
 
+
 def main():
     """Test Runner"""
     unittest.main(
@@ -35,8 +37,9 @@ def main():
         combine_reports=True,
         report_name="../reports/test_result_pygame",
         add_timestamp=False,
-        exit=False
+        exit=False,
     )
+
 
 if __name__ == "__main__":
     main()

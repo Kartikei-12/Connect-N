@@ -114,14 +114,19 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
 
 <!DOCTYPE html>
 <html>
-
+<head>
+    <title>Test Report</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="text-capitalize">Unittest Results</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-06-27 21:02:45</p>
-                <p class='attribute'><strong>Duration: </strong>12.24 s</p>
+                <h2 class="text-capitalize">Test Report</h2>
+                <p class='attribute'><strong>Start Time: </strong>2019-08-03 02:01:18</p>
+                <p class='attribute'><strong>Duration: </strong>25.99 s</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 24, Pass: 24</p>
             </div>
         </div>
@@ -130,7 +135,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                 <table class='table table-hover table-responsive'>
                     <thead>
                         <tr>
-                            <th>__main__.AITests</th>
+                            <th>test_ai.AITests</th>
                             <th>Status</th>
                             <th></th>
                         </tr>
@@ -194,7 +199,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 7, Pass: 7 -- Duration: 100 ms
+                                Total: 7, Pass: 7 -- Duration: 98 ms
                             </td>
                         </tr>
                     </tbody>
@@ -206,7 +211,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                 <table class='table table-hover table-responsive'>
                     <thead>
                         <tr>
-                            <th>__main__.APIUtility</th>
+                            <th>test_api_utility.APIUtility</th>
                             <th>Status</th>
                             <th></th>
                         </tr>
@@ -234,7 +239,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                 <table class='table table-hover table-responsive'>
                     <thead>
                         <tr>
-                            <th>__main__.ConnectNTests</th>
+                            <th>test_connect_n.ConnectNTests</th>
                             <th>Status</th>
                             <th></th>
                         </tr>
@@ -330,7 +335,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 11, Pass: 11 -- Duration: 0 ms
+                                Total: 11, Pass: 11 -- Duration: 2 ms
                             </td>
                         </tr>
                     </tbody>
@@ -342,35 +347,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                 <table class='table table-hover table-responsive'>
                     <thead>
                         <tr>
-                            <th>__main__.PygameUtilityTests</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class='success'>
-                            <td class="col-xs-10">test_play</td>
-                            <td class="col-xs-1">
-                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
-                            </td>
-                            <td class="col-xs-1">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 9.76 s
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-10">
-                <table class='table table-hover table-responsive'>
-                    <thead>
-                        <tr>
-                            <th>__main__.UserModelCase</th>
+                            <th>test_db_user_model.UserModelCase</th>
                             <th>Status</th>
                             <th></th>
                         </tr>
@@ -410,7 +387,35 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 4, Pass: 4 -- Duration: 2.38 s
+                                Total: 4, Pass: 4 -- Duration: 2.33 s
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>test_pygame_utility.PygameUtilityTests</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_play</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 1, Pass: 1 -- Duration: 23.56 s
                             </td>
                         </tr>
                     </tbody>

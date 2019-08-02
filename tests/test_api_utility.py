@@ -7,6 +7,7 @@ import unittest
 # Project module(s)
 from connect_n.api.utility import compile_response
 
+
 class APIUtility(unittest.TestCase):
     """API utility method testing"""
 
@@ -17,6 +18,7 @@ class APIUtility(unittest.TestCase):
         self.assertEqual(json_dict["test"], "test")
         self.assertEqual(json_dict["description"], "")
 
+
 def main():
     """Test Runner"""
     unittest.main(
@@ -25,9 +27,9 @@ def main():
         combine_reports=True,
         report_name="../reports/test_api_utility",
         add_timestamp=False,
-        exit=False
+        exit=False,
     )
+
 
 if __name__ == "__main__":
     main()
-

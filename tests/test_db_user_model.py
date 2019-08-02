@@ -56,6 +56,7 @@ class UserModelCase(unittest.TestCase):
         u_dict = u.to_dict(include_email=False)
         self.assertNotIn("email", u_dict)
 
+
 def main():
     """Test Runner"""
     unittest.main(
@@ -64,8 +65,9 @@ def main():
         combine_reports=True,
         report_name="../reports/test_db_user_model",
         add_timestamp=False,
-        exit=False
+        exit=False,
     )
+
 
 if __name__ == "__main__":
     main()
