@@ -6,7 +6,6 @@ import numpy as np
 
 # User module(s)
 from env import UNIT_SCORE, OFFSET
-from utility import update_readme, clear_trailling_space
 
 # Project module(s)
 from connect_n.ai import AI
