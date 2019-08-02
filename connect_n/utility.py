@@ -3,7 +3,6 @@
 import sys
 from loguru import logger
 
-
 def getVersion(file):
     """Method
 
@@ -13,9 +12,11 @@ def getVersion(file):
     Returns:
         Version after reading from given file"""
     try:
-        return open(file, "r").read()
+        with open(file, "r") as f:
+            return f.read()
+            f.close()
     except FileNotFoundError:
-        return "0"
+        return ""
 
 
 def recordGame(game):
@@ -39,6 +40,5 @@ def recordGame(game):
 
 def dummy_method(*args, **kwargs):
     """Dummy method which does nothing
-    Note:
-        Accepts anything and everything"""
+    Note: Accepts anything and everything"""
     pass
