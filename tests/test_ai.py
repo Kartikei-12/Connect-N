@@ -122,14 +122,7 @@ class AITests(unittest.TestCase):
 
 def main():
     """Test Runner"""
-    unittest.main(
-        verbosity=3,
-        descriptions=False,
-        combine_reports=True,
-        report_name="../reports/test_result_ai",
-        add_timestamp=False,
-        exit=False,
-    )
+    unittest.main(verbosity=3)
 
 
 if __name__ == "__main__":

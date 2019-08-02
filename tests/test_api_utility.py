@@ -21,14 +21,7 @@ class APIUtility(unittest.TestCase):
 
 def main():
     """Test Runner"""
-    unittest.main(
-        verbosity=3,
-        descriptions=False,
-        combine_reports=True,
-        report_name="../reports/test_api_utility",
-        add_timestamp=False,
-        exit=False,
-    )
+    unittest.main(verbosity=3)
 
 
 if __name__ == "__main__":

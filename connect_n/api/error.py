@@ -1,7 +1,7 @@
 """error.py Error managment for API"""
 
 # Flask modules(s)
-from flask import jsonify, request
+from flask import jsonify
 from werkzeug.http import HTTP_STATUS_CODES
 
 from .app import app, db

@@ -4,7 +4,7 @@
 import unittest
 
 # User module(s)
-from env import UNIT_SCORE, OFFSET
+from env import UNIT_SCORE
 
 # Project module(s)
 from connect_n.ai import AI
@@ -31,14 +31,7 @@ class PygameUtilityTests(unittest.TestCase):
 
 def main():
     """Test Runner"""
-    unittest.main(
-        verbosity=3,
-        descriptions=False,
-        combine_reports=True,
-        report_name="../reports/test_result_pygame",
-        add_timestamp=False,
-        exit=False,
-    )
+    unittest.main(verbosity=3)
 
 
 if __name__ == "__main__":

@@ -15,7 +15,6 @@ def getVersion(file):
     try:
         with open(file, "r") as f:
             return f.read()
-            f.close()
     except FileNotFoundError:
         return ""
 

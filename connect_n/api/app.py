@@ -1,14 +1,12 @@
 """API for Connect-N game"""
 
-from datetime import datetime
-
 # Flask module(s) and it's extentions
-from flask import Flask, request
+from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
 # Environment variable(s)
-from .env import API_DB_NAME, MINIMUM_REQUEST_DURATION
+from .env import API_DB_NAME
 
 db = SQLAlchemy()
 migrate = Migrate()
