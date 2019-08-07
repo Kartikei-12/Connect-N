@@ -17,7 +17,6 @@ import numpy as np
 # User module(s)
 from .ai import AI
 from .player import Player
-from .pygame_utility import PygameUtility
 from .utility import getVersion, recordGame, dummy_method
 
 # Environment Variables
@@ -83,6 +82,8 @@ class ConnectNGame:
         if record:
             self.record_game = recordGame
         if graphic:
+            from .pygame_utility import PygameUtility
+
             try:
                 self.GUIUtil = PygameUtility(num_rows, num_col)
             except EnvironmentError as e:

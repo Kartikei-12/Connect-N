@@ -17,12 +17,3 @@ class APIUtility(unittest.TestCase):
         json_dict = json.loads(json_str)
         self.assertEqual(json_dict["test"], "test")
         self.assertEqual(json_dict["description"], "")
-
-
-def main():
-    """Test Runner"""
-    unittest.main(verbosity=3)
-
-
-if __name__ == "__main__":
-    main()

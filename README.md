@@ -34,6 +34,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
     python -m venv venv
     ./venv/Scripts/activate
     pip install -r requirements.txt
+    python -m unittest discover --verbose
 
 ### Linux based OS
 
@@ -42,6 +43,7 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
     python3 -m venv venv
     source venv/bin/activate
     pip3 install -r requirements.txt
+    python -m unittest discover --verbose
 
 ## Direct Usage
 
@@ -125,8 +127,8 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Test Report</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-08-03 02:03:43</p>
-                <p class='attribute'><strong>Duration: </strong>12.23 s</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-08-03 02:19:07</p>
+                <p class='attribute'><strong>Duration: </strong>12.33 s</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 24, Pass: 24</p>
             </div>
         </div>
@@ -199,7 +201,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 7, Pass: 7 -- Duration: 97 ms
+                                Total: 7, Pass: 7 -- Duration: 98 ms
                             </td>
                         </tr>
                     </tbody>
@@ -335,7 +337,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 11, Pass: 11 -- Duration: 2 ms
+                                Total: 11, Pass: 11 -- Duration: 0 ms
                             </td>
                         </tr>
                     </tbody>
@@ -387,7 +389,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 4, Pass: 4 -- Duration: 2.33 s
+                                Total: 4, Pass: 4 -- Duration: 2.34 s
                             </td>
                         </tr>
                     </tbody>
@@ -415,7 +417,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 9.80 s
+                                Total: 1, Pass: 1 -- Duration: 9.90 s
                             </td>
                         </tr>
                     </tbody>

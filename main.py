@@ -15,13 +15,17 @@ from connect_n.connect_n import ConnectNGame
 
 
 if __name__ == "__main__":
-    game = ConnectNGame(graphic=True, ai=True, record=False)
-    game.add_player(Player("Miss. Vaani Naani Bina Pani"))
-    game.play()
+    # game = ConnectNGame(graphic=True, ai=True, record=False)
+    # game.add_player(Player("Human Player"))
+    # game.play()
+    from connect_n.ai_rnn.generate_data import GenerateData
 
-    # from pprint import pprint
+    gd = GenerateData(game_runs=1)
+    print(gd)
+    b = gd.generate_save(want_return=True)
+    a = gd.load()
+    import numpy as np
 
-    # pprint(game.to_dict())
-
-    # from connect_n.ai import AI
-    # game.players.append(AI(game, p_id=2))
+    print("A\n\n", np.flip(a[0][-1], 0))
+    print(a.shape)
+    print(b.shape)

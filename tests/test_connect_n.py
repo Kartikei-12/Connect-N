@@ -95,12 +95,3 @@ class ConnectNTests(unittest.TestCase):
         board = np.array([[0, 0, 0], [0, 0, 0], [1, 0, 0]], dtype=int)
         strings = ["000", "000", "100", "001", "000", "000", "001", "000"]
         self.assertEqual(self.game.get_strings(board=board), strings)
-
-
-def main():
-    """Test Runner"""
-    unittest.main(verbosity=3)
-
-
-if __name__ == "__main__":
-    main()

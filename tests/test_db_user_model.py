@@ -55,12 +55,3 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual("susan@example.com", u_dict["email"])
         u_dict = u.to_dict(include_email=False)
         self.assertNotIn("email", u_dict)
-
-
-def main():
-    """Test Runner"""
-    unittest.main(verbosity=3)
-
-
-if __name__ == "__main__":
-    main()

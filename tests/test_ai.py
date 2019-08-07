@@ -118,12 +118,3 @@ class AITests(unittest.TestCase):
             dtype=int,
         )
         self.assertEqual(self.ai.get_move(), 1)
-
-
-def main():
-    """Test Runner"""
-    unittest.main(verbosity=3)
-
-
-if __name__ == "__main__":
-    main()

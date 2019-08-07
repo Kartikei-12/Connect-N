@@ -27,12 +27,3 @@ class PygameUtilityTests(unittest.TestCase):
         self.game.players.append(AI(self.game, 2))
         self.game.play()
         self.assertEqual(self.game.winner.name, "AI")
-
-
-def main():
-    """Test Runner"""
-    unittest.main(verbosity=3)
-
-
-if __name__ == "__main__":
-    main()
