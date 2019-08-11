@@ -15,17 +15,11 @@ from connect_n.connect_n import ConnectNGame
 
 
 if __name__ == "__main__":
-    # game = ConnectNGame(graphic=True, ai=True, record=False)
-    # game.add_player(Player("Human Player"))
-    # game.play()
-    from connect_n.ai_rnn.generate_data import GenerateData
-
-    gd = GenerateData(game_runs=1)
-    print(gd)
-    b = gd.generate_save(want_return=True)
-    a = gd.load()
-    import numpy as np
-
-    print("A\n\n", np.flip(a[0][-1], 0))
-    print(a.shape)
-    print(b.shape)
+    game = ConnectNGame(graphic=True, ai=True, record=False)
+    game.add_player(Player("Human Player"))
+    game.play()
+    # from connect_n.ai_nn.generate_data import GenerateData
+    # gd = GenerateData(game_runs=750, file_name='dl_train_dataset_final')
+    # gd.generate_save(want_return=False)
+    # a = gd.load()
+    # print(a.shape)

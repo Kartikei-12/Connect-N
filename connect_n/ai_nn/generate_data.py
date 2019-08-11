@@ -70,15 +70,22 @@ class GenerateData:
             raise MemoryError(
                 "Dataset already generated, use another object for new dataset"
             )
+        count = -1
+        game_runs = self.game_runs
         dataset = list()
         game = ConnectNGame(ai=True, graphic=False)
         game.players.append(AI(game, 2))
-        while self.game_runs:
+        while game_runs:
+            count += 1
+            if count > (2 * self.game_runs):
+                break
             winner = None
             board_states = [game.board]
             turn = random.getrandbits(1)
             game.reset()
             while not winner:
+                if len(game.get_valid_moves()) == 0:
+                    break
                 turn = (turn + 1) % len(game.players)
                 if random.getrandbits(1):
                     col = random.choice(game.get_valid_moves())
@@ -93,7 +100,7 @@ class GenerateData:
                     break
             if winner != "AI":
                 continue
-            self.game_runs -= 1
+            game_runs -= 1
             dataset.append(np.array(board_states))
         np.save(self.out_file, np.array(dataset), allow_pickle=True)
         if want_return:
@@ -101,9 +108,7 @@ class GenerateData:
 
     def load(self):
         """Loads generated dataset"""
-        # if self.game_runs != 0:
-        #     raise MemoryError("No dataset exist")
-        return np.load(self.out_file, mmap_mode="c", allow_pickle=True)
+        return np.load(self.out_file, allow_pickle=True)
 
     def __str__(self):
         """String representation of class object"""

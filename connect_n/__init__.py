@@ -4,6 +4,9 @@ __init__.py file connect_n module"""
 
 __author__ = "Kartikei Mittal"
 
+from .connect_n import ConnectNGame
+from .ai_nn import Preprocess, GenerateData
+
 import os
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + "/version.txt"

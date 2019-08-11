@@ -127,9 +127,9 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Test Report</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-08-03 02:19:07</p>
-                <p class='attribute'><strong>Duration: </strong>12.33 s</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 24, Pass: 24</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-08-07 12:57:28</p>
+                <p class='attribute'><strong>Duration: </strong>32.17 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 26, Pass: 26</p>
             </div>
         </div>
         <div class="row">
@@ -201,7 +201,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 7, Pass: 7 -- Duration: 98 ms
+                                Total: 7, Pass: 7 -- Duration: 103 ms
                             </td>
                         </tr>
                     </tbody>
@@ -337,7 +337,43 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 11, Pass: 11 -- Duration: 0 ms
+                                Total: 11, Pass: 11 -- Duration: 3 ms
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10">
+                <table class='table table-hover table-responsive'>
+                    <thead>
+                        <tr>
+                            <th>test_dataset_generate.GenerateDataTests</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_generate_save</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr class='success'>
+                            <td class="col-xs-10">test_load</td>
+                            <td class="col-xs-1">
+                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
+                            </td>
+                            <td class="col-xs-1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                Total: 2, Pass: 2 -- Duration: 19.85 s
                             </td>
                         </tr>
                     </tbody>
@@ -389,7 +425,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 4, Pass: 4 -- Duration: 2.34 s
+                                Total: 4, Pass: 4 -- Duration: 2.32 s
                             </td>
                         </tr>
                     </tbody>
@@ -413,6 +449,13 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                                 <span class="label label-success" style="display:block;width:40px;">Pass</span>
                             </td>
                             <td class="col-xs-1">
+                                <button class="btn btn-default btn-xs">View</button>
+                            </td>
+                        </tr>
+                        <tr style="display:none;">
+                            <td class="col-xs-9" colspan="3"><p>pygame 1.9.6
+Hello from the pygame community. https://www.pygame.org/contribute.html
+</p>
                             </td>
                         </tr>
                         <tr>

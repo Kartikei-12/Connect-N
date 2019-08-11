@@ -9,7 +9,7 @@ import numpy as np
 from env import ROWS, COLUMNS
 
 # Project module(s)
-from connect_n.ai_rnn.generate_data import GenerateData
+from connect_n.ai_nn.generate_data import GenerateData
 
 
 class GenerateDataTests(unittest.TestCase):

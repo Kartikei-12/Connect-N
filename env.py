@@ -9,3 +9,5 @@ UNIT_SCORE = 10 ** 3
 
 LARGE_VALUE = 10 ** 12
 SMALL_VALUE = -10 ** 12
+
+NEURAL_NET_param = {"name": "Neural Network parameters"}

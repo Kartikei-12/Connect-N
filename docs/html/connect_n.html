@@ -36,11 +36,12 @@
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="connect_n.ai_rnn.html">connect_n.ai_rnn package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="connect_n.ai_rnn.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="connect_n.ai_rnn.html#connect-n-ai-rnn-generate-data-module">connect_n.ai_rnn.generate_data module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="connect_n.ai_rnn.html#connect-n-ai-rnn-temp-module">connect_n.ai_rnn.temp module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="connect_n.ai_rnn.html#module-connect_n.ai_rnn">Module contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connect_n.ai_nn.html">connect_n.ai_nn package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="connect_n.ai_nn.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect_n.ai_nn.html#connect-n-ai-nn-generate-data-module">connect_n.ai_nn.generate_data module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect_n.ai_nn.html#connect-n-ai-nn-preprocess-module">connect_n.ai_nn.preprocess module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect_n.ai_nn.html#connect-n-ai-nn-train-module">connect_n.ai_nn.train module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect_n.ai_nn.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="connect_n.api.html">connect_n.api package</a><ul>
@@ -48,12 +49,12 @@
 <li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#connect-n-api-app-module">connect_n.api.app module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#connect-n-api-auth-module">connect_n.api.auth module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#connect-n-api-db-model-module">connect_n.api.db_model module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#module-connect_n.api.env">connect_n.api.env module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#connect-n-api-env-module">connect_n.api.env module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#connect-n-api-error-module">connect_n.api.error module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#connect-n-api-routes-module">connect_n.api.routes module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#connect-n-api-tokens-module">connect_n.api.tokens module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#module-connect_n.api.utility">connect_n.api.utility module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#module-connect_n.api">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#connect-n-api-utility-module">connect_n.api.utility module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connect_n.api.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -62,144 +63,14 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-connect_n.ai">
-<span id="connect-n-ai-module"></span><h2>connect_n.ai module<a class="headerlink" href="#module-connect_n.ai" title="Permalink to this headline">¶</a></h2>
-<p>ai.py</p>
-<p>File defining AI for the Connect-N Game</p>
-<dl class="class">
-<dt id="connect_n.ai.AI">
-<em class="property">class </em><code class="sig-prename descclassname">connect_n.ai.</code><code class="sig-name descname">AI</code><span class="sig-paren">(</span><em class="sig-param">game</em>, <em class="sig-param">p_id=1</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>class defining AI for the game
-:param p_id: ID for AI(default: 1)
-:type p_id: int
-:param game: Game object
-:type game: ConnectNGame</p>
-<dl class="method">
-<dt id="connect_n.ai.AI.get_move">
-<code class="sig-name descname">get_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.get_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fetches AI  move</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Most optimal move (None if no legal moves)</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.ai.AI.greedy">
-<code class="sig-name descname">greedy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.greedy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Simple method to fetch AI move, Uses scoring method to determine highest ranking move(greddy approach)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Most optimal move (None if no legal moves)</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.ai.AI.minmax">
-<code class="sig-name descname">minmax</code><span class="sig-paren">(</span><em class="sig-param">board</em>, <em class="sig-param">depth</em>, <em class="sig-param">alpha</em>, <em class="sig-param">beta</em>, <em class="sig-param">maximizingPlayer</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.minmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>MinMax algortihm for AI implementation</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>board</strong> (<em>numpu.ndarray</em>) – 2-D numpy array representing board in which game is being played</p></li>
-<li><p><strong>depth</strong> (<em>int</em>) – Depth upto which to look</p></li>
-<li><p><strong>alpha</strong> (<em>int</em>) – Parameter for alpha-beta purning</p></li>
-<li><p><strong>beta</strong> (<em>int</em>) – Parameter for alpha-beta purning</p></li>
-<li><p><strong>maximizingPlayer</strong> (<em>bool</em>) – Wheather maximizing player or not</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>2 length tuple, first element column, second score</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.ai.AI.score">
-<code class="sig-name descname">score</code><span class="sig-paren">(</span><em class="sig-param">board</em>, <em class="sig-param">pid</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculated Score of board for given player.
-:param board: A 2-D int numpy array representing current state of game
-:type board: numpy.ndarray
-:param pid: ID of player
-:type pid: int</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Score of the board for given pid</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="connect_n.ai.AI.string_score">
-<code class="sig-name descname">string_score</code><span class="sig-paren">(</span><em class="sig-param">string</em>, <em class="sig-param">pid</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.ai.AI.string_score" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates score for a player from given string</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>string</strong> (<em>str</em>) – Input string</p></li>
-<li><p><strong>pid</strong> (<em>int</em>) – ID of player</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Score of the given string</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="connect-n-ai-module">
+<h2>connect_n.ai module<a class="headerlink" href="#connect-n-ai-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="connect-n-connect-n-module">
 <h2>connect_n.connect_n module<a class="headerlink" href="#connect-n-connect-n-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-connect_n.player">
-<span id="connect-n-player-module"></span><h2>connect_n.player module<a class="headerlink" href="#module-connect_n.player" title="Permalink to this headline">¶</a></h2>
-<p>player.py file</p>
-<p>Contains player module</p>
-<dl class="class">
-<dt id="connect_n.player.Player">
-<em class="property">class </em><code class="sig-prename descclassname">connect_n.player.</code><code class="sig-name descname">Player</code><span class="sig-paren">(</span><em class="sig-param">name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.player.Player" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Player class</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Name of the player</p>
-</dd>
-</dl>
-<dl class="method">
-<dt id="connect_n.player.Player.get_move">
-<code class="sig-name descname">get_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#connect_n.player.Player.get_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Simple method to ask for player move</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Player input, None if invalid input</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="connect-n-player-module">
+<h2>connect_n.player module<a class="headerlink" href="#connect-n-player-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="connect-n-pygame-utility-module">
 <h2>connect_n.pygame_utility module<a class="headerlink" href="#connect-n-pygame-utility-module" title="Permalink to this headline">¶</a></h2>
@@ -207,10 +78,8 @@
 <div class="section" id="connect-n-utility-module">
 <h2>connect_n.utility module<a class="headerlink" href="#connect-n-utility-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-connect_n">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-connect_n" title="Permalink to this headline">¶</a></h2>
-<p>&#64;author: Kartikei Mittal</p>
-<p>__init__.py file connect_n module</p>
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
