@@ -3,7 +3,7 @@
 # Python module(s)
 import numpy as np
 
-from env import ROWS, COLUMNS
+from ..env import ROWS, COLUMNS
 
 
 class Preprocess:

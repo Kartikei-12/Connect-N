@@ -20,7 +20,7 @@ from .player import Player
 from .utility import getVersion, recordGame, dummy_method
 
 # Environment Variables
-from env import N, ROWS, COLUMNS
+from .env import N, ROWS, COLUMNS
 
 
 class ConnectNGame:

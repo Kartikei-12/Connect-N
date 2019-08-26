@@ -6,7 +6,7 @@ import random
 import numpy as np
 
 # Environment Variable(s)
-from env import N, ROWS, COLUMNS
+from ..env import N, ROWS, COLUMNS
 
 # Project Module(s)
 from ..ai import AI

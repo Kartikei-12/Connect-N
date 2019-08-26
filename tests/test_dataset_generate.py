@@ -5,10 +5,8 @@ import os
 import unittest
 import numpy as np
 
-# User module(s)
-from env import ROWS, COLUMNS
-
 # Project module(s)
+from connect_n import ROWS, COLUMNS
 from connect_n.ai_nn.generate_data import GenerateData
 
 

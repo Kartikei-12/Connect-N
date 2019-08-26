@@ -4,10 +4,8 @@
 import unittest
 import numpy as np
 
-# User module(s)
-from env import UNIT_SCORE, OFFSET
-
 # Project module(s)
+from connect_n import UNIT_SCORE, OFFSET
 from connect_n.ai import AI
 from connect_n.player import Player
 from connect_n.connect_n import ConnectNGame

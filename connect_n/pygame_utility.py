@@ -9,7 +9,7 @@ import pygame
 import random
 
 # Environment Variables
-from env import ROWS, COLUMNS
+from .env import ROWS, COLUMNS
 
 # Colours
 BLUE = (0, 0, 255)

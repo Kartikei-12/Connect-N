@@ -7,7 +7,7 @@ import math
 import random
 
 # User module(s)
-from env import UNIT_SCORE, OFFSET, LARGE_VALUE, SMALL_VALUE
+from .env import UNIT_SCORE, OFFSET, LARGE_VALUE, SMALL_VALUE
 
 
 class AI:

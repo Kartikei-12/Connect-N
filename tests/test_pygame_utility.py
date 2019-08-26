@@ -3,10 +3,8 @@
 # Python module(s)
 import unittest
 
-# User module(s)
-from env import UNIT_SCORE
-
 # Project module(s)
+from connect_n import UNIT_SCORE
 from connect_n.ai import AI
 from connect_n.connect_n import ConnectNGame
 
