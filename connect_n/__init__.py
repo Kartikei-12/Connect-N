@@ -6,12 +6,14 @@ __author__ = "Kartikei Mittal"
 __version__ = "0.1d"
 __email__ = "kartikeimittal@gmail.com"
 
+# Python module(s)
+import os
+
+# User module(s)
 from .connect_n import ConnectNGame
 from .player import Player
 from .ai_nn import Preprocess, GenerateData
 from .env import *
-
-import os
 
 FILE_PATH = os.path.dirname(os.path.realpath(__file__)) + "/version.txt"
 
