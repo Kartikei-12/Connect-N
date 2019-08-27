@@ -10,7 +10,6 @@ https://github.com/Kartikei-12/Connect-N"""
 
 
 # Python module(s)
-import os
 import random
 import numpy as np
 
@@ -40,7 +39,7 @@ class ConnectNGame:
         ValueError: Argument [num_rows, num_col, n] needs to be positive
         ValueError: No winning combination possible in [num_rows, num_col, n]"""
 
-    __version__ = "0.1d."
+    __version__ = "0.1d"
 
     def __init__(
         self, ai=True, record=False, graphic=False, n=N, num_rows=ROWS, num_col=COLUMNS
@@ -59,9 +58,6 @@ class ConnectNGame:
                 raise ValueError("All argument needs to be positive.")
             elif var < n:
                 raise ValueError("No winning combination possible")
-
-        PATH = os.path.dirname(os.path.realpath(__file__))
-        self.__version__ += getVersion(PATH + "/version.txt")
 
         self.winner = None
         self.GUIUtil = None
