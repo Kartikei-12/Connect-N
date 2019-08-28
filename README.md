@@ -27,31 +27,30 @@ A simple modified version of Connect Four Game implemented with AI in Python usi
 
 ## Installation
 
-### Windows
+### Via `pip`
 
-    git clone https://github.com/Kartikei-12/Connect-N
-    cd Connect-N-master
-    python -m venv venv
-    ./venv/Scripts/activate
-    pip install -r requirements.txt
-    python -m unittest discover --verbose
+`pip install --user --upgrade --no-cache connect-n`
 
-### Linux based OS
+### Via source
 
-    git clone https://github.com/Kartikei-12/Connect-N
-    cd Connect-N-master
-    python3 -m venv venv
-    source venv/bin/activate
-    pip3 install -r requirements.txt
-    python -m unittest discover --verbose
+```
+git clone https://github.com/Kartikei-12/Connect-N
+cd Connect-N-master
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+python -m unittest discover --verbose
+```
 
-## Direct Usage
+## Simple Example
 
-For simple example,
-
-Run main.py as `python main.py` on **windows** with virtual environment(`./venv/Scripts/activate`).
-
-Run main.py as `python3 main.py` on **Ubuntu/Linux** with virtual environment(`source /venv/Scripts/activate`).
+```Python
+from connect_n import Player, ConnectNGame
+if __name__ == "__main__":
+    game = ConnectNGame(graphic=True, ai=True, record=False)
+    game.add_player(Player("Human Player"))
+    game.play()
+```
 
 ## API
 
@@ -127,8 +126,8 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Test Report</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-08-26 22:16:19</p>
-                <p class='attribute'><strong>Duration: </strong>31.51 s</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-08-27 00:12:59</p>
+                <p class='attribute'><strong>Duration: </strong>24.75 s</p>
                 <p class='attribute'><strong>Summary: </strong>Total: 26, Pass: 26</p>
             </div>
         </div>
@@ -201,7 +200,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 7, Pass: 7 -- Duration: 99 ms
+                                Total: 7, Pass: 7 -- Duration: 97 ms
                             </td>
                         </tr>
                     </tbody>
@@ -337,7 +336,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 11, Pass: 11 -- Duration: 4 ms
+                                Total: 11, Pass: 11 -- Duration: 2 ms
                             </td>
                         </tr>
                     </tbody>
@@ -373,7 +372,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 2, Pass: 2 -- Duration: 5.78 s
+                                Total: 2, Pass: 2 -- Duration: 12.20 s
                             </td>
                         </tr>
                     </tbody>
@@ -425,7 +424,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 4, Pass: 4 -- Duration: 2.33 s
+                                Total: 4, Pass: 4 -- Duration: 2.54 s
                             </td>
                         </tr>
                     </tbody>
@@ -460,7 +459,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 23.30 s
+                                Total: 1, Pass: 1 -- Duration: 9.91 s
                             </td>
                         </tr>
                     </tbody>

@@ -8,7 +8,6 @@ __email__ = "kartikeimittal@gmail.com"
 
 from .connect_n import ConnectNGame
 from .player import Player
-from .ai_nn import Preprocess, GenerateData
 from .env import *
 
 import os
