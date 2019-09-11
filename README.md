@@ -126,9 +126,9 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="text-capitalize">Test Report</h2>
-                <p class='attribute'><strong>Start Time: </strong>2019-08-27 00:12:59</p>
-                <p class='attribute'><strong>Duration: </strong>24.75 s</p>
-                <p class='attribute'><strong>Summary: </strong>Total: 26, Pass: 26</p>
+                <p class='attribute'><strong>Start Time: </strong>2019-08-28 09:06:10</p>
+                <p class='attribute'><strong>Duration: </strong>25.94 s</p>
+                <p class='attribute'><strong>Summary: </strong>Total: 24, Pass: 24</p>
             </div>
         </div>
         <div class="row">
@@ -200,7 +200,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 7, Pass: 7 -- Duration: 97 ms
+                                Total: 7, Pass: 7 -- Duration: 105 ms
                             </td>
                         </tr>
                     </tbody>
@@ -336,43 +336,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 11, Pass: 11 -- Duration: 2 ms
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-10 col-md-10">
-                <table class='table table-hover table-responsive'>
-                    <thead>
-                        <tr>
-                            <th>test_dataset_generate.GenerateDataTests</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class='success'>
-                            <td class="col-xs-10">test_generate_save</td>
-                            <td class="col-xs-1">
-                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
-                            </td>
-                            <td class="col-xs-1">
-                            </td>
-                        </tr>
-                        <tr class='success'>
-                            <td class="col-xs-10">test_load</td>
-                            <td class="col-xs-1">
-                                <span class="label label-success" style="display:block;width:40px;">Pass</span>
-                            </td>
-                            <td class="col-xs-1">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                Total: 2, Pass: 2 -- Duration: 12.20 s
+                                Total: 11, Pass: 11 -- Duration: 3 ms
                             </td>
                         </tr>
                     </tbody>
@@ -424,7 +388,7 @@ GUI **NOT** working inside docker, because no support for pygame inside Docker.
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 4, Pass: 4 -- Duration: 2.54 s
+                                Total: 4, Pass: 4 -- Duration: 2.33 s
                             </td>
                         </tr>
                     </tbody>
@@ -459,7 +423,7 @@ Hello from the pygame community. https://www.pygame.org/contribute.html
                         </tr>
                         <tr>
                             <td colspan="3">
-                                Total: 1, Pass: 1 -- Duration: 9.91 s
+                                Total: 1, Pass: 1 -- Duration: 23.50 s
                             </td>
                         </tr>
                     </tbody>

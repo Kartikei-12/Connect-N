@@ -21,10 +21,6 @@ class ConnectNTests(unittest.TestCase):
         self.game.reset()
         del self.game
 
-    def test_version(self):
-        """Testing version system"""
-        self.assertEqual(getVersion("connect_n/version.txt"), self.game.__version__[5:])
-
     def test_horizontal_winning_move(self):
         """Testing Winning move(Horizontal Check)"""
         self.game.board = [[1, 1, 1], [0, 0, 0], [0, 0, 0]]
